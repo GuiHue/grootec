@@ -14,3 +14,25 @@
 12  0:12  PREOP  +  Delta ASDA-A3-E EtherCAT(CoE) Drive Rev0
 13  0:13  PREOP  +  Delta ASDA-A3-E EtherCAT(CoE) Drive Rev0
 14  0:14  PREOP  +  Delta ASDA-A3-E EtherCAT(CoE) Drive Rev0
+
+
+
+Note: Using POSIX realtime
+Found file(REL): ./grootec.hal
+Failed to execute SDO download: Input/output error
+LCEC: slave 0.a-axis: Failed to execute SDO download (0x60fe:0x02, size 4, byte0=0, error -5, abort_code 06020000)
+LCEC: failed to configure slave 0.a-axis sdo for enabling digital output ports 1-4
+LCEC: failure in proc_init for slave 0.a-axis
+LCEC: failure, clearing config
+LCEC: exiting
+LCEC: returning -EINVAL
+lcec: rtapi_app_main: Invalid argument (-22)
+./grootec.hal:9: waitpid failed /usr/bin/rtapi_app lcec
+./grootec.hal:9: /usr/bin/rtapi_app exited without becoming ready
+./grootec.hal:9: insmod for lcec failed, returned -1
+Shutting down and cleaning up LinuxCNC...
+Note: Using POSIX realtime
+LinuxCNC terminated with an error.  You can find more information in the log:
+    /home/groot/linuxcnc_debug.txt
+
+
