@@ -8,8 +8,10 @@
     <slave idx="5" type="EL3064" name="AI1"/>
     <slave idx="6" type="EL2809" name="DO1"/>
     <slave idx="7" type="EL7031" name="MQL"/>
+    <slave idx="9" type="DeMS300" name="VFD"/>
     <slave idx="10" type="DeASDA" name="a-axis">
-<!--      <dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="0"/>-->
+      <dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="0"/>
+      <modParam name="enableDigitalOutput" value="false"/>
       <modParam name="opmode" value="CSV"/>
     </slave>
     <slave idx="11" type="DeASDA3" name="z-axis">
@@ -28,6 +30,5 @@
       <dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="0"/>
       <modParam name="opmode" value="CSP"/>
     </slave> 
-
 </master>
 </masters>
