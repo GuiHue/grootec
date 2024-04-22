@@ -1,16 +1,10 @@
 # Halshow settings
 # This file is generated automatically.
-wm geometry . 1195x832+384+93
+wm geometry . 1920x997+0+27
 placeFrames 0.3
 set ::ratio 0.3
 set ::old_w_leftf 160
 set ::watchlist {
-    pin+lcec.0.AI1.ain-0-raw
-    pin+lcec.0.AI1.ain-1-raw
-    pin+lcec.0.AI1.ain-2-raw
-    pin+lcec.0.AI1.ain-3-raw
-    pin+lcec.0.DI1.din-0
-    pin+lcec.0.DI1.din-1
 }
 set ::workmode watchhal
 set ::watchInterval 100
