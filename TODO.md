@@ -11,7 +11,7 @@
 ## LinuxCNC General
 - Set up folder structure
 - set up hal subsets
-- Set up two pass
+- Set up two pass https://linuxcnc.org/docs/stable/html/hal/twopass.html
 - Make clean INI
 - Review correct universal setup for CSP Mode
 - Strip Kondor of all things UI (but keep them neatly tucked away)
