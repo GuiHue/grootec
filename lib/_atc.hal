@@ -1,0 +1,137 @@
+# ---------- ATC  ----------
+# Handles all functions pertaining to Tool Change operation
+# Includes the following functions:     
+#       - Check is spindle is off
+#       - set spindle.0.inhibit whenever drawbar is down (hardcoded based on sensor)
+#       - triggers cone cleaning when manual process is triggered
+#       - Configures tool change carousel
+
+# ---------- MANUAL TOOL CHANGE  ----------
+# is triggered through a momentary switch at Z axis: DI-ATC-man-button
+# uses status light at z axis to indicate wether or not tool change is permitted (on = tool change permitted, blinking: tool change ongoing (timers running), off: spindle-locked): DO-ATC-status-light 
+# triggers valves for drawbar DO-ATC-drawbar-actuator and cone cleaning DO-ATC-cone-clean
+# lut5.toolchange only high when in0:spindle-is-running = low and in1:DI-ATC-man-button = high 
+# lut5.function = b0100 = 0x4 
+# Note: Requires changes at a later stage to account for ATC --> check use of halui.program.is-running
+
+# Time cone cleaning is active after tool has been ejected
+setp    timedelay.conecleaning.on-delay             0
+setp    timedelay.conecleaning.off-delay            [ATC]MAN_CONECLEAN_TIME
+setp    timedelay.toolchange.on-delay               0
+setp    timedelay.toolchange.off-delay              [ATC]CLAMP_DELAY
+
+setp    lut5.toolchange.function                    0x4
+net     spindle-is-running                          lut5.toolchange.in-0
+net     DI-ATC-man-button                           lut5.toolchange.in-1
+
+net     toolchange-signal                           lut5.toolchange.out             toggle.toolchange.in        and.atcdb.in1
+net     DI-ATC-drawbar-sensor-not                   and.atcdb.in0
+net     coneclean-trigger                           timedelay.conecleaning.in       and.atcdb.out
+
+
+# timedelay.coneclean starts only when
+# drawbar not open
+net     toolchange-toggle                           toggle.toolchange.out           timedelay.toolchange.in
+
+# Bypass for actuation from OCODE MACROS --> final signal goes through or2
+
+net     DO-ATC-drawbar-actuator-delay               timedelay.toolchange.out      or.spindle-auto-drawbar.in0
+net     DO-ATC-drawbar-actuator-auto                or.spindle-auto-drawbar.in1
+net     DO-ATC-drawbar-actuator                     or.spindle-auto-drawbar.out   
+
+net     DO-ATC-cone-clean-delay                           timedelay.conecleaning.out        or.spindle-auto-cone-clean.in0
+net     DO-ATC-cone-clean-auto                           or.spindle-auto-cone-clean.in1
+
+net     DO-ATC-cone-clean                           or.spindle-auto-cone-clean.out  
+
+
+# MUX8 mux8.atcstatusled to select between different modes of light
+#   sel0 spindle-is-running
+#   sel1 spindle-inhibit
+#   sel2 DI-ATC-tool-sensor 
+# LED
+# off,              when spindle-is-running =high   and spindle-inhibit =low    and DI-ATC-tool-sensor =high (this is related to spindle-inhibit being low)  --> not ready for tool change   
+# on,               when spindle-is-running =low    and spindle-inhibit =low    and DI-ATC-tool-sensor =high (ready for tool change)
+# blinking,         when spindle-is-running =low    and spindle-inhibit =high   and DI-ATC-tool-sensor =low (tool change taking place or not tool - this cannot be distinguished by using the selected inputs) 
+#   Logic Table
+#       sel0=1 sel1=0 sel2=1 >> in5 (light off)                 signal: spindle-inhibit
+#       sel0=0 sel1=0 sel2=1 >> in4 (READY FOR TS light  on)    signal: spindle-inhibit
+#       sel0=0 sel1=1 sel2=0 >> in2 (blink slow)                signal: atcledslow-out
+       
+# Select signal
+net     DI-ATC-tool-sensor                          mux8.atcstatusled.sel2
+net     spindle-is-running                          mux8.atcstatusled.sel0
+net     spindle-inhibit                             and.atcledslow.in0                      mux8.atcstatusled.sel1       not.spindleinhibit.in  conv_bit_float.spindleinhibit.in 
+
+net     spindleinhibitbfloat                        conv_bit_float.spindleinhibit.out       mux8.atcstatusled.in5       
+net     spindleinhibitnotbfloat                     conv_bit_float.spindleinhibitnot.in     not.spindleinhibit.out 
+net     spindle-inhibit-not-atc                     conv_bit_float.spindleinhibitnot.out    mux8.atcstatusled.in4                              
+
+# Slow blinking
+setp    timedelay.atcledslow.on-delay               0.3
+setp    timedelay.atcledslow.off-delay              0.3
+net     atcledslow-out                              timedelay.atcledslow.out                not.atcledslow.in           conv_bit_float.atcstatusled-slow.in      
+net     atcledslow-out-mux8                         conv_bit_float.atcstatusled-slow.out    mux8.atcstatusled.in2
+net     atcledslownot                               not.atcledslow.out                      and.atcledslow.in1
+net     atcledslow-toogle                           and.atcledslow.out                      timedelay.atcledslow.in
+
+# Map output signal
+net     atcledout-flu32                             conv_flu32.atcstatusledout.in       mux8.atcstatusled.out
+net     atcledout-conv_u32b                         conv_flu32.atcstatusledout.out      conv_u32b.atcstatusledout.in
+net     DO-ATC-status-light                         conv_u32b.atcstatusledout.out
+# To be added at a later stage - careful, appraoch below does not work due to doubl linkage
+#net     DO-HMI-light-blue                            conv_u32b.atcstatusledout.out
+
+
+# ---------- MANUAL TOOLCHANGE----------
+loadusr -W hal_manualtoolchange
+net tool-change iocontrol.0.tool-change => hal_manualtoolchange.change
+net tool-changed iocontrol.0.tool-changed <= hal_manualtoolchange.changed
+net tool-number iocontrol.0.tool-prep-number => hal_manualtoolchange.number
+net tool-prepare-loopback iocontrol.0.tool-prepare => iocontrol.0.tool-prepared
+
+
+# ---------- CAROUSEL TOOL CHANGER  ----------
+
+# Drive Setup
+setp        [HMOT](CARD0).stepgen.05.dirsetup           [ATC]DIRSETUP
+setp        [HMOT](CARD0).stepgen.05.dirhold            [ATC]DIRHOLD
+setp        [HMOT](CARD0).stepgen.05.steplen            [ATC]STEPLEN
+setp        [HMOT](CARD0).stepgen.05.stepspace          [ATC]STEPSPACE
+setp        [HMOT](CARD0).stepgen.05.position-scale     [ATC]STEP_SCALE
+setp        [HMOT](CARD0).stepgen.05.step_type          0
+setp        [HMOT](CARD0).stepgen.05.control-type       1
+setp        [HMOT](CARD0).stepgen.05.enable             1
+setp        [HMOT](CARD0).stepgen.05.maxaccel           [ATC]STEPGEN_MAXACCEL
+setp        [HMOT](CARD0).stepgen.05.maxvel             [ATC]STEPGEN_MAXVEL
+
+setp        carousel.0.fwd-dc       [ATC]FWD_DC
+setp        carousel.0.hold-dc      [ATC]HOLD_DC
+setp        carousel.0.rev-dc       [ATC]REV_DC
+setp        carousel.0.rev-pulse    [ATC]REV_PULSE
+setp        carousel.0.align-dc    [ATC]ALIGN_DC
+setp        carousel.0.decel-time    [ATC]DECEL_TIME
+
+# Carousel Setup
+# Signals
+# Enable is required to turn the whole thing on
+#net        carenable         carousel.0.enable 
+# Index = home
+net         DI-ATC-home    carousel.0.sense-0
+# Pocket = pocket signal
+net         DI-ATC-pocket    carousel.0.sense-1
+
+# Setup Write Signales
+net         carousel_enable     carousel.0.enable     
+net         carousel_jog-fwd    carousel.0.jog-fwd
+net         carousel_jog-rev    carousel.0.jog-rev
+net         carousel_force-unhome carousel.0.unhome
+net         carousel_motor-vel  carousel.0.motor-vel    [HMOT](CARD0).stepgen.05.velocity-cmd
+net         carousel_pocket-number  carousel.0.pocket-number 
+#conv-s32-float.atc-pocket.in
+# Setup READ Signals
+net         carousel_homed      carousel.0.homed
+net         carousel_ready      carousel.0.ready
+net         carousel_current-position carousel.0.current-position conv-s32-float.atc-pocket.in
+# Trigger homing of atc with homing of machine
+net         carousel_home-auto halui.mdi-command-17 joint.0.homed

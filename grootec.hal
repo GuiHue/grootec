@@ -1,13 +1,13 @@
-
+# ---------- REALTIME COMPONENTS ----------
+# loads all required core RT components
+# all components are loaded by name to increase clarity
+# TWOPASS in use: All ladrt and addf calls are in place
 loadrt    [KINS]KINEMATICS
 loadrt    [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS
-#loadrt    hostmot2
-#loadrt    hm2_eth board_ip="10.10.10.10" config="num_encoders=1 num_pwmgens=0 num_stepgens=5 sserial_port_0=222000" 
-#setp      hm2_7i92.0.watchdog.timeout_ns 50000000
-
-loadusr     -W lcec_conf ethercat-conf.xml
+loadusr     -W lcec_conf lib/ethercat-conf.xml
 loadrt      lcec
-loadrt      pid names=pid.x,pid.y,pid.z
+
+# loadrt      pid names=pid.x,pid.y,pid.z
 
 
 ###########################################################
@@ -19,15 +19,16 @@ addf lcec.read-all servo-thread
 addf motion-command-handler servo-thread
 addf motion-controller servo-thread
 
-addf pid.x.do-pid-calcs servo-thread
-addf pid.y.do-pid-calcs servo-thread
-addf pid.z.do-pid-calcs servo-thread
+# addf pid.x.do-pid-calcs servo-thread
+# addf pid.y.do-pid-calcs servo-thread
+# addf pid.z.do-pid-calcs servo-thread
 
 addf lcec.write-all servo-thread
 
 #########################################
 #nets
 #########################################
+# CHECK
 net emc-enable => iocontrol.0.emc-enable-in
 sets emc-enable 1
 

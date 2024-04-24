@@ -1,0 +1,3 @@
+# ---------- REALTIME COMPONENTS ----------
+# All RT comps that must be loaded/ added to servo-thread aftereverything else (two pass requirement)
+addf lcec.write-all servo-thread

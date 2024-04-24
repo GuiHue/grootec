@@ -1,0 +1,204 @@
+# ---------- IO  ----------
+# Purpose: Link all inputs and outputs to signals for use in further HAL documents
+# Prefixes "DI" and "AI" indicate digital and analog inputs 
+# Prefixes "DO" and "AO" indicate digital and analog outputs
+# Signal Name Structure: ORI-GROUP-signal
+#       1) ORI Word: DI, DO, AI, AO (Describes the origin of the signal, explizit; internal signals not declared; CAPS)
+#       2) GROUP: ATC, ESTOP, HMI, DRIVE, CNC, SYS: Signal groups refering to their function (CAPS); explicit, linking signal may be used without; 
+#       3) signal name: descriptive, yet short - may include reference to another signal e.g. toggle2not non-cap
+
+################################################################################################
+# ---Inputs---
+# --- AI ATC-TEMP-SENSOR ---
+# Note: Voltage from voltage divider over spindle temperature sensor
+net     AI-ATC-temp-sensor              <= lcec.0.AI1.ain-0-val
+
+# --- AI FIELDVOLTAGE ---
+# Note: Reference voltage 24v  through external port, as mesa internal ref voltage is garbage
+net     AI-SYS-fieldvoltage             <= lcec.0.AI1.ain-1-val
+
+# --- DI CNC-MIN-HOME-X ---
+net     DI-CNC-min-home-x               <= lcec.0.DI1.din-0-not
+
+# --- DI  CNC-MIN-HOME-Y1 ---
+net     DI-CNC-min-home-y1              <= lcec.0.DI1.din-2-not
+
+# --- DI 06 CNC-MIN-HOME-Y2 ---
+net     DI-CNC-min-home-y2              <= lcec.0.DI1.din-3-not
+
+
+# --- DI 08 CNC-MIN-HOME-Z ---
+net     DI-CNC-min-home-z               <= lcec.0.DI1.din-4-not
+
+# --- DI 09 ATC-TOOL-SENSOR ---
+# Note: Sensor to indicate the presence of a tool (high when tool present)
+net     DI-ATC-tool-sensor              <= hm2_7i76e.0.7i76.0.0.input-09
+
+# --- DI 10  ATC-DRAWBAR-SENSOR---
+# Note: Sensor to indicate that the drawbar has been activated (high when drawbar open)
+net     DI-ATC-drawbar-sensor           <= hm2_7i76e.0.7i76.0.0.input-10
+net     DI-ATC-drawbar-sensor-not       <= hm2_7i76e.0.7i76.0.0.input-10-not
+
+# --- DI 11 ATC-MAN-BUTTON ---
+net     DI-ATC-man-button               <= hm2_7i76e.0.7i76.0.0.input-11
+
+# --- DI 12 ESTOP-EXT ---
+net     DI-ESTOP-ext                    <= hm2_7i76e.0.7i76.0.0.input-12
+net     DI-ESTOP-ext-not                    <= hm2_7i76e.0.7i76.0.0.input-12-not
+
+
+# --- DI 13 CNC-PROBE---
+net     DI-CNC-probe                    <= hm2_7i76e.0.7i76.0.0.input-13-not
+
+# --- DI 14 CNC-PROBE_OT ---
+net     DI-CNC-probe-ot                 <= hm2_7i76e.0.7i76.0.0.input-14
+net     DI-CNC-probe-ot-not             <= hm2_7i76e.0.7i76.0.0.input-14-not
+
+# --- DI 15 CP-CYCLE-START-BUTTON ---
+net     DI-HMI-cycle-start-button       <= hm2_7i76e.0.7i76.0.0.input-15
+
+# --- DI 16 CP-CYCLE-STOP-BUTTON ---
+net     DI-HMI-cycle-stop-button        <= hm2_7i76e.0.7i76.0.0.input-16
+
+# --- DI 17 CP-MACHINE-ON-BUTTON ---
+net     DI-HMI-machine-on-button        <= hm2_7i76e.0.7i76.0.0.input-17
+
+# --- DI 18 CNC-PROBE-ERROR ---
+net     DI-CNC-tls                <= hm2_7i76e.0.7i76.0.0.input-18-not
+
+# --- DI 19 AIR-PRESSURE-ALARM ---
+# Note: High when OK
+net     DI-CNC-pressure-alarm           <= hm2_7i76e.0.7i76.0.0.input-19
+
+# --- DI 20 DRIVE-X-ALARM ---
+net     DI-DRIVE-x-alarm                <= hm2_7i76e.0.7i76.0.0.input-20
+net     DI-DRIVE-x-alarm-not            <= hm2_7i76e.0.7i76.0.0.input-20-not
+
+# --- DI 21 DRIVE-Y1-ALARM ---
+net     DI-DRIVE-y1-alarm               <= hm2_7i76e.0.7i76.0.0.input-21
+net     DI-DRIVE-y1-alarm-not           <= hm2_7i76e.0.7i76.0.0.input-21-not
+
+# --- DI 22 DRIVE-Y2-ALARM ---
+net     DI-DRIVE-y2-alarm               <= hm2_7i76e.0.7i76.0.0.input-22
+net     DI-DRIVE-x-alarm-not            <= hm2_7i76e.0.7i76.0.0.input-20-not
+
+# --- DI 23 DRIVE-Z-ALARM ---
+net     DI-DRIVE-z-alarm                <= hm2_7i76e.0.7i76.0.0.input-23
+net     DI-DRIVE-z-alarm-not            <= hm2_7i76e.0.7i76.0.0.input-23-not
+
+# --- DI 24 ATC-home ---
+net     DI-ATC-home                   <= hm2_7i76e.0.7i76.0.0.input-24-not
+
+# --- DI 25 ATC-pocket ---
+net     DI-ATC-pocket                    <= hm2_7i76e.0.7i76.0.0.input-25-not
+
+# --- DI 26 ATC-tool presence---
+net     DI-ATC-toolpresence             <= hm2_7i76e.0.7i76.0.0.input-26
+
+# --- DI 28 CNC-probe-error ---
+net     DI-CNC-probe-error                    <= hm2_7i76e.0.7i76.0.0.input-28
+
+# --- DI 29 ATC-door1 ---
+net     DI-ATC-door1                    <= hm2_7i76e.0.7i76.0.0.input-29
+
+# --- DI 30 MIN-HOME-A ---
+net     DI-CNC-min-home-a               <= hm2_7i76e.0.7i76.0.0.input-30
+
+# --- DI 31 UNUSED ---
+net     DI-31_unused                    <= hm2_7i76e.0.7i76.0.0.input-31
+
+########################################################################################################################
+# ---Outputs---
+
+# --- DO 00 MQL-FLOOD ---
+net     DO-CNC-flood                    => hm2_7i76e.0.7i76.0.0.output-00
+
+# --- DO 01 MQL-MIST ---
+net     DO-CNC-mist                     => hm2_7i76e.0.7i76.0.0.output-01
+
+# --- DO 02 ATC-STATUS-LIGHT  ---
+net     DO-ATC-status-light             => hm2_7i76e.0.7i76.0.0.output-02
+
+# --- DO 03 ATC-CONE-CLEAN   ---
+# Note: High = Cone clean airblast on
+net     DO-ATC-cone-clean               => hm2_7i76e.0.7i76.0.0.output-03
+
+# --- DO 04 ATC-DRAWBAR-ACTUATOR  ---
+# Note: Triggers 5/2 via 2 position relais, high = open drawbar
+net     DO-ATC-drawbar-actuator         => hm2_7i76e.0.7i76.0.0.output-04
+
+# --- DO 05 CNC-PROBE-BLOWOFF  ---
+net     DO-CNC-tls-blowoff            => hm2_7i76e.0.7i76.0.0.output-05 
+
+# --- DO 06 CNC-PROBE-COVER-ACTUATOR  ---
+net     DO-CNC-probe-cover-actuator     => hm2_7i76e.0.7i76.0.0.output-06
+
+# --- DO 07  ATC-RACK-ACTUATOR ---
+# Note: Triggers 5/2 via 2 position relais, high = open/ push into position
+net     DO-ATC-rack-actuator            => hm2_7i76e.0.7i76.0.0.output-07
+
+# --- DO 08 CNC-SYS-machine-is-enabled ---
+net     SYS-machine-is-enabled          => hm2_7i76e.0.7i76.0.0.output-08
+
+# --- DO 09  CNC-GANTRY---
+# Note: Enables gantry mode of Y1/Y2 Delta drives (currently not in use)
+net     DO-CNC-gantry                   => hm2_7i76e.0.7i76.0.0.output-09
+
+# --- DO 10 DRIVE-ALARM-RESET  ---
+# Note: Resets all connected drives (currently not in use)
+net     DO-DRIVE-alarm-reset            => hm2_7i76e.0.7i76.0.0.output-10
+
+# --- DO 11 CP-LIGHT-RED ---
+net     DO-HMI-light-red                => hm2_7i76e.0.7i76.0.0.output-11
+
+# --- DO 12 CP-LIGHT-YELLOW ---
+net     DO-HMI-light-yellow             => hm2_7i76e.0.7i76.0.0.output-12
+
+# --- DO 13 CP-LIGHT-BLUE ---
+net     DO-HMI-light-blue               => hm2_7i76e.0.7i76.0.0.output-13
+
+# --- DO 14 CP-LIGHT-GREEN ---
+net     DO-HMI-light-green              => hm2_7i76e.0.7i76.0.0.output-14
+
+# --- DO 15 AUX-VAC-REMOTE ---
+net     DO-CNC-vac-remote               => hm2_7i76e.0.7i76.0.0.output-15
+
+
+########################################################################################################################
+# ---MOTION DIGITAL SIGNALS---
+# -------- Inputs
+net     carousel_homed          motion.digital-in-00
+net     carousel_ready          motion.digital-in-01
+net     DI-ATC-toolpresence     motion.digital-in-02
+net     DI-ATC-tool-sensor      motion.digital-in-03
+net     DI-ATC-drawbar-sensor   motion.digital-in-04
+# Unused
+net     motion-digitial-in-05          motion.digital-in-05
+# Unused
+net     motion-digitial-in-06          motion.digital-in-06
+# Unused
+net     motion-digitial-in-07          motion.digital-in-07
+
+
+# -------- Outputs
+# TLS blow off
+net     DO-CNC-tls-blowoff              motion.digital-out-00
+# Unused
+net     motion-digitial-out-01          motion.digital-out-01
+# Activate TLS from gcode
+net     tls-active-signal               motion.digital-out-02
+# Activate probe from gcode
+net     probe-active-signal             motion.digital-out-03
+# Unused
+net     motion-digitial-out-04          motion.digital-out-04
+# Unused
+net     motion-digitial-out-05          motion.digital-out-05
+# Unused
+net     motion-digitial-out-06          motion.digital-out-06
+# Unused
+net     motion-digitial-out-07          motion.digital-out-07
+
+########################################################################################################################
+# ---MOTION ANALOG SIGNALS---
+net     carousel_current-position-conv       conv-s32-float.atc-pocket.out    motion.analog-in-00
+net     preppocket           motion.analog-in-01
