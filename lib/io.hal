@@ -1,0 +1,183 @@
+# ---------- IO  ----------
+# Purpose: Link all inputs and outputs to signals for use in further HAL documents
+# Prefixes "DI" and "AI" indicate digital and analog inputs 
+# Prefixes "DO" and "AO" indicate digital and analog outputs
+# Signal Name Structure: ORI-GROUP-signal
+#       1) ORI Word: DI, DO, AI, AO (Describes the origin of the signal, explizit; internal signals not declared; CAPS)
+#       2) GROUP: ATC, ESTOP, HMI, DRIVE, CNC, SYS: Signal groups refering to their function (CAPS); explicit, linking signal may be used without; 
+#       3) signal name: descriptive, yet short - may include reference to another signal e.g. toggle2not non-cap
+
+################################################################################################
+# ---Inputs---
+
+################## AI1 ##################
+# --- AI ATC-TEMP-SENSOR ---
+# Note: Voltage from voltage divider over spindle temperature sensor
+net     AI-ATC-temp-sensor              <= lcec.0.AI1.ain-0-val
+# TODO: Validate PIN Numbers
+
+# --- AI FIELDVOLTAGE ---
+# Note: Reference voltage 24v  through external port, as mesa internal ref voltage is garbage
+net     AI-SYS-fieldvoltage             <= lcec.0.AI1.ain-1-val
+# TODO: Validate PIN Numbers
+
+
+################## DI1 ##################
+# --- DI CNC-MIN-HOME-X --- D1 PIN 1
+net     DI-CNC-min-home-x               <= lcec.0.DI1.din-0-not
+
+# --- DI CNC-MIN-HOME-Y1 --- D1 PIN 2
+net     DI-CNC-min-home-y1              <= lcec.0.DI1.din-2-not
+
+# --- DI CNC-MIN-HOME-Y2 --- D1 PIN 6 
+net     DI-CNC-min-home-y2              <= lcec.0.DI1.din-4-not
+
+# --- DI CNC-MIN-HOME-Z --- D1 PIN 3
+net     DI-CNC-min-home-z               <= lcec.0.DI1.din-5-not
+
+# --- DI CNC-MIN-HOME-A --- D1 PIN 5
+net     DI-CNC-min-home-a               <= lcec.0.DI1.din-2-not
+
+
+################## DI2 ##################
+# --- DI ATC-TOOL-SENSOR (11) --- D2 PIN 1
+# Note: Sensor to indicate the presence of a tool (high when tool present)
+net     DI-ATC-tool-sensor              <= lcec.0.DI2.din-0
+#TODO Verify input
+
+# --- DI ATC-DRAWBAR-SENSOR (22) --- D2 PIN 5
+# Note: Sensor to indicate that the drawbar has been activated (high when drawbar open)
+net     DI-ATC-drawbar-sensor           <= lcec.0.DI2.din-1
+net     DI-ATC-drawbar-sensor-not       <= lcec.0.DI2.din-1-not
+#TODO Verify input
+
+# --- DI ESTOP-EXT --- D2 PIN 4
+net     DI-ESTOP-ext                    <= lcec.0.DI2.din-2
+net     DI-ESTOP-ext-not                <= lcec.0.DI2.din-2-not
+
+# --- DI ATC-home --- D2 PIN 8 I4
+net     DI-ATC-home                     <= lcec.0.DI2.din-3-not
+
+
+################## DI3 ################## 
+# --- DI CNC-TLS --- D3 PIN 1 I 1 
+net     DI-CNC-tls                      <= lcec.0.DI3.din-0-not
+#TODO Check wiring: Were is the TLS connected to and where the PROBE
+
+
+# --- DI CNC-PROBE--- D3 Pin 5 I2
+net     DI-CNC-probe                    <= lcec.0.DI3.din-1-not
+
+# --- DI CNC-PROBE_OT --- D3 PIN 4 I3
+net     DI-CNC-tls-ot                 <= lcec.0.DI3.din-2
+net     DI-CNC-tls-ot-not             <= lcec.0.DI3.din-2-not
+
+# --- DI ATC-pocket --- D3 PIN 8 I4
+net     DI-ATC-pocket                   <= lcec.0.DI3.din-3-not
+
+################## DI4 ##################
+# --- DI ATC-MAN-BUTTON --- D4 PIN1 I1
+net     DI-ATC-man-button               <= lcec.0.DI4.din-0
+
+# --- DI AIR-PRESSURE-ALARM --- D4 PIN5 I2
+# Note: High when OK
+net     DI-CNC-pressure-alarm           <= lcec.0.DI4.din-1
+
+# --- DI ATC-tool presence--- D4 PIN7 I6
+net     DI-ATC-toolpresence             <= lcec.0.DI4.din-6
+
+# --- DI ATC-door1 --- D4 PIN4 I7
+net     DI-ATC-door1                    <= lcec.0.DI4.din-7
+
+# --- DI ATC-door1 --- D4 PIN8 I8
+net     DI-ATC-door1                    <= lcec.0.DI4.din-8
+
+########################################################################################################################
+# ---Outputs---
+
+# --- DO MQL-FLOOD --- DO1 O1
+net     DO-CNC-flood                    => lcec.0.DO1.dout-0   
+
+# --- DO MQL-MIST --- DO1 O2
+net     DO-CNC-mist                     => lcec.0.DO1.dout-1
+
+# --- DO ATC-STATUS-LIGHT  --- DO1 O3
+net     DO-ATC-status-light             => lcec.0.DO1.dout-2
+
+# --- DO ATC-CONE-CLEAN   --- DO1 O4
+# Note: High = Cone clean airblast on
+net     DO-ATC-cone-clean               => lcec.0.DO1.dout-3
+
+# --- DO ATC-DRAWBAR-ACTUATOR  --- DO1 O5
+# Note: Triggers 5/2 via 2 position relais, high = open drawbar, Low = retract drawbar
+net     DO-ATC-drawbar-actuator         => lcec.0.DO1.dout-4
+
+# --- DO CNC-PROBE-BLOWOFF  --- DO1 O6
+net     DO-CNC-tls-blowoff            => lcec.0.DO1.dout-5
+
+# --- DO CNC-PROBE-COVER-ACTUATOR  --- DO1 O7
+net     DO-CNC-probe-cover-actuator     => lcec.0.DO1.dout-6
+
+# --- DO  ATC-RACK-ACTUATOR --- DO1 O8
+# Note: Triggers 5/2 via 2 position relais, high = open/ push into position
+net     DO-ATC-rack-actuator            => lcec.0.DO1.dout-7
+
+# --- DO AUX-VAC-REMOTE --- DO1 O9
+net     DO-CNC-vac-remote               => lcec.0.DO1.dout-8
+
+
+# TODO
+
+# --- DO CP-LIGHT-RED ---
+#net     DO-HMI-light-red              #  => hm2_7i76e.0.7i76.0.0.output-11
+
+# --- DO CP-LIGHT-YELLOW ---
+#net     DO-HMI-light-yellow           #  => hm2_7i76e.0.7i76.0.0.output-12
+
+# --- DO CP-LIGHT-BLUE ---
+#net     DO-HMI-light-blue              # => hm2_7i76e.0.7i76.0.0.output-13
+
+# --- DO CP-LIGHT-GREEN ---
+#net     DO-HMI-light-green             # => hm2_7i76e.0.7i76.0.0.output-14
+
+
+
+
+########################################################################################################################
+# ---MOTION DIGITAL SIGNALS---
+# -------- Inputs
+net     carousel_homed          motion.digital-in-00
+net     carousel_ready          motion.digital-in-01
+net     DI-ATC-toolpresence     motion.digital-in-02
+net     DI-ATC-tool-sensor      motion.digital-in-03
+net     DI-ATC-drawbar-sensor   motion.digital-in-04
+# Unused
+net     motion-digitial-in-05          motion.digital-in-05
+# Unused
+net     motion-digitial-in-06          motion.digital-in-06
+# Unused
+net     motion-digitial-in-07          motion.digital-in-07
+
+
+# -------- Outputs
+# TLS blow off
+net     DO-CNC-tls-blowoff              motion.digital-out-00
+# Unused
+net     motion-digitial-out-01          motion.digital-out-01
+# Activate TLS from gcode
+net     tls-active-signal               motion.digital-out-02
+# Activate probe from gcode
+net     probe-active-signal             motion.digital-out-03
+# Unused
+net     motion-digitial-out-04          motion.digital-out-04
+# Unused
+net     motion-digitial-out-05          motion.digital-out-05
+# Unused
+net     motion-digitial-out-06          motion.digital-out-06
+# Unused
+net     motion-digitial-out-07          motion.digital-out-07
+
+########################################################################################################################
+# ---MOTION ANALOG SIGNALS---
+net     carousel_current-position-conv       conv-s32-float.atc-pocket.out    motion.analog-in-00
+net     preppocket           motion.analog-in-01

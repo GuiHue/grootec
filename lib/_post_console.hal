@@ -81,6 +81,3 @@ net     DI-HMI-cycle-stop-button                    or.program-stop.in0
 net     halui-program-stop                          or.program-stop.out             halui.program.stop
 # Note, that the red light is not being used to indicate any status of the program being stopped but rather emergency behaviour
 
-
-# ---------- DECREASE VFD WATCHDOG TIMEOUT ----------
-setp     watchdog.timeout-0                    1

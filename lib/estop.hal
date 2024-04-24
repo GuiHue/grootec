@@ -17,12 +17,17 @@ net     SYS-estop-out                               <= iocontrol.0.user-enable-o
 # in-4  Servo A         not connected
 # Out   High when ok             
 # Function and5, high, whenever al inputs are true
+
+# TODO: Check levels HIGH/ Low at Default
+
 setp    lut5.drivealarm.function                0x8000 
 net     DI-DRIVE-x-alarm                        lut5.drivealarm.in-0
 net     DI-DRIVE-y1-alarm                       lut5.drivealarm.in-1
 net     DI-DRIVE-y2-alarm                       lut5.drivealarm.in-2
 net     DI-DRIVE-z-alarm                        lut5.drivealarm.in-3
-# net     DI-DRIVE-a-alarm                        lut5.drivealarm.in-4
+net     DI-DRIVE-a-alarm                        lut5.drivealarm.in-4
+
+net     estop-drive-alarm                       lut5.drivealarm.out
 
 # ----- SOFT ESTOP  ----- 
 #   in0     External Estop from Hardware        HIGH when OK
@@ -35,12 +40,12 @@ net     DI-DRIVE-z-alarm                        lut5.drivealarm.in-3
 setp    lut5.estop.function                     0x80000000
 
 net     DI-ESTOP-ext                            lut5.estop.in-0
-net     vfd-error-inverted                      lut5.estop.in-1                     
-net     DI-CNC-probe-ot                        lut5.estop.in-2                     #lut5.drivealarm.out
-net     pendant-estop                          lut5.estop.in-3
-net     estop-vfd-watchdog                      lut5.estop.in-4                     watchdog.ok-out
+net     vfd-error                      lut5.estop.in-1                     
+net     DI-CNC-tls-ot                           lut5.estop.in-2                     
+net     pendant-estop                           lut5.estop.in-3
+net     estop-drive-alarm                       lut5.estop.in-4                     
 # Output LUT5.ESTOP to IOCONTROL
-net     estop-soft-trigger                      lut5.estop.out                      iocontrol.0.emc-enable-in     not.estop.in              mux2.estoplight.sel
+net     estop-soft-trigger                      lut5.estop.out                      iocontrol.0.user-enable-out     not.estop.in              mux2.estoplight.sel
 #setp iocontrol.0.emc-enable-in true 
 ##############################################################################
 # ---------- WARNING MESSAGES  ---------- 
@@ -53,7 +58,7 @@ net     estop-soft-trigger                      lut5.estop.out                  
 # in-1  Servo Y1        HIGH when OK    
 # in-2  Servo Y2        HIGH when OK
 # in-3  Servo Z         HIGH when OK
-# in-4  Servo A         not connected
+# in-4  Servo A         HIGH when OK
 # Out   High when ok   
 # High when any of the inputs goes high
 # net     DI-DRIVE-a-warn                        lut5.drivewarning.in-4
@@ -71,10 +76,7 @@ net     m-spindle-temp-warning                  comp.temp.out           m_tempwa
 # External Estop
 setp    m_estopext.edge                         0
 net     DI-ESTOP-ext                            m_estopext.trigger
-# Watchdog
-setp    m_vfdcom.edge                           0
-setp    m_vfdcom.trigger 1
-net     estop-vfd-watchdog                      m_vfdcom.trigger
+
 # VFD Error
 setp    m_vfderror.edge                         1
 net     estop-vfd-error                         m_vfderror.trigger
@@ -83,9 +85,12 @@ setp    m_pendantestop.edge                     0
 net     pendant-estop                           m_pendantestop.trigger
 # Pendant tls overtravel 
 setp    m_tlsovertravel.edge                    0
-net     DI-CNC-probe-ot                         m_tlsovertravel.trigger
+net     DI-CNC-tls-ot                           m_tlsovertravel.trigger
+
+# TODO: Optional: add EC com Watchdog
 
 # ----- ESTOP/ WARNING LIGHT  ----- 
+# TODO: Reactivate
 # ESTOP: Red Light = Perm on
 # Warning: Red Light = slowly blinking
 # Use mux2 to distinguish between both
@@ -93,15 +98,15 @@ net     DI-CNC-probe-ot                         m_tlsovertravel.trigger
 # mux2.estoplight.in1 = estop
 # mux2.estoplight.sel = estop triggered
 # convert to float required
-setp    timedelay.estoplight.on-delay           0.5
-setp    timedelay.estoplight.off-delay          0.5
-net     estop-inverse                           not.estop.out                       and.estoplight.in0      conv_bit_float.estopsignal.in
-net     estopsignal-blink-out                   timedelay.estoplight.out            not.estoplight.in       conv_bit_float.warningsignal.in        
-net     estoplight-not                          not.estoplight.out                  and.estoplight.in1
-net     estoplight-toogle                       and.estoplight.out                  timedelay.estoplight.in
+# setp    timedelay.estoplight.on-delay           0.5
+# setp    timedelay.estoplight.off-delay          0.5
+# net     estop-inverse                           not.estop.out                       and.estoplight.in0      conv_bit_float.estopsignal.in
+# net     estopsignal-blink-out                   timedelay.estoplight.out            not.estoplight.in       conv_bit_float.warningsignal.in        
+# net     estoplight-not                          not.estoplight.out                  and.estoplight.in1
+# net     estoplight-toogle                       and.estoplight.out                  timedelay.estoplight.in
 
-net     mux2-estoplight-warning                 conv_bit_float.warningsignal.out    mux2.estoplight.in0
-net     mux2-estoplight-estopsignal             conv_bit_float.estopsignal.out      mux2.estoplight.in1
-net     mux2-estopsignalout-conv_flu32          conv_flu32.estoplight.in            mux2.estoplight.out
-net     mux2-estopsignalout-conv_u32b           conv_flu32.estoplight.out           conv_u32b.estoplight.in
-net     DO-HMI-light-red                         conv_u32b.estoplight.out
+# net     mux2-estoplight-warning                 conv_bit_float.warningsignal.out    mux2.estoplight.in0
+# net     mux2-estoplight-estopsignal             conv_bit_float.estopsignal.out      mux2.estoplight.in1
+# net     mux2-estopsignalout-conv_flu32          conv_flu32.estoplight.in            mux2.estoplight.out
+# net     mux2-estopsignalout-conv_u32b           conv_flu32.estoplight.out           conv_u32b.estoplight.in
+# net     DO-HMI-light-red                         conv_u32b.estoplight.out

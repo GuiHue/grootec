@@ -4,8 +4,8 @@
 
 source  hallib/pendant_whb.hal
 source  hallib/estop.hal
-source  hallib/post_console.hal
-source  hallib/mql.hal
+#source  hallib/post_console.hal
+#source  hallib/mql.hal
 
 
 
@@ -25,12 +25,12 @@ net cycle-hours qtpyvcp.timerhours.in <= time.pb.hours
 net spindle-rpm                 qtpyvcp.spindle-encoder-rpm.in
 net spindle-at-speed            qtpyvcp.spindle_at_speed.on 
 # Spindle Load Indicator
-net  spindle-current            scale.spindleload.in
+net  vfd-current            scale.spindleload.in
 # Scale Gain
 # 100 % = 5.5
 # Meter goes to 125%
 setp scale.spindleload.gain     18.18
-net  spindle-current-scaled     scale.spindleload.out   qtpyvcp.spindle-load-indicator.in-f
+net  vfd-current-scaled     scale.spindleload.out   qtpyvcp.spindle-load-indicator.in-f
 setp qtpyvcp.spindle-load-indicator.max-val     125
 setp qtpyvcp.spindle-load-indicator.min-val     0
 
@@ -50,12 +50,12 @@ net probe-signal-motion         qtpyvcp.probe-led.on
 # Connect Various Status Signals
 net DI-CNC-pressure-alarm       qtpyvcp.air_pressure.on
 net DO-CNC-vac-remote           qtpyvcp.vac_on.on
-net DI-CNC-probe-ot-not         qtpyvcp.tls_ot.on
+net DI-CNC-tls-ot-not         qtpyvcp.tls_ot.on
 
 # Spindle Signals for  Status Page
 # Temperatures
 net vfd-temp                    qtpyvcp.vfd_temp.in-f
-net spindle-current             qtpyvcp.spindle_current.in-f
+net vfd-current             qtpyvcp.spindle_current.in-f
 net SPINDLE-temp                qtpyvcp.spindle_temp.in-f
 # Spindle Sensors
 net DI-ATC-tool-sensor          qtpyvcp.tool_in_spindle.on
@@ -78,7 +78,7 @@ net     DI-DRIVE-y1-alarm-not   qtpyvcp.1in6.on
 net     DI-DRIVE-y2-alarm-not   qtpyvcp.1in7.on
 net     DI-DRIVE-z-alarm-not    qtpyvcp.1in8.on
 net     DI-DRIVE-a-alarm-not    qtpyvcp.1in9.on
-net     DI-CNC-probe-ot-not     qtpyvcp.1in10.on
+net     DI-CNC-tls-ot-not     qtpyvcp.1in10.on
 net     vfd-ERROR               qtpyvcp.1in11.on
 net     estop-vfd-watchdog      qtpyvcp.1in12.on
 net     pdtn.estop-toggle-invert    qtpyvcp.1in13.on

@@ -1,6 +1,6 @@
 # ---------- HALUI  ----------
 # Handles all functions pertaining to HALUI
-# Mostly proved basic control signals
+# Mostly provides basic control signals
 
 net     axis-select-x               halui.axis.x.select
 net     jog-x-pos                   halui.axis.x.plus
