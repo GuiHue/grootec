@@ -2,10 +2,10 @@
 # Handles anything that needs to setup after the GUI components are loaded
 # Main file shandles all thing srelated to probe basic
 
-source  hallib/pendant_whb.hal
-source  hallib/estop.hal
-#source  hallib/post_console.hal
-#source  hallib/mql.hal
+source  lib/pendant_whb.hal
+source  lib/estop.hal
+#source  lib/post_console.hal
+#source  lib/mql.hal
 
 
 
@@ -13,7 +13,8 @@ source  hallib/estop.hal
 # ---------- PROBE BASIC GUI----------
 
 # Probe Basic Timer
-net idle-on not.pbtime.in 
+net idle-on not.pbtime.in  halui.program.is-idle
+net prog-paused halui.program.is-paused => time.pb.pause
 net cycle-timer time.pb.start <= not.pbtime.out
 net cycle-seconds qtpyvcp.timerseconds.in <= time.pb.seconds
 net cycle-minutes qtpyvcp.timerminutes.in <= time.pb.minutes
@@ -21,78 +22,78 @@ net cycle-hours qtpyvcp.timerhours.in <= time.pb.hours
 
 
 
-# Spindle Interface Bottom Right
-net spindle-rpm                 qtpyvcp.spindle-encoder-rpm.in
-net spindle-at-speed            qtpyvcp.spindle_at_speed.on 
-# Spindle Load Indicator
-net  vfd-current            scale.spindleload.in
-# Scale Gain
-# 100 % = 5.5
-# Meter goes to 125%
-setp scale.spindleload.gain     18.18
-net  vfd-current-scaled     scale.spindleload.out   qtpyvcp.spindle-load-indicator.in-f
-setp qtpyvcp.spindle-load-indicator.max-val     125
-setp qtpyvcp.spindle-load-indicator.min-val     0
+# # Spindle Interface Bottom Right
+# net spindle-rpm                 qtpyvcp.spindle-encoder-rpm.in
+# net spindle-at-speed            qtpyvcp.spindle_at_speed.on 
+# # Spindle Load Indicator
+# net  vfd-current            scale.spindleload.in
+# # Scale Gain
+# # 100 % = 5.5
+# # Meter goes to 125%
+# setp scale.spindleload.gain     18.18
+# net  vfd-current-scaled     scale.spindleload.out   qtpyvcp.spindle-load-indicator.in-f
+# setp qtpyvcp.spindle-load-indicator.max-val     125
+# setp qtpyvcp.spindle-load-indicator.min-val     0
 
 
-# Tool Information
-net toolnumber                  qtpyvcp.pb_current_tool.in
-net current_pocket              qtpyvcp.pb_current_pocket.in
-net toolprepnumber              qtpyvcp.pb_prepared_tool.in
-net pocketprepnumer             qtpyvcp.pb_prepared_pocket.in
+# # Tool Information
+# net toolnumber                  qtpyvcp.pb_current_tool.in
+# net current_pocket              qtpyvcp.pb_current_pocket.in
+# net toolprepnumber              qtpyvcp.pb_prepared_tool.in
+# net pocketprepnumer             qtpyvcp.pb_prepared_pocket.in
 
-#net probe-signal-motion         qtpyvcp.probe-in.out
-net probe-signal-motion         qtpyvcp.probe-led.on
-
-
-###### Status page
-
-# Connect Various Status Signals
-net DI-CNC-pressure-alarm       qtpyvcp.air_pressure.on
-net DO-CNC-vac-remote           qtpyvcp.vac_on.on
-net DI-CNC-tls-ot-not         qtpyvcp.tls_ot.on
-
-# Spindle Signals for  Status Page
-# Temperatures
-net vfd-temp                    qtpyvcp.vfd_temp.in-f
-net vfd-current             qtpyvcp.spindle_current.in-f
-net SPINDLE-temp                qtpyvcp.spindle_temp.in-f
-# Spindle Sensors
-net DI-ATC-tool-sensor          qtpyvcp.tool_in_spindle.on
-net DI-ATC-drawbar-sensor       qtpyvcp.tool_clamp_open.on
+# #net probe-signal-motion         qtpyvcp.probe-in.out
+# net probe-signal-motion         qtpyvcp.probe-led.on
 
 
-# Probe Signals (live, activated)
-net DI-CNC-probe                qtpyvcp.probe_live.on
-net DI-CNC-tls                  qtpyvcp.tls_live.on
-net tls-active-signal           qtpyvcp.tls_active.on
-net probe-active-signal         qtpyvcp.probe_active.on
-net probe-signal-motion         qtpyvcp.probe_out.on
+# ###### Status page
+
+# # Connect Various Status Signals
+# net DI-CNC-pressure-alarm       qtpyvcp.air_pressure.on
+# net DO-CNC-vac-remote           qtpyvcp.vac_on.on
+# net DI-CNC-tls-ot-not         qtpyvcp.tls_ot.on
+
+# # Spindle Signals for  Status Page
+# # Temperatures
+# net vfd-temp                    qtpyvcp.vfd_temp.in-f
+# net vfd-current             qtpyvcp.spindle_current.in-f
+# net SPINDLE-temp                qtpyvcp.spindle_temp.in-f
+# # Spindle Sensors
+# net DI-ATC-tool-sensor          qtpyvcp.tool_in_spindle.on
+# net DI-ATC-drawbar-sensor       qtpyvcp.tool_clamp_open.on
 
 
-# Joint/ Axis signals
-net     DI-ESTOP-ext-not        qtpyvcp.1in4.flash
-
-net     DI-DRIVE-x-alarm-not    qtpyvcp.1in5.on
-net     DI-DRIVE-y1-alarm-not   qtpyvcp.1in6.on
-net     DI-DRIVE-y2-alarm-not   qtpyvcp.1in7.on
-net     DI-DRIVE-z-alarm-not    qtpyvcp.1in8.on
-net     DI-DRIVE-a-alarm-not    qtpyvcp.1in9.on
-net     DI-CNC-tls-ot-not     qtpyvcp.1in10.on
-net     vfd-ERROR               qtpyvcp.1in11.on
-net     estop-vfd-watchdog      qtpyvcp.1in12.on
-net     pdtn.estop-toggle-invert    qtpyvcp.1in13.on
-net     m-spindle-temp-warning  qtpyvcp.1in14.on
-net     spindle-inhibit         qtpyvcp.1in15.on
-
-net     DI-ATC-pocket           qtpyvcp.1in21.on
-net     DI-ATC-index            qtpyvcp.1in22.on
-net     DI-ATC-toolpresence     qtpyvcp.1in23.on
+# # Probe Signals (live, activated)
+# net DI-CNC-probe                qtpyvcp.probe_live.on
+# net DI-CNC-tls                  qtpyvcp.tls_live.on
+# net tls-active-signal           qtpyvcp.tls_active.on
+# net probe-active-signal         qtpyvcp.probe_active.on
+# net probe-signal-motion         qtpyvcp.probe_out.on
 
 
-net     DI-ATC-tool-sensor      qtpyvcp.1in24.on
-net     DI-ATC-drawbar-sensor   qtpyvcp.1in25.on
-net     DO-ATC-drawbar-actuator qtpyvcp.1in26.on
-net     DO-ATC-cone-clean       qtpyvcp.1in27.on
-net     DO-CNC-tls-blowoff      qtpyvcp.1in28.on
+# # Joint/ Axis signals
+# net     DI-ESTOP-ext-not        qtpyvcp.1in4.flash
+
+# net     DI-DRIVE-x-alarm-not    qtpyvcp.1in5.on
+# net     DI-DRIVE-y1-alarm-not   qtpyvcp.1in6.on
+# net     DI-DRIVE-y2-alarm-not   qtpyvcp.1in7.on
+# net     DI-DRIVE-z-alarm-not    qtpyvcp.1in8.on
+# net     DI-DRIVE-a-alarm-not    qtpyvcp.1in9.on
+# net     DI-CNC-tls-ot-not     qtpyvcp.1in10.on
+# net     vfd-ERROR               qtpyvcp.1in11.on
+# net     estop-vfd-watchdog      qtpyvcp.1in12.on
+# net     pdtn.estop-toggle-invert    qtpyvcp.1in13.on
+# net     m-spindle-temp-warning  qtpyvcp.1in14.on
+# net     spindle-inhibit         qtpyvcp.1in15.on
+
+# net     DI-ATC-pocket           qtpyvcp.1in21.on
+# net     DI-ATC-index            qtpyvcp.1in22.on
+# net     DI-ATC-toolpresence     qtpyvcp.1in23.on
+
+
+#net     DI-ATC-tool-sensor      qtpyvcp.1in24.on
+#net     DI-ATC-drawbar-sensor   qtpyvcp.1in25.on
+#net     DO-ATC-drawbar-actuator qtpyvcp.1in26.on
+#net     DO-ATC-cone-clean       qtpyvcp.1in27.on
+#net     DO-CNC-tls-blowoff      qtpyvcp.1in28.on
 

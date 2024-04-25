@@ -27,7 +27,7 @@ net     AI-SYS-fieldvoltage             <= lcec.0.AI1.ain-1-val
 net     DI-CNC-min-home-x               <= lcec.0.DI1.din-0-not
 
 # --- DI CNC-MIN-HOME-Y1 --- D1 PIN 2
-net     DI-CNC-min-home-y1              <= lcec.0.DI1.din-2-not
+net     DI-CNC-min-home-y1              <= lcec.0.DI1.din-3-not
 
 # --- DI CNC-MIN-HOME-Y2 --- D1 PIN 6 
 net     DI-CNC-min-home-y2              <= lcec.0.DI1.din-4-not
@@ -35,7 +35,7 @@ net     DI-CNC-min-home-y2              <= lcec.0.DI1.din-4-not
 # --- DI CNC-MIN-HOME-Z --- D1 PIN 3
 net     DI-CNC-min-home-z               <= lcec.0.DI1.din-5-not
 
-# --- DI CNC-MIN-HOME-A --- D1 PIN 5
+# --- DI CNC-MIN-HOME-A --- D1 PIN 5 
 net     DI-CNC-min-home-a               <= lcec.0.DI1.din-2-not
 
 
@@ -84,13 +84,13 @@ net     DI-ATC-man-button               <= lcec.0.DI4.din-0
 net     DI-CNC-pressure-alarm           <= lcec.0.DI4.din-1
 
 # --- DI ATC-tool presence--- D4 PIN7 I6
-net     DI-ATC-toolpresence             <= lcec.0.DI4.din-6
+net     DI-ATC-toolpresence             <= lcec.0.DI4.din-5
 
 # --- DI ATC-door1 --- D4 PIN4 I7
-net     DI-ATC-door1                    <= lcec.0.DI4.din-7
+net     DI-ATC-door1                    <= lcec.0.DI4.din-6
 
-# --- DI ATC-door1 --- D4 PIN8 I8
-net     DI-ATC-door1                    <= lcec.0.DI4.din-8
+# --- DI ATC-door2 --- D4 PIN8 I8
+net     DI-ATC-door2                    <= lcec.0.DI4.din-7
 
 ########################################################################################################################
 # ---Outputs---

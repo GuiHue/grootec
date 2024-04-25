@@ -5,6 +5,16 @@ placeFrames 0.3
 set ::ratio 0.3
 set ::old_w_leftf 160
 set ::watchlist {
+    pin+iocontrol.0.emc-enable-in
+    sig+SYS-estop-out
+    sig+DI-ESTOP-ext
+    sig+DI-ESTOP-ext-not
+    sig+DI-DRIVE-x-alarm
+    pin+lcec.0.x-axis.srv-fault
+    pin+lcec.0.VFD.stat-fault
+    pin+lcec.0.VFD.vel-fb-rpm
+    pin+lcec.0.x-axis.srv-fault-reset
+    sig+DI-CNC-tls-ot
 }
 set ::workmode watchhal
 set ::watchInterval 100
