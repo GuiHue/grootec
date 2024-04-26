@@ -5,13 +5,6 @@ license "GPL";
 
 option singleton yes;
 
-
-drives x,y1,y2,z,a
-vfd
-estop externestop pendant
-tls overtravel
-
-
 pin in bit emc_running; 
 pin in bit emc_enable_in;
 pin out bit emc_enable_out;
@@ -20,14 +13,17 @@ pin in bit emc_on;
 pin in bit emc_auto;
 
 pin in bit auto_enable;
+
 pin in bit spindle_enable_in;
 pin out bit spindle_enable_out;
 
 pin in bit estop_pendant;
-pin in bit spindle_err;
+pin in bit estop_external;
+pin in bit vfd_err;
 pin in bit spindle_temp_err;
 pin in bit air_ok;
-pin in u32 spindle_error_code;
+pin in u32 vfd_error_code;
+pin in bit tls_overtravel;
 
 pin in bit error;
 
@@ -45,47 +41,34 @@ function _;
 
 ;;
 
-#define SPINDLE_ERROR_STO  76
+#define VFD_ERROR_STO  76
 
 typedef struct {
   int last_estop_pendant;
-  int last_spindle_err;
+  int last_estop_external;
+  int last_vfd_err;
   int last_spindle_temp_err;
-  int last_ps_pot_err;
   int last_air_ok;
-  int last_water_ok;
-  int last_matprobe_cyl_err;
-  int last_vac_cyl_left_err;
-  int last_vac_cyl_right_err;
+  int last_tls_overtravel;
+
+  
   int last_auto_err;
   int last_ec_slaves_responding_ok;
   int last_ec_link_up;
   int last_ec_all_op;
-  long long error_blink_timer;
-  long long power_lamp_blink_timer;
-  long long error_delay_timer;
-  long long error_water_timer;
+
 } sbs_err_data;
 
 EXTRA_SETUP() {
   data.last_estop_pendant = 0;
-  data.last_spindle_err = 0;
-  data.last_spindle_temp_err = 0;
-  data.last_ps_pot_err = 0;
+  data.last_estop_external = 0;
+  data.last_vfd_err = 0;
   data.last_air_ok = 1;
-  data.last_water_ok = 1;
-  data.last_matprobe_cyl_err = 0;
-  data.last_vac_cyl_left_err = 0;
-  data.last_vac_cyl_right_err = 0;
+  data.last_tls_overtravel = 0;
   data.last_auto_err = 0;
   data.last_ec_slaves_responding_ok = 1;
   data.last_ec_link_up = 1;
   data.last_ec_all_op = 1;
-
-  data.power_lamp_blink_timer = ERROR_BLINK_PERIOD;
-  data.error_delay_timer = ERROR_DELAY_PERIOD;
-  data.error_water_timer = ERROR_WATER_PERIOD;
-
   return 0;
 }
 
@@ -95,33 +78,14 @@ FUNCTION(_) {
   emc_enable_out = emc_running && emc_enable_in;
   spindle_enable_out = spindle_enable_in && auto_enable;
 
-  // blink error lamp
-  if (error) {
-    if (data.error_blink_timer >= ERROR_BLINK_PERIOD) {
-      data.error_blink_timer -= ERROR_BLINK_PERIOD;
-      error_lamp = !error_lamp;
-    } else {
-      data.error_blink_timer += period;
-    }
-  } else {
-    // error lamp off
-    data.error_blink_timer = ERROR_BLINK_PERIOD;
-    error_lamp = 0;
-  }
-
-
-
-
   // check if emc is on
   if (!emc_on) {
     data.last_estop_pendant = 0;
-    data.last_spindle_err = 0;
+    data.last_estop_external = 0;
+    data.last_vfd_err = 0;
     data.last_spindle_temp_err = 0;
     data.last_air_ok = 1;
-    data.last_water_ok = 1;
-    data.last_matprobe_cyl_err = 0;
-    data.last_vac_cyl_left_err = 0;
-    data.last_vac_cyl_right_err = 0;
+    data.last_tls_overtravel = 0;
     data.last_auto_err = 0;
     data.last_ec_slaves_responding_ok = 1;
     data.last_ec_link_up = 1;
@@ -139,13 +103,20 @@ FUNCTION(_) {
   }
   data.last_estop_pendant = estop_pendant;
 
-  if (spindle_err && spindle_error_code != SPINDLE_ERROR_STO) {
+  if (estop_external) {
+    if (!data.last_estop_external) {
+      rtapi_print_msg(RTAPI_MSG_ERR, "E-Stop safety relay!\n");
+    }
+  }
+  data.last_estop_external = estop_external;
+
+  if (vfd_err && vfd_error_code != VFD_ERROR_STO) {
     emc_enable_out = 0;
-    if (!data.last_spindle_err) {
+    if (!data.last_vfd_err) {
       rtapi_print_msg(RTAPI_MSG_ERR, "Spindle drive error!\n");
     }
   }
-  data.last_spindle_err = spindle_err;
+  data.last_vfd_err = vfd_err;
 
   if (spindle_temp_err) {
     emc_enable_out = 0;
@@ -155,63 +126,21 @@ FUNCTION(_) {
   }
   data.last_spindle_temp_err = spindle_temp_err;
 
-  if (ps_pot_err) {
-    emc_enable_out = 0;
-    if (!data.last_ps_pot_err) {
-      rtapi_print_msg(RTAPI_MSG_ERR, "Pot power supply error!\n");
-    }
-  }
-  data.last_ps_pot_err = ps_pot_err;
-
   if (!air_ok) {
     emc_enable_out = 0;
     if (data.last_air_ok) {
-      rtapi_print_msg(RTAPI_MSG_ERR, "Air failure!\n");
+      rtapi_print_msg(RTAPI_MSG_ERR, "Air failure (pressure below treshold)!\n");
     }
   }
   data.last_air_ok = air_ok;
 
-  if (water_out) {
-    if (data.error_water_timer > 0) {
-      data.last_water_ok = 1;
-      data.error_water_timer -= period;
-    } else {
-      if (!water_ok) {
-        emc_enable_out = 0;
-        if (data.last_water_ok) {
-          rtapi_print_msg(RTAPI_MSG_ERR, "Water failure!\n");
-        }
-      }
-      data.last_water_ok = water_ok;
-    }
-  } else {
-    data.last_water_ok = 1;
-    data.error_water_timer = ERROR_WATER_PERIOD;
-  }
-
-  if (matprobe_cyl_err) {
+  if (!tls_overtravel) {
     emc_enable_out = 0;
-    if (!data.last_matprobe_cyl_err) {
-      rtapi_print_msg(RTAPI_MSG_ERR, "Material probe cylinder failure!\n");
+    if (data.last_tls_overtravel) {
+      rtapi_print_msg(RTAPI_MSG_ERR, "TLS overtravel!\n");
     }
   }
-  data.last_matprobe_cyl_err = matprobe_cyl_err;
-
-  if (vac_cyl_left_err) {
-    emc_enable_out = 0;
-    if (!data.last_vac_cyl_left_err) {
-      rtapi_print_msg(RTAPI_MSG_ERR, "Vacuum pod left cylinder failure!\n");
-    }
-  }
-  data.last_vac_cyl_left_err = vac_cyl_left_err;
-
-  if (vac_cyl_right_err) {
-    emc_enable_out = 0;
-    if (!data.last_vac_cyl_right_err) {
-      rtapi_print_msg(RTAPI_MSG_ERR, "Vacuum pod right cylinder failure!\n");
-    }
-  }
-  data.last_vac_cyl_right_err = vac_cyl_right_err;
+  data.last_tls_overtravel = air_ok;
 
   if ((emc_auto || spindle_enable_in) && !auto_enable) {
     emc_enable_out = 0;
