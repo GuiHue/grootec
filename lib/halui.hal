@@ -22,6 +22,7 @@ net     jog-selected-neg            halui.axis.selected.minus
 net     machine-is-on               halui.machine.is-on
 net     jog-speed                   halui.axis.jog-speed
 net     MDI-mode                    halui.mode.is-mdi
+net     emc-auto                    halui.program.is-running
 
 
 #  ---motion control signals---

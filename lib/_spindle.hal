@@ -22,7 +22,7 @@ net     DI-ATC-tool-sensor                      lut5.spindleinhibit.in-2
 net     spindle-inhibit                         lut5.spindleinhibit.out                     spindle.0.inhibit
 
 # TODO Review example
-https://github.com/steup-engineering/sbs625-cnc-dk-schlemper/blob/master/config/sbs750cnc-io.hal
+#https://github.com/steup-engineering/sbs625-cnc-dk-schlemper/blob/master/config/sbs750cnc-io.hal
 
 #******************************
 # SETUP SPINDLE CONTROL for Delta MS300 via EtherCAT
@@ -31,18 +31,20 @@ https://github.com/steup-engineering/sbs625-cnc-dk-schlemper/blob/master/config/
 setp     limit1.spindle.max 6000
 # TODO: Update limit to 24000 - currently limit due to non tested spindle!
 setp     limit1.spindle.min 0
-setp     lcec.0.VFD.vel-scale 1
+setp     lcec.0.spindle.vel-scale 1
 # TODO: Review the scale
-net      spindle-enable                        spindle.0.on                        lcec.0.VFD.enable         
+net      spindle-enable                        spindle.0.on                        lcec.0.spindle.enable         
 net      spindle-rpm                           spindle.0.speed-out                 limit1.spindle.in
-net      spinle-limited-rpm                    limit1.spindle.out                  lcec.0.VFD.vel-rpm-cmd
-net      spindle-at-speed                      lcec.0.VFD.stat-at-speed            spindle.0.at-speed
-net      spindle-is-running                    lcec.0.VFD.stat-op-enabled # TODO: Validate the signal!
-net      vfd-current                           lcec.0.VFD.act-current
-net      vfd-temp                              lcec.0.VFD.drive-temp
-net      vfd-error                             lcec.0.VFD.stat-fault
-net      vfd-fault-reset                       lcec.0.VFD.fault-reset
-net      estop-soft-trigger                        lcec.0.VFD.quick-stop
+net      spindle-rpm-limited                   limit1.spindle.out                  lcec.0.spindle.vel-rpm-cmd
+net      spindle-at-speed                      lcec.0.spindle.stat-at-speed            spindle.0.at-speed
+net      spindle-is-running                    lcec.0.spindle.stat-op-enabled # TODO: Validate the signal!
+net      vfd-current                           lcec.0.spindle.act-current
+net      vfd-temp                              lcec.0.spindle.drive-temp
+net      vfd-error                             lcec.0.spindle.stat-fault
+net      vfd-fault-reset                       lcec.0.spindle.fault-reset
+net      estop-soft-trigger                    lcec.0.spindle.quick-stop
+net      vfd-error-code                        lcec.0.spindle.error-code
+net      spindle-warn-code                      <= lcec.0.spindle.warn-code
 # TODO: This may be BS
 
 # ---------- SPINDLE NTC ----------
@@ -68,3 +70,4 @@ net      ntc-voltage-drop                      offset.ntc.fb-out                
 
 net      AI-SYS-fieldvoltage                   thermistor.0.v-total
 net      SPINDLE-temp                          thermistor.0.temperature-c          
+

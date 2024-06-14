@@ -5,17 +5,13 @@ license "GPL";
 
 option singleton yes;
 
-pin in bit emc_running; 
 pin in bit emc_enable_in;
 pin out bit emc_enable_out;
 
 pin in bit emc_on;
 pin in bit emc_auto;
 
-pin in bit auto_enable;
-
 pin in bit spindle_enable_in;
-pin out bit spindle_enable_out;
 
 pin in bit estop_pendant;
 pin in bit estop_external;
@@ -31,14 +27,10 @@ pin in bit axis_fault_y2;
 pin in bit axis_fault_y1;
 pin in bit axis_fault_z;
 
-pin in bit error;
-
 pin in u32 ec_slaves;
 pin in u32 ec_slaves_responding;
 pin in bit ec_link_up;
 pin in bit ec_all_op;
-
-pin in bit matprobe_cyl_err;
 
 option data groot_err_data;
 option extra_setup;
@@ -91,8 +83,7 @@ EXTRA_SETUP() {
 FUNCTION(_) {
   int ec_slaves_responding_ok;
 
-  emc_enable_out = emc_running && emc_enable_in;
-  spindle_enable_out = spindle_enable_in && auto_enable;
+  emc_enable_out = emc_enable_in;
 
   // check if emc is on
   if (!emc_on) {
@@ -118,6 +109,7 @@ FUNCTION(_) {
 
 
   if (estop_pendant) {
+       emc_enable_out = 0;
     if (!data.last_estop_pendant) {
       rtapi_print_msg(RTAPI_MSG_ERR, "E-Stop pendant!\n");
     }
@@ -125,8 +117,10 @@ FUNCTION(_) {
   data.last_estop_pendant = estop_pendant;
 
   if (estop_external) {
+       emc_enable_out = 0;
     if (!data.last_estop_external) {
-      rtapi_print_msg(RTAPI_MSG_ERR, "E-Stop safety relay!\n");
+      
+      rtapi_print_msg(RTAPI_MSG_ERR, "Hardware E-Stop safety relay triggered!\n");
     }
   }
   data.last_estop_external = estop_external;
@@ -155,7 +149,7 @@ FUNCTION(_) {
   }
   data.last_air_ok = air_ok;
 
-  if (!axis_fault_a) {
+  if (axis_fault_a) {
     emc_enable_out = 0;
     if (data.last_axis_fault_a) {
       rtapi_print_msg(RTAPI_MSG_ERR, "Servo A axis fault!\n");
@@ -163,7 +157,7 @@ FUNCTION(_) {
   }
   data.last_axis_fault_a = axis_fault_a;
 
-  if (!axis_fault_x) {
+  if (axis_fault_x) {
     emc_enable_out = 0;
     if (data.last_axis_fault_x) {
       rtapi_print_msg(RTAPI_MSG_ERR, "Servo X axis fault!\n");
@@ -171,7 +165,7 @@ FUNCTION(_) {
   }
   data.last_axis_fault_x = axis_fault_x;
 
-  if (!axis_fault_y1) {
+  if (axis_fault_y1) {
     emc_enable_out = 0;
     if (data.last_axis_fault_y1) {
       rtapi_print_msg(RTAPI_MSG_ERR, "Servo Y1 axis fault!\n");
@@ -179,7 +173,7 @@ FUNCTION(_) {
   }
   data.last_axis_fault_y1 = axis_fault_y1;
 
-  if (!axis_fault_y2) {
+  if (axis_fault_y2) {
     emc_enable_out = 0;
     if (data.last_axis_fault_y2) {
       rtapi_print_msg(RTAPI_MSG_ERR, "Servo Y2 axis fault!\n");
@@ -187,7 +181,7 @@ FUNCTION(_) {
   }
   data.last_axis_fault_y2 = axis_fault_y2;
 
-  if (!axis_fault_z) {
+  if (axis_fault_z) {
     emc_enable_out = 0;
     if (data.last_axis_fault_z) {
       rtapi_print_msg(RTAPI_MSG_ERR, "Servo Z axis fault!\n");
@@ -196,15 +190,15 @@ FUNCTION(_) {
   data.last_axis_fault_z = axis_fault_z;
 
 
-  if (!tls_overtravel) {
+  if (tls_overtravel) {
     emc_enable_out = 0;
     if (data.last_tls_overtravel) {
-      rtapi_print_msg(RTAPI_MSG_ERR, "TLS overtravel!\n");
+      rtapi_print_msg(RTAPI_MSG_ERR, "Tool Lenght Sensor Overtravel!\n");
     }
   }
-  data.last_tls_overtravel = air_ok;
+  data.last_tls_overtravel = tls_overtravel;
 
-  if ((emc_auto || spindle_enable_in) && !auto_enable) {
+  if ((emc_auto || spindle_enable_in)) {
     emc_enable_out = 0;
     if (!data.last_auto_err) {
       rtapi_print_msg(RTAPI_MSG_ERR, "Automatic mode disabled!\n");

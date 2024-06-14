@@ -15,19 +15,19 @@ loadrt  toggle2nist                         names=toggle2nist.machineon,toggle2n
 loadrt  toggle                              names=toggle.machineon,toggle.toolchange,toggle.externalprogram,toggle.probe3d,toggle.probetls,toggle.pdntestop,toggle.mql
 loadrt  lowpass                             names=lowpass.feed,lowpass.spindle
 loadrt  ilowpass                            names=ilowpass.x.enc-smooth,ilowpass.y.enc-smooth,ilowpass.z.enc-smooth,ilowpass.a.enc-smooth		
-loadrt  lut5                                names=lut5.spindleinhibit,lut5.toolchange,lut5.estop,lut5.drivealarm
-loadrt  timedelay                           names=timedelay.conecleaning,timedelay.atcledslow,timedelay.atcledfast,timedelay.toolchange,timedelay.ledgreen,timedelay.stepsig,timedelay.estoplight,timedelay.mql
-loadrt  mux2                                names=mux2.estoplight,mux2.mqlvol
+loadrt  lut5                                names=lut5.spindleinhibit,lut5.toolchange
+loadrt  timedelay                           names=timedelay.conecleaning,timedelay.atcledslow,timedelay.atcledfast,timedelay.toolchange,timedelay.ledgreen,timedelay.stepsig,timedelay.mql
+loadrt  mux2                                names=mux2.mqlvol
 loadrt  mux4                                names=mux4.ledgreen,mux4.mql
 loadrt  mux8                                names=mux8.atcstatusled
 loadrt  not                                 names=not.atcledslow,not.atcledfast,not.spindleinhibit,not.ledgreen,not.estoplight,not.estop,not.pdntestop,not.pbtime
-loadrt  and2                                names=and.atcledslow,and.atcledfast,and.atcdb,and.pauseresume1,and.pauseresume2,and.runstep1,and.runstep2,and.ledgreen,and.estoplight,and.tlsactivation,and.3Dprobeactivation
+loadrt  and2                                names=and.atcledslow,and.atcledfast,and.atcdb,and.pauseresume1,and.pauseresume2,and.runstep1,and.runstep2,and.ledgreen,and.tlsactivation,and.3Dprobeactivation
 loadrt  or2                                 names=or.externalprogram,or.program-run,or.program-pause,or.probe,or.auto,or.program-stop,or.program-resume,or.spindle-auto-drawbar,or.spindle-auto-cone-clean,or.floodin,or.mistflood
 loadrt  conv_bit_float                      names=conv_bit_float.spindleinhibit,conv_bit_float.atcstatusled-slow,conv_bit_float.atcstatusled-fast,conv_bit_float.spindleinhibitnot,conv_bit_float.runon,conv_bit_float.ledgreen,conv_bit_float.estopsignal,conv_bit_float.warningsignal
-loadrt  conv_float_u32                      names=conv_flu32.atcstatusledout,conv_flu32.ledgreen,conv_flu32.estoplight
+loadrt  conv_float_u32                      names=conv_flu32.atcstatusledout,conv_flu32.ledgreen
 loadrt  conv_float_s32                      names=conv-float-s32.feed,conv-float-s32.spindle
 loadrt  conv_s32_float                      names=conv-s32-float.atc-pocket
-loadrt  conv_u32_bit                        names=conv_u32b.atcstatusledout,conv_u32b.ledgreen,conv_u32b.estoplight
+loadrt  conv_u32_bit                        names=conv_u32b.atcstatusledout,conv_u32b.ledgreen
 loadrt  message                             names=m_vfderror,m_estopext,m_drivealm,m_lowpressure,m_drivewarn,m_tempwarn,m_pendantestop,m_tlsovertravel messages="VFD Error (Check Display), External E-Stop, Drive Alarm, WARNING: Air Pressure Low, WARNING: Drives in Warning, WARNING: Spindle Temperature over Treshold, Pendant ESTOP, Warning TLS overtravel" 
 #loadrt  carousel                            pockets=[ATC]POCKETS encoding=index num_sense=2 dir=2
 loadrt  limit2                              names=limit2.mql
@@ -75,8 +75,6 @@ addf    toggle2nist.externalprogram         servo-thread
 addf    toggle2nist.machineon               servo-thread
 addf    lut5.spindleinhibit                 servo-thread
 addf    lut5.toolchange                     servo-thread
-addf    lut5.estop                          servo-thread
-addf    lut5.drivealarm                     servo-thread
 addf    oneshot.mql                         servo-thread
 addf    timedelay.conecleaning              servo-thread
 addf    timedelay.toolchange                servo-thread
@@ -84,11 +82,9 @@ addf    timedelay.atcledslow                servo-thread
 addf    timedelay.atcledfast                servo-thread
 addf    timedelay.ledgreen                  servo-thread
 addf    timedelay.stepsig                   servo-thread
-addf    timedelay.estoplight                servo-thread
 addf    timedelay.mql                       servo-thread
 addf    mux8.atcstatusled                   servo-thread
 addf    mux4.ledgreen                       servo-thread
-addf    mux2.estoplight                     servo-thread
 addf    mux4.mql                            servo-thread
 addf    mux2.mqlvol                         servo-thread
 addf    not.atcledslow                      servo-thread
@@ -107,7 +103,6 @@ addf    and.pauseresume2                    servo-thread
 addf    and.runstep1                        servo-thread
 addf    and.runstep2                        servo-thread
 addf    and.ledgreen                        servo-thread
-addf    and.estoplight                      servo-thread
 addf    and.tlsactivation                   servo-thread  
 addf    and.3Dprobeactivation               servo-thread            
 addf    conv_bit_float.spindleinhibit       servo-thread
@@ -122,8 +117,6 @@ addf    conv_u32b.atcstatusledout           servo-thread
 addf    conv_flu32.atcstatusledout          servo-thread
 addf    conv_u32b.ledgreen                  servo-thread
 addf    conv_flu32.ledgreen                 servo-thread
-addf    conv_u32b.estoplight                servo-thread
-addf    conv_flu32.estoplight               servo-thread
 addf    conv-s32-float.atc-pocket           servo-thread
 addf    scale.xjog                          servo-thread
 addf    scale.yjog                          servo-thread
@@ -156,3 +149,10 @@ addf  groot-error servo-thread
 
 # ---------- CLOSE/ WRITE SERVO-THREAD ----------
 addf lcec.write-all servo-thread
+
+
+
+# ----- LCEC Pins
+net ec-slaves-responding     <= lcec.slaves-responding
+net ec-link-up              <= lcec.link-up
+net ec-all-op               <= lcec.all-op

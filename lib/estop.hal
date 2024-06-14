@@ -9,160 +9,65 @@
 
 net     SYS-estop-out                               <= iocontrol.0.user-enable-out
 
-net emc-enable => iocontrol.0.emc-enable-in
-
-
-
-
 ###########################################################
 # error handling
 ###########################################################
 
-net power-ok => groot-error.emc-enable-in
 
-net emc-enable <= groot-error.emc-enable-out
-net emc-running <= groot-error.emc-running
-net emc-on => groot-error.emc-on
+# write resulting error assessment to iocontrol.0.emc-enable-in
+net emc-enable-groot-error <= groot-error.emc-enable-out
+net emc-enable-groot-error => iocontrol.0.emc-enable-in
+
+
+net machine-on => groot-error.emc-on
 net emc-auto => groot-error.emc-auto
 
-net power-ok-lamp <= groot-error.power-ok-lamp
-net auto-enable => groot-error.auto-enable
-net spindle-enable-req => groot-error.spindle-enable-in
-net spindle-enable <= groot-error.spindle-enable-out
 
-net estop-panel => groot-error.estop-panel
-net lube1-err => groot-error.lube1-err
-net lube2-err => groot-error.lube2-err
-net spindle-err => groot-error.spindle-err
-net spindle-error-code => groot-error.spindle-error-code
-net ps-pot-err => groot-error.ps-pot-err
+net spindle-enable => groot-error.spindle-enable-in 
 
-net air-ok => groot-error.air-ok
-net water-ok => groot-error.water-ok
-net water-out => groot-error.water-out
+net DI-ESTOP-ext  => groot-error.estop-external
+net pendant-estop  => groot-error.estop-pendant
 
-net matprobe-cyl-err => groot-error.matprobe-cyl-err
-net vac-cyl-left-err => groot-error.vac-cyl-left-err
-net vac-cyl-right-err => groot-error.vac-cyl-right-err
+net vfd-error  => groot-error.spindle-err
+net vfd-error-code => groot-error.spindle-error-code
 
-net error => groot-error.error
-net error-lamp <= groot-error.error-lamp
+net comp.temp.out => groot-error.spindle-temp-err
 
-setp groot-error.ec-slaves 32
+net    DI-CNC-tls-ot         => groot-error.tls-overtravel
+
+net DI-CNC-pressure-alarm  => groot-error.air-ok
+
+#TODO Move drive part to axis.hal
+
+net     SRV-fault-a         => groot-error.axis-fault-a         lcec.0.a-axis.srv-fault
+net     SRV-fault-x         => groot-error.axis-fault-x         lcec.0.x-axis.srv-fault
+net     SRV-fault-y1        => groot-error.axis-fault-y1        lcec.0.y1-axis.srv-fault
+net     SRV-fault-y2        => groot-error.axis-fault-y2        lcec.0.y2-axis.srv-fault
+net     SRV-fault-z         => groot-error.axis-fault-z         lcec.0.z-axis.srv-fault
+
+#TODO Define no of slaves
+setp groot-error.ec-slaves 10
+
 net ec-slaves-responding => groot-error.ec-slaves-responding
 net ec-link-up => groot-error.ec-link-up
 net ec-all-op => groot-error.ec-all-op
 
 
+### Fault Reset on Machine-on
+
+net machine-on  => lcec.0.a-axis.srv-fault-reset
+net machine-on  => lcec.0.x-axis.srv-fault-reset
+net machine-on  => lcec.0.y1-axis.srv-fault-reset
+net machine-on  => lcec.0.y2-axis.srv-fault-reset
+net machine-on  => lcec.0.z-axis.srv-fault-reset
+net machine-on  => lcec.0.spindle.fault-reset
 
 
+# ----- ESTOP LIGHT  ----- 
+
+# TODO: Reactivate, remove blinking
+# invert emc-enable-groot-error
 
 
-# ----- MERGE SERVO ALM  ----- 
-# TODO: switch OK when LOW!
-# in-0  Servo X         HIGH when OK
-# in-1  Servo Y1        HIGH when OK    
-# in-2  Servo Y2        HIGH when OK
-# in-3  Servo Z         HIGH when OK
-# in-4  Servo A         not connected
-# Out   High when ok             
-# Function and5, high, whenever al inputs are true
-
-# TODO: Check levels HIGH/ Low at Default
-
-
-# TODO: Add fault reset
-
-
-setp    lut5.drivealarm.function                0x8000 
-net     DI-DRIVE-x-alarm                        lut5.drivealarm.in-0
-net     DI-DRIVE-y1-alarm                       lut5.drivealarm.in-1
-net     DI-DRIVE-y2-alarm                       lut5.drivealarm.in-2
-net     DI-DRIVE-z-alarm                        lut5.drivealarm.in-3
-net     DI-DRIVE-a-alarm                        lut5.drivealarm.in-4
-
-net     estop-drive-alarm                       lut5.drivealarm.out
-
-# ----- SOFT ESTOP  ----- 
-#   in0     External Estop from Hardware        HIGH when OK
-#   in1     VFD Error                           HIGH when OK due to inversion not.vfderror
-#   in2     Probe OT                            HIGH when OK
-#   in3     pendant                             HIGH when OK
-#   in4     watchdog                            HIGH when OK
-#   OUT     iocontrol.0.emc-enable-in           HIGH when OK (only when and!)
-
-setp    lut5.estop.function                     0x80000000
-
-#vfd also: ok when low
-
-net     DI-ESTOP-ext                            lut5.estop.in-0
-net     vfd-error                               lut5.estop.in-1                     
-net     DI-CNC-tls-ot                           lut5.estop.in-2        # high when ok (no alarm)             
-net     pendant-estop                           lut5.estop.in-3
-net     estop-drive-alarm                       lut5.estop.in-4                     
-# Output LUT5.ESTOP to IOCONTROL
-net     estop-soft-trigger                      lut5.estop.out                      iocontrol.0.emc-enable-in       not.estop.in              mux2.estoplight.sel
-#setp iocontrol.0.emc-enable-in true 
-##############################################################################
-# ---------- WARNING MESSAGES  ---------- 
-# Servo Warning Signals are connected to linuxcnc without further detailled function
-# Delta manual remains unclear when warn is triggered
-# Note: Warnings are User information and presently not part of estop!
-
-# ----- Merge Drive Warnings ----- 
-# in-0  Servo X         HIGH when OK
-# in-1  Servo Y1        HIGH when OK    
-# in-2  Servo Y2        HIGH when OK
-# in-3  Servo Z         HIGH when OK
-# in-4  Servo A         HIGH when OK
-# Out   High when ok   
-# High when any of the inputs goes high
-# net     DI-DRIVE-a-warn                        lut5.drivewarning.in-4
-
-# ----- Trigger Warnings -----  
-# Drive alarm
-setp    m_drivealm.edge                         1 
-net     estop-drive-alarm                       m_drivealm.trigger                    
-# Low Pressure Warning
-setp    m_lowpressure.edge                      0
-net     DI-CNC-pressure-alarm                   m_lowpressure.trigger
-# Spindle temperature warning
-setp    m_tempwarn.edge                         1
-net     m-spindle-temp-warning                  comp.temp.out           m_tempwarn.trigger
-# External Estop
-setp    m_estopext.edge                         0
-net     DI-ESTOP-ext                            m_estopext.trigger
-
-# VFD Error
-setp    m_vfderror.edge                         1
-net     estop-vfd-error                         m_vfderror.trigger
-# Pendant estop 
-setp    m_pendantestop.edge                     0
-net     pendant-estop                           m_pendantestop.trigger
-# Pendant tls overtravel 
-setp    m_tlsovertravel.edge                    0
-net     DI-CNC-tls-ot                           m_tlsovertravel.trigger
-
-# TODO: Optional: add EC com Watchdog
-
-# ----- ESTOP/ WARNING LIGHT  ----- 
-# TODO: Reactivate
-# ESTOP: Red Light = Perm on
-# Warning: Red Light = slowly blinking
-# Use mux2 to distinguish between both
-# mux2.estoplight.in0 =  warning out
-# mux2.estoplight.in1 = estop
-# mux2.estoplight.sel = estop triggered
-# convert to float required
-# setp    timedelay.estoplight.on-delay           0.5
-# setp    timedelay.estoplight.off-delay          0.5
-# net     estop-inverse                           not.estop.out                       and.estoplight.in0      conv_bit_float.estopsignal.in
-# net     estopsignal-blink-out                   timedelay.estoplight.out            not.estoplight.in       conv_bit_float.warningsignal.in        
-# net     estoplight-not                          not.estoplight.out                  and.estoplight.in1
-# net     estoplight-toogle                       and.estoplight.out                  timedelay.estoplight.in
-
-# net     mux2-estoplight-warning                 conv_bit_float.warningsignal.out    mux2.estoplight.in0
-# net     mux2-estoplight-estopsignal             conv_bit_float.estopsignal.out      mux2.estoplight.in1
-# net     mux2-estopsignalout-conv_flu32          conv_flu32.estoplight.in            mux2.estoplight.out
-# net     mux2-estopsignalout-conv_u32b           conv_flu32.estoplight.out           conv_u32b.estoplight.in
-# net     DO-HMI-light-red                         conv_u32b.estoplight.out
+net     emc-enable-groot-error                    not.estop.in                      
+net     DO-HMI-light-red                             not.estop.out

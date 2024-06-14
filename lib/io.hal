@@ -126,10 +126,10 @@ net     DO-ATC-rack-actuator            => lcec.0.DO1.dout-7
 net     DO-CNC-vac-remote               => lcec.0.DO1.dout-8
 
 
-# TODO
+# TODO: lights via ethercathmi
 
 # --- DO CP-LIGHT-RED ---
-#net     DO-HMI-light-red              #  => hm2_7i76e.0.7i76.0.0.output-11
+# net     DO-HMI-light-red              #  => hm2_7i76e.0.7i76.0.0.output-11
 
 # --- DO CP-LIGHT-YELLOW ---
 #net     DO-HMI-light-yellow           #  => hm2_7i76e.0.7i76.0.0.output-12

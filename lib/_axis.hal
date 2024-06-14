@@ -51,7 +51,7 @@ net         x-pos-fb                                    <= [HMOT](CARD0).stepgen
 net         x-pos-fb                                    => joint.0.motor-pos-fb
 net         x-enable                                    <= joint.0.amp-enable-out
 net         x-enable                                    => [HMOT](CARD0).stepgen.00.enable
-net         DI-DRIVE-x-alarm-not                           joint.0.amp-fault-in
+net         DI-DRIVE-x-alarm-not                           joint.0.amp-fault-in     lcec.0.x-axis.srv-fault
 
 # ---setup home / limit switch signals---
 
