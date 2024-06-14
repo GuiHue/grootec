@@ -9,8 +9,57 @@
 
 net     SYS-estop-out                               <= iocontrol.0.user-enable-out
 
+net emc-enable => iocontrol.0.emc-enable-in
+
+
+
+
+###########################################################
+# error handling
+###########################################################
+
+net power-ok => groot-error.emc-enable-in
+
+net emc-enable <= groot-error.emc-enable-out
+net emc-running <= groot-error.emc-running
+net emc-on => groot-error.emc-on
+net emc-auto => groot-error.emc-auto
+
+net power-ok-lamp <= groot-error.power-ok-lamp
+net auto-enable => groot-error.auto-enable
+net spindle-enable-req => groot-error.spindle-enable-in
+net spindle-enable <= groot-error.spindle-enable-out
+
+net estop-panel => groot-error.estop-panel
+net lube1-err => groot-error.lube1-err
+net lube2-err => groot-error.lube2-err
+net spindle-err => groot-error.spindle-err
+net spindle-error-code => groot-error.spindle-error-code
+net ps-pot-err => groot-error.ps-pot-err
+
+net air-ok => groot-error.air-ok
+net water-ok => groot-error.water-ok
+net water-out => groot-error.water-out
+
+net matprobe-cyl-err => groot-error.matprobe-cyl-err
+net vac-cyl-left-err => groot-error.vac-cyl-left-err
+net vac-cyl-right-err => groot-error.vac-cyl-right-err
+
+net error => groot-error.error
+net error-lamp <= groot-error.error-lamp
+
+setp groot-error.ec-slaves 32
+net ec-slaves-responding => groot-error.ec-slaves-responding
+net ec-link-up => groot-error.ec-link-up
+net ec-all-op => groot-error.ec-all-op
+
+
+
+
+
+
 # ----- MERGE SERVO ALM  ----- 
-TODO: switch OK when LOW!
+# TODO: switch OK when LOW!
 # in-0  Servo X         HIGH when OK
 # in-1  Servo Y1        HIGH when OK    
 # in-2  Servo Y2        HIGH when OK
@@ -22,7 +71,7 @@ TODO: switch OK when LOW!
 # TODO: Check levels HIGH/ Low at Default
 
 
-TODO: Add fault reset
+# TODO: Add fault reset
 
 
 setp    lut5.drivealarm.function                0x8000 
@@ -44,7 +93,7 @@ net     estop-drive-alarm                       lut5.drivealarm.out
 
 setp    lut5.estop.function                     0x80000000
 
-vfd also: ok when low
+#vfd also: ok when low
 
 net     DI-ESTOP-ext                            lut5.estop.in-0
 net     vfd-error                               lut5.estop.in-1                     
