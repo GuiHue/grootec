@@ -1,0 +1,2354 @@
+Component Pins:
+Owner   Type  Dir         Value  Name
+    82  bit   IN          FALSE  and.3Dprobeactivation.in0
+    82  bit   IN          FALSE  and.3Dprobeactivation.in1
+    82  bit   OUT         FALSE  and.3Dprobeactivation.out
+    82  s32   OUT            44  and.3Dprobeactivation.time
+    82  bit   IN          FALSE  and.atcdb.in0
+    82  bit   IN          FALSE  and.atcdb.in1
+    82  bit   OUT         FALSE  and.atcdb.out
+    82  s32   OUT            40  and.atcdb.time
+    82  bit   IN          FALSE  and.atcledfast.in0
+    82  bit   IN          FALSE  and.atcledfast.in1
+    82  bit   OUT         FALSE  and.atcledfast.out
+    82  s32   OUT            68  and.atcledfast.time
+    82  bit   IN          FALSE  and.atcledslow.in0
+    82  bit   IN          FALSE  and.atcledslow.in1
+    82  bit   OUT         FALSE  and.atcledslow.out
+    82  s32   OUT            92  and.atcledslow.time
+    82  bit   IN          FALSE  and.ledgreen.in0
+    82  bit   IN          FALSE  and.ledgreen.in1
+    82  bit   OUT         FALSE  and.ledgreen.out
+    82  s32   OUT            44  and.ledgreen.time
+    82  bit   IN          FALSE  and.pauseresume1.in0
+    82  bit   IN          FALSE  and.pauseresume1.in1
+    82  bit   OUT         FALSE  and.pauseresume1.out
+    82  s32   OUT            52  and.pauseresume1.time
+    82  bit   IN          FALSE  and.pauseresume2.in0
+    82  bit   IN          FALSE  and.pauseresume2.in1
+    82  bit   OUT         FALSE  and.pauseresume2.out
+    82  s32   OUT            36  and.pauseresume2.time
+    82  bit   IN          FALSE  and.runstep1.in0
+    82  bit   IN          FALSE  and.runstep1.in1
+    82  bit   OUT         FALSE  and.runstep1.out
+    82  s32   OUT            44  and.runstep1.time
+    82  bit   IN          FALSE  and.runstep2.in0
+    82  bit   IN          FALSE  and.runstep2.in1
+    82  bit   OUT         FALSE  and.runstep2.out
+    82  s32   OUT            32  and.runstep2.time
+    82  bit   IN          FALSE  and.tlsactivation.in0
+    82  bit   IN          FALSE  and.tlsactivation.in1
+    82  bit   OUT         FALSE  and.tlsactivation.out
+    82  s32   OUT            36  and.tlsactivation.time
+    29  float OUT             0  axis.a.eoffset
+    29  bit   IN          FALSE  axis.a.eoffset-clear
+    29  s32   IN              0  axis.a.eoffset-counts
+    29  bit   IN          FALSE  axis.a.eoffset-enable
+    29  float OUT             0  axis.a.eoffset-request
+    29  float IN              0  axis.a.eoffset-scale
+    29  float IN              1  axis.a.jog-accel-fraction
+    29  s32   IN              0  axis.a.jog-counts <== ilowpass-enc-a
+    29  bit   IN          FALSE  axis.a.jog-enable <== pdnt.axis.a.jog-enable
+    29  float IN              0  axis.a.jog-scale <== pdnt.axis.a.jog-scale-scale
+    29  bit   IN          FALSE  axis.a.jog-vel-mode <== pdnt.axis.a.jog-vel-mode
+    29  bit   OUT         FALSE  axis.a.kb-jog-active
+    29  float OUT             0  axis.a.pos-cmd
+    29  float OUT             0  axis.a.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.a.teleop-tp-enable
+    29  float OUT             0  axis.a.teleop-vel-cmd
+    29  float OUT             0  axis.a.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.a.wheel-jog-active
+    29  float OUT             0  axis.b.eoffset
+    29  bit   IN          FALSE  axis.b.eoffset-clear
+    29  s32   IN              0  axis.b.eoffset-counts
+    29  bit   IN          FALSE  axis.b.eoffset-enable
+    29  float OUT             0  axis.b.eoffset-request
+    29  float IN              0  axis.b.eoffset-scale
+    29  float IN              1  axis.b.jog-accel-fraction
+    29  s32   IN              0  axis.b.jog-counts
+    29  bit   IN          FALSE  axis.b.jog-enable
+    29  float IN              0  axis.b.jog-scale
+    29  bit   IN          FALSE  axis.b.jog-vel-mode
+    29  bit   OUT         FALSE  axis.b.kb-jog-active
+    29  float OUT             0  axis.b.pos-cmd
+    29  float OUT             0  axis.b.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.b.teleop-tp-enable
+    29  float OUT             0  axis.b.teleop-vel-cmd
+    29  float OUT             0  axis.b.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.b.wheel-jog-active
+    29  float OUT             0  axis.c.eoffset
+    29  bit   IN          FALSE  axis.c.eoffset-clear
+    29  s32   IN              0  axis.c.eoffset-counts
+    29  bit   IN          FALSE  axis.c.eoffset-enable
+    29  float OUT             0  axis.c.eoffset-request
+    29  float IN              0  axis.c.eoffset-scale
+    29  float IN              1  axis.c.jog-accel-fraction
+    29  s32   IN              0  axis.c.jog-counts
+    29  bit   IN          FALSE  axis.c.jog-enable
+    29  float IN              0  axis.c.jog-scale
+    29  bit   IN          FALSE  axis.c.jog-vel-mode
+    29  bit   OUT         FALSE  axis.c.kb-jog-active
+    29  float OUT             0  axis.c.pos-cmd
+    29  float OUT             0  axis.c.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.c.teleop-tp-enable
+    29  float OUT             0  axis.c.teleop-vel-cmd
+    29  float OUT             0  axis.c.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.c.wheel-jog-active
+    29  float OUT             0  axis.u.eoffset
+    29  bit   IN          FALSE  axis.u.eoffset-clear
+    29  s32   IN              0  axis.u.eoffset-counts
+    29  bit   IN          FALSE  axis.u.eoffset-enable
+    29  float OUT             0  axis.u.eoffset-request
+    29  float IN              0  axis.u.eoffset-scale
+    29  float IN              1  axis.u.jog-accel-fraction
+    29  s32   IN              0  axis.u.jog-counts
+    29  bit   IN          FALSE  axis.u.jog-enable
+    29  float IN              0  axis.u.jog-scale
+    29  bit   IN          FALSE  axis.u.jog-vel-mode
+    29  bit   OUT         FALSE  axis.u.kb-jog-active
+    29  float OUT             0  axis.u.pos-cmd
+    29  float OUT             0  axis.u.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.u.teleop-tp-enable
+    29  float OUT             0  axis.u.teleop-vel-cmd
+    29  float OUT             0  axis.u.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.u.wheel-jog-active
+    29  float OUT             0  axis.v.eoffset
+    29  bit   IN          FALSE  axis.v.eoffset-clear
+    29  s32   IN              0  axis.v.eoffset-counts
+    29  bit   IN          FALSE  axis.v.eoffset-enable
+    29  float OUT             0  axis.v.eoffset-request
+    29  float IN              0  axis.v.eoffset-scale
+    29  float IN              1  axis.v.jog-accel-fraction
+    29  s32   IN              0  axis.v.jog-counts
+    29  bit   IN          FALSE  axis.v.jog-enable
+    29  float IN              0  axis.v.jog-scale
+    29  bit   IN          FALSE  axis.v.jog-vel-mode
+    29  bit   OUT         FALSE  axis.v.kb-jog-active
+    29  float OUT             0  axis.v.pos-cmd
+    29  float OUT             0  axis.v.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.v.teleop-tp-enable
+    29  float OUT             0  axis.v.teleop-vel-cmd
+    29  float OUT             0  axis.v.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.v.wheel-jog-active
+    29  float OUT             0  axis.w.eoffset
+    29  bit   IN          FALSE  axis.w.eoffset-clear
+    29  s32   IN              0  axis.w.eoffset-counts
+    29  bit   IN          FALSE  axis.w.eoffset-enable
+    29  float OUT             0  axis.w.eoffset-request
+    29  float IN              0  axis.w.eoffset-scale
+    29  float IN              1  axis.w.jog-accel-fraction
+    29  s32   IN              0  axis.w.jog-counts
+    29  bit   IN          FALSE  axis.w.jog-enable
+    29  float IN              0  axis.w.jog-scale
+    29  bit   IN          FALSE  axis.w.jog-vel-mode
+    29  bit   OUT         FALSE  axis.w.kb-jog-active
+    29  float OUT             0  axis.w.pos-cmd
+    29  float OUT             0  axis.w.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.w.teleop-tp-enable
+    29  float OUT             0  axis.w.teleop-vel-cmd
+    29  float OUT             0  axis.w.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.w.wheel-jog-active
+    29  float OUT             0  axis.x.eoffset
+    29  bit   IN          FALSE  axis.x.eoffset-clear
+    29  s32   IN              0  axis.x.eoffset-counts
+    29  bit   IN          FALSE  axis.x.eoffset-enable
+    29  float OUT             0  axis.x.eoffset-request
+    29  float IN              0  axis.x.eoffset-scale
+    29  float IN              1  axis.x.jog-accel-fraction
+    29  s32   IN              0  axis.x.jog-counts <== ilowpass-enc-x
+    29  bit   IN          FALSE  axis.x.jog-enable <== pdnt.axis.x.jog-enable
+    29  float IN              0  axis.x.jog-scale <== pdnt.axis.x.jog-scale-scale
+    29  bit   IN          FALSE  axis.x.jog-vel-mode <== pdnt.axis.x.jog-vel-mode
+    29  bit   OUT         FALSE  axis.x.kb-jog-active
+    29  float OUT             0  axis.x.pos-cmd
+    29  float OUT             0  axis.x.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.x.teleop-tp-enable
+    29  float OUT             0  axis.x.teleop-vel-cmd
+    29  float OUT             0  axis.x.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.x.wheel-jog-active
+    29  float OUT             0  axis.y.eoffset
+    29  bit   IN          FALSE  axis.y.eoffset-clear
+    29  s32   IN              0  axis.y.eoffset-counts
+    29  bit   IN          FALSE  axis.y.eoffset-enable
+    29  float OUT             0  axis.y.eoffset-request
+    29  float IN              0  axis.y.eoffset-scale
+    29  float IN              1  axis.y.jog-accel-fraction
+    29  s32   IN              0  axis.y.jog-counts <== ilowpass-enc-y
+    29  bit   IN          FALSE  axis.y.jog-enable <== pdnt.axis.y.jog-enable
+    29  float IN              0  axis.y.jog-scale <== pdnt.axis.y.jog-scale-scale
+    29  bit   IN          FALSE  axis.y.jog-vel-mode <== pdnt.axis.y.jog-vel-mode
+    29  bit   OUT         FALSE  axis.y.kb-jog-active
+    29  float OUT             0  axis.y.pos-cmd
+    29  float OUT             0  axis.y.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.y.teleop-tp-enable
+    29  float OUT             0  axis.y.teleop-vel-cmd
+    29  float OUT             0  axis.y.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.y.wheel-jog-active
+    29  float OUT             0  axis.z.eoffset
+    29  bit   IN          FALSE  axis.z.eoffset-clear
+    29  s32   IN              0  axis.z.eoffset-counts
+    29  bit   IN          FALSE  axis.z.eoffset-enable
+    29  float OUT             0  axis.z.eoffset-request
+    29  float IN              0  axis.z.eoffset-scale
+    29  float IN              1  axis.z.jog-accel-fraction
+    29  s32   IN              0  axis.z.jog-counts <== ilowpass-enc-z
+    29  bit   IN          FALSE  axis.z.jog-enable <== pdnt.axis.z.jog-enable
+    29  float IN              0  axis.z.jog-scale <== pdnt.axis.z.jog-scale-scale
+    29  bit   IN          FALSE  axis.z.jog-vel-mode <== pdnt.axis.z.jog-vel-mode
+    29  bit   OUT         FALSE  axis.z.kb-jog-active
+    29  float OUT             0  axis.z.pos-cmd
+    29  float OUT             0  axis.z.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.z.teleop-tp-enable
+    29  float OUT             0  axis.z.teleop-vel-cmd
+    29  float OUT             0  axis.z.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.z.wheel-jog-active
+    49  bit   OUT         FALSE  comp.temp.equal
+    49  float IN             50  comp.temp.in0
+    49  float IN              0  comp.temp.in1
+    49  bit   OUT         FALSE  comp.temp.out
+    49  s32   OUT           188  comp.temp.time
+    94  float IN              0  conv-float-s32.feed.in
+    94  s32   OUT             0  conv-float-s32.feed.out
+    94  bit   OUT         FALSE  conv-float-s32.feed.out-of-range
+    94  s32   OUT           168  conv-float-s32.feed.time
+    94  float IN              0  conv-float-s32.spindle.in
+    94  s32   OUT             0  conv-float-s32.spindle.out
+    94  bit   OUT         FALSE  conv-float-s32.spindle.out-of-range
+    94  s32   OUT           132  conv-float-s32.spindle.time
+    97  s32   IN              0  conv-s32-float.atc-pocket.in
+    97  float OUT             0  conv-s32-float.atc-pocket.out ==> carousel_current-position-conv
+    97  s32   OUT           100  conv-s32-float.atc-pocket.time
+    88  bit   IN          FALSE  conv_bit_float.atcstatusled-fast.in
+    88  float OUT             0  conv_bit_float.atcstatusled-fast.out
+    88  s32   OUT            52  conv_bit_float.atcstatusled-fast.time
+    88  bit   IN          FALSE  conv_bit_float.atcstatusled-slow.in
+    88  float OUT             0  conv_bit_float.atcstatusled-slow.out
+    88  s32   OUT            40  conv_bit_float.atcstatusled-slow.time
+    88  bit   IN          FALSE  conv_bit_float.estopsignal.in
+    88  float OUT             0  conv_bit_float.estopsignal.out
+    88  s32   OUT           180  conv_bit_float.estopsignal.time
+    88  bit   IN          FALSE  conv_bit_float.ledgreen.in
+    88  float OUT             0  conv_bit_float.ledgreen.out
+    88  s32   OUT            48  conv_bit_float.ledgreen.time
+    88  bit   IN          FALSE  conv_bit_float.runon.in
+    88  float OUT             0  conv_bit_float.runon.out
+    88  s32   OUT            40  conv_bit_float.runon.time
+    88  bit   IN          FALSE  conv_bit_float.spindleinhibit.in
+    88  float OUT             0  conv_bit_float.spindleinhibit.out
+    88  s32   OUT           100  conv_bit_float.spindleinhibit.time
+    88  bit   IN          FALSE  conv_bit_float.spindleinhibitnot.in
+    88  float OUT             0  conv_bit_float.spindleinhibitnot.out
+    88  s32   OUT           100  conv_bit_float.spindleinhibitnot.time
+    88  bit   IN          FALSE  conv_bit_float.warningsignal.in
+    88  float OUT             0  conv_bit_float.warningsignal.out
+    88  s32   OUT            36  conv_bit_float.warningsignal.time
+    91  float IN              0  conv_flu32.atcstatusledout.in
+    91  u32   OUT    0x00000000  conv_flu32.atcstatusledout.out
+    91  bit   OUT         FALSE  conv_flu32.atcstatusledout.out-of-range
+    91  s32   OUT            64  conv_flu32.atcstatusledout.time
+    91  float IN              0  conv_flu32.ledgreen.in
+    91  u32   OUT    0x00000000  conv_flu32.ledgreen.out
+    91  bit   OUT         FALSE  conv_flu32.ledgreen.out-of-range
+    91  s32   OUT            88  conv_flu32.ledgreen.time
+   100  u32   IN     0x00000000  conv_u32b.atcstatusledout.in
+   100  bit   OUT         FALSE  conv_u32b.atcstatusledout.out
+   100  bit   OUT         FALSE  conv_u32b.atcstatusledout.out-of-range
+   100  s32   OUT           196  conv_u32b.atcstatusledout.time
+   100  u32   IN     0x00000000  conv_u32b.ledgreen.in
+   100  bit   OUT         FALSE  conv_u32b.ledgreen.out
+   100  bit   OUT         FALSE  conv_u32b.ledgreen.out-of-range
+   100  s32   OUT            48  conv_u32b.ledgreen.time
+    40  bit   IN           TRUE  groot-error.air-ok
+    40  bit   IN          FALSE  groot-error.axis-fault-a
+    40  bit   IN          FALSE  groot-error.axis-fault-x
+    40  bit   IN          FALSE  groot-error.axis-fault-y1
+    40  bit   IN          FALSE  groot-error.axis-fault-y2
+    40  bit   IN          FALSE  groot-error.axis-fault-z
+    40  bit   IN           TRUE  groot-error.ec-all-op <== ec-all-op
+    40  bit   IN           TRUE  groot-error.ec-link-up <== ec-link-up
+    40  u32   IN     0x00000010  groot-error.ec-slaves
+    40  u32   IN     0x00000010  groot-error.ec-slaves-responding <== ec-slaves-responding
+    40  bit   IN          FALSE  groot-error.emc-auto <== emc-auto
+    40  bit   IN           TRUE  groot-error.emc-enable-in
+    40  bit   OUT          TRUE  groot-error.emc-enable-out ==> emc-enable-groot-error
+    40  bit   IN          FALSE  groot-error.emc-on <== machine-on
+    40  bit   IN           TRUE  groot-error.estop-external <== DI-ESTOP-ext
+    40  bit   IN           TRUE  groot-error.estop-pendant
+    40  bit   IN          FALSE  groot-error.spindle-enable-in <== spindle-enable
+    40  bit   IN          FALSE  groot-error.spindle-temp-err
+    40  s32   OUT           112  groot-error.time
+    40  bit   IN           TRUE  groot-error.tls-overtravel <== DI-CNC-tls-ot
+    40  bit   IN          FALSE  groot-error.vfd-err <== vfd-error
+    40  u32   IN     0x00000000  groot-error.vfd-error-code <== vfd-error-code
+    10  bit   IN          FALSE  halui.abort
+    10  float IN              0  halui.axis.a.analog
+    10  float IN              0  halui.axis.a.increment
+    10  bit   IN          FALSE  halui.axis.a.increment-minus
+    10  bit   IN          FALSE  halui.axis.a.increment-plus
+    10  bit   OUT         FALSE  halui.axis.a.is-selected
+    10  bit   IN          FALSE  halui.axis.a.minus
+    10  bit   IN          FALSE  halui.axis.a.plus
+    10  float OUT             0  halui.axis.a.pos-commanded
+    10  float OUT             0  halui.axis.a.pos-feedback ==> pdnt.axis.a.pos-feedback
+    10  float OUT             0  halui.axis.a.pos-relative ==> pdnt.axis.a.pos-relative
+    10  bit   IN          FALSE  halui.axis.a.select
+    10  float IN              0  halui.axis.b.analog
+    10  float IN              0  halui.axis.b.increment
+    10  bit   IN          FALSE  halui.axis.b.increment-minus
+    10  bit   IN          FALSE  halui.axis.b.increment-plus
+    10  bit   IN          FALSE  halui.axis.b.minus
+    10  bit   IN          FALSE  halui.axis.b.plus
+    10  bit   IN          FALSE  halui.axis.b.select
+    10  float IN              0  halui.axis.c.analog
+    10  float IN              0  halui.axis.c.increment
+    10  bit   IN          FALSE  halui.axis.c.increment-minus
+    10  bit   IN          FALSE  halui.axis.c.increment-plus
+    10  bit   IN          FALSE  halui.axis.c.minus
+    10  bit   IN          FALSE  halui.axis.c.plus
+    10  bit   IN          FALSE  halui.axis.c.select
+    10  float IN            0.2  halui.axis.jog-deadband
+    10  float IN              0  halui.axis.jog-speed <== jog-speed
+    10  u32   OUT    0x00000000  halui.axis.selected
+    10  float IN              0  halui.axis.selected.increment
+    10  bit   IN          FALSE  halui.axis.selected.increment-minus
+    10  bit   IN          FALSE  halui.axis.selected.increment-plus
+    10  bit   IN          FALSE  halui.axis.selected.minus <== jog-selected-neg
+    10  bit   IN          FALSE  halui.axis.selected.plus <== jog-selected-pos
+    10  float IN              0  halui.axis.u.analog
+    10  float IN              0  halui.axis.u.increment
+    10  bit   IN          FALSE  halui.axis.u.increment-minus
+    10  bit   IN          FALSE  halui.axis.u.increment-plus
+    10  bit   IN          FALSE  halui.axis.u.minus
+    10  bit   IN          FALSE  halui.axis.u.plus
+    10  bit   IN          FALSE  halui.axis.u.select
+    10  float IN              0  halui.axis.v.analog
+    10  float IN              0  halui.axis.v.increment
+    10  bit   IN          FALSE  halui.axis.v.increment-minus
+    10  bit   IN          FALSE  halui.axis.v.increment-plus
+    10  bit   IN          FALSE  halui.axis.v.minus
+    10  bit   IN          FALSE  halui.axis.v.plus
+    10  bit   IN          FALSE  halui.axis.v.select
+    10  float IN              0  halui.axis.w.analog
+    10  float IN              0  halui.axis.w.increment
+    10  bit   IN          FALSE  halui.axis.w.increment-minus
+    10  bit   IN          FALSE  halui.axis.w.increment-plus
+    10  bit   IN          FALSE  halui.axis.w.minus
+    10  bit   IN          FALSE  halui.axis.w.plus
+    10  bit   IN          FALSE  halui.axis.w.select
+    10  float IN              0  halui.axis.x.analog <== jog-x-analog
+    10  float IN              0  halui.axis.x.increment
+    10  bit   IN          FALSE  halui.axis.x.increment-minus
+    10  bit   IN          FALSE  halui.axis.x.increment-plus
+    10  bit   OUT          TRUE  halui.axis.x.is-selected
+    10  bit   IN          FALSE  halui.axis.x.minus <== jog-x-neg
+    10  bit   IN          FALSE  halui.axis.x.plus <== jog-x-pos
+    10  float OUT             0  halui.axis.x.pos-commanded
+    10  float OUT             0  halui.axis.x.pos-feedback ==> pdnt.axis.x.pos-feedback
+    10  float OUT             0  halui.axis.x.pos-relative ==> pdnt.axis.x.pos-relative
+    10  bit   IN          FALSE  halui.axis.x.select <== axis-select-x
+    10  float IN              0  halui.axis.y.analog <== jog-y-analog
+    10  float IN              0  halui.axis.y.increment
+    10  bit   IN          FALSE  halui.axis.y.increment-minus
+    10  bit   IN          FALSE  halui.axis.y.increment-plus
+    10  bit   OUT         FALSE  halui.axis.y.is-selected
+    10  bit   IN          FALSE  halui.axis.y.minus <== jog-y-neg
+    10  bit   IN          FALSE  halui.axis.y.plus <== jog-y-pos
+    10  float OUT             0  halui.axis.y.pos-commanded
+    10  float OUT             0  halui.axis.y.pos-feedback ==> pdnt.axis.y.pos-feedback
+    10  float OUT             0  halui.axis.y.pos-relative ==> pdnt.axis.y.pos-relative
+    10  bit   IN          FALSE  halui.axis.y.select <== axis-select-y
+    10  float IN              0  halui.axis.z.analog <== jog-z-analog
+    10  float IN              0  halui.axis.z.increment
+    10  bit   IN          FALSE  halui.axis.z.increment-minus
+    10  bit   IN          FALSE  halui.axis.z.increment-plus
+    10  bit   OUT         FALSE  halui.axis.z.is-selected
+    10  bit   IN          FALSE  halui.axis.z.minus <== jog-z-neg
+    10  bit   IN          FALSE  halui.axis.z.plus <== jog-z-pos
+    10  float OUT             0  halui.axis.z.pos-commanded
+    10  float OUT             0  halui.axis.z.pos-feedback ==> pdnt.axis.z.pos-feedback
+    10  float OUT             0  halui.axis.z.pos-relative ==> pdnt.axis.z.pos-relative
+    10  bit   IN          FALSE  halui.axis.z.select <== axis-select-z
+    10  bit   IN          FALSE  halui.estop.activate
+    10  bit   OUT         FALSE  halui.estop.is-activated
+    10  bit   IN          FALSE  halui.estop.reset
+    10  bit   IN           TRUE  halui.feed-override.count-enable
+    10  s32   IN              0  halui.feed-override.counts
+    10  bit   IN          FALSE  halui.feed-override.decrease <== pdnt.feed-override.decrease
+    10  bit   IN          FALSE  halui.feed-override.direct-value
+    10  bit   IN          FALSE  halui.feed-override.increase <== pdnt.feed-override.increase
+    10  bit   IN          FALSE  halui.feed-override.reset
+    10  float IN            0.1  halui.feed-override.scale
+    10  float OUT             1  halui.feed-override.value ==> pdnt.feed-override.value
+    10  bit   OUT         FALSE  halui.flood.is-on ==> pdnt.flood.is-on
+    10  bit   IN          FALSE  halui.flood.off <== pdnt.flood.off
+    10  bit   IN          FALSE  halui.flood.on <== pdnt.flood.on
+    10  bit   IN          FALSE  halui.home-all
+    10  float IN              0  halui.joint.0.analog
+    10  bit   OUT         FALSE  halui.joint.0.has-fault
+    10  bit   IN          FALSE  halui.joint.0.home
+    10  float IN              0  halui.joint.0.increment
+    10  bit   IN          FALSE  halui.joint.0.increment-minus
+    10  bit   IN          FALSE  halui.joint.0.increment-plus
+    10  bit   OUT         FALSE  halui.joint.0.is-homed ==> x-is-homed
+    10  bit   OUT          TRUE  halui.joint.0.is-selected
+    10  bit   IN          FALSE  halui.joint.0.minus
+    10  bit   OUT         FALSE  halui.joint.0.on-hard-max-limit
+    10  bit   OUT         FALSE  halui.joint.0.on-hard-min-limit
+    10  bit   OUT         FALSE  halui.joint.0.on-soft-max-limit
+    10  bit   OUT         FALSE  halui.joint.0.on-soft-min-limit
+    10  bit   OUT         FALSE  halui.joint.0.override-limits
+    10  bit   IN          FALSE  halui.joint.0.plus
+    10  bit   IN          FALSE  halui.joint.0.select
+    10  bit   IN          FALSE  halui.joint.0.unhome
+    10  float IN              0  halui.joint.1.analog
+    10  bit   OUT         FALSE  halui.joint.1.has-fault
+    10  bit   IN          FALSE  halui.joint.1.home
+    10  float IN              0  halui.joint.1.increment
+    10  bit   IN          FALSE  halui.joint.1.increment-minus
+    10  bit   IN          FALSE  halui.joint.1.increment-plus
+    10  bit   OUT         FALSE  halui.joint.1.is-homed ==> y-is-homed
+    10  bit   OUT         FALSE  halui.joint.1.is-selected
+    10  bit   IN          FALSE  halui.joint.1.minus
+    10  bit   OUT         FALSE  halui.joint.1.on-hard-max-limit
+    10  bit   OUT         FALSE  halui.joint.1.on-hard-min-limit
+    10  bit   OUT         FALSE  halui.joint.1.on-soft-max-limit
+    10  bit   OUT         FALSE  halui.joint.1.on-soft-min-limit
+    10  bit   OUT         FALSE  halui.joint.1.override-limits
+    10  bit   IN          FALSE  halui.joint.1.plus
+    10  bit   IN          FALSE  halui.joint.1.select
+    10  bit   IN          FALSE  halui.joint.1.unhome
+    10  float IN              0  halui.joint.2.analog
+    10  bit   OUT         FALSE  halui.joint.2.has-fault
+    10  bit   IN          FALSE  halui.joint.2.home
+    10  float IN              0  halui.joint.2.increment
+    10  bit   IN          FALSE  halui.joint.2.increment-minus
+    10  bit   IN          FALSE  halui.joint.2.increment-plus
+    10  bit   OUT         FALSE  halui.joint.2.is-homed ==> z-is-homed
+    10  bit   OUT         FALSE  halui.joint.2.is-selected
+    10  bit   IN          FALSE  halui.joint.2.minus
+    10  bit   OUT         FALSE  halui.joint.2.on-hard-max-limit
+    10  bit   OUT         FALSE  halui.joint.2.on-hard-min-limit
+    10  bit   OUT         FALSE  halui.joint.2.on-soft-max-limit
+    10  bit   OUT         FALSE  halui.joint.2.on-soft-min-limit
+    10  bit   OUT         FALSE  halui.joint.2.override-limits
+    10  bit   IN          FALSE  halui.joint.2.plus
+    10  bit   IN          FALSE  halui.joint.2.select
+    10  bit   IN          FALSE  halui.joint.2.unhome
+    10  float IN              0  halui.joint.3.analog
+    10  bit   OUT         FALSE  halui.joint.3.has-fault
+    10  bit   IN          FALSE  halui.joint.3.home
+    10  float IN              0  halui.joint.3.increment
+    10  bit   IN          FALSE  halui.joint.3.increment-minus
+    10  bit   IN          FALSE  halui.joint.3.increment-plus
+    10  bit   OUT         FALSE  halui.joint.3.is-homed
+    10  bit   OUT         FALSE  halui.joint.3.is-selected
+    10  bit   IN          FALSE  halui.joint.3.minus
+    10  bit   OUT         FALSE  halui.joint.3.on-hard-max-limit
+    10  bit   OUT         FALSE  halui.joint.3.on-hard-min-limit
+    10  bit   OUT         FALSE  halui.joint.3.on-soft-max-limit
+    10  bit   OUT         FALSE  halui.joint.3.on-soft-min-limit
+    10  bit   OUT         FALSE  halui.joint.3.override-limits
+    10  bit   IN          FALSE  halui.joint.3.plus
+    10  bit   IN          FALSE  halui.joint.3.select
+    10  bit   IN          FALSE  halui.joint.3.unhome
+    10  float IN              0  halui.joint.4.analog
+    10  bit   OUT         FALSE  halui.joint.4.has-fault
+    10  bit   IN          FALSE  halui.joint.4.home
+    10  float IN              0  halui.joint.4.increment
+    10  bit   IN          FALSE  halui.joint.4.increment-minus
+    10  bit   IN          FALSE  halui.joint.4.increment-plus
+    10  bit   OUT         FALSE  halui.joint.4.is-homed
+    10  bit   OUT         FALSE  halui.joint.4.is-selected
+    10  bit   IN          FALSE  halui.joint.4.minus
+    10  bit   OUT         FALSE  halui.joint.4.on-hard-max-limit
+    10  bit   OUT         FALSE  halui.joint.4.on-hard-min-limit
+    10  bit   OUT         FALSE  halui.joint.4.on-soft-max-limit
+    10  bit   OUT         FALSE  halui.joint.4.on-soft-min-limit
+    10  bit   OUT         FALSE  halui.joint.4.override-limits
+    10  bit   IN          FALSE  halui.joint.4.plus
+    10  bit   IN          FALSE  halui.joint.4.select
+    10  bit   IN          FALSE  halui.joint.4.unhome
+    10  float IN            0.2  halui.joint.jog-deadband
+    10  float IN              0  halui.joint.jog-speed
+    10  u32   OUT    0x00000000  halui.joint.selected
+    10  bit   OUT         FALSE  halui.joint.selected.has-fault
+    10  bit   IN          FALSE  halui.joint.selected.home
+    10  float IN              0  halui.joint.selected.increment
+    10  bit   IN          FALSE  halui.joint.selected.increment-minus
+    10  bit   IN          FALSE  halui.joint.selected.increment-plus
+    10  bit   OUT         FALSE  halui.joint.selected.is-homed
+    10  bit   IN          FALSE  halui.joint.selected.minus
+    10  bit   OUT         FALSE  halui.joint.selected.on-hard-max-limit
+    10  bit   OUT         FALSE  halui.joint.selected.on-hard-min-limit
+    10  bit   OUT         FALSE  halui.joint.selected.on-soft-max-limit
+    10  bit   OUT         FALSE  halui.joint.selected.on-soft-min-limit
+    10  bit   OUT         FALSE  halui.joint.selected.override-limits
+    10  bit   IN          FALSE  halui.joint.selected.plus
+    10  bit   IN          FALSE  halui.joint.selected.unhome
+    10  bit   OUT         FALSE  halui.lube.is-on
+    10  bit   IN          FALSE  halui.lube.off
+    10  bit   IN          FALSE  halui.lube.on
+    10  bit   OUT         FALSE  halui.machine.is-on ==> machine-is-on
+    10  bit   IN          FALSE  halui.machine.off
+    10  bit   IN          FALSE  halui.machine.on
+    10  float OUT             1  halui.machine.units-per-mm
+    10  bit   IN           TRUE  halui.max-velocity.count-enable
+    10  s32   IN              0  halui.max-velocity.counts
+    10  bit   IN          FALSE  halui.max-velocity.decrease
+    10  bit   IN          FALSE  halui.max-velocity.direct-value
+    10  bit   IN          FALSE  halui.max-velocity.increase
+    10  float IN              0  halui.max-velocity.scale
+    10  float OUT           200  halui.max-velocity.value ==> pdnt.max-velocity.value
+    10  bit   IN          FALSE  halui.mdi-command-00
+    10  bit   IN          FALSE  halui.mdi-command-01 <== pdnt.macro-1
+    10  bit   IN          FALSE  halui.mdi-command-02 <== pdnt.macro-2
+    10  bit   IN          FALSE  halui.mdi-command-03 <== pdnt.button.safe-z
+    10  bit   IN          FALSE  halui.mdi-command-04 <== pdnt.button.w-home
+    10  bit   IN          FALSE  halui.mdi-command-05 <== pdnt.macro-5
+    10  bit   IN          FALSE  halui.mdi-command-06 <== pdnt.macro-6
+    10  bit   IN          FALSE  halui.mdi-command-07 <== pdnt.macro-7
+    10  bit   IN          FALSE  halui.mdi-command-08 <== pdnt.button.probe-z
+    10  bit   IN          FALSE  halui.mdi-command-09
+    10  bit   IN          FALSE  halui.mdi-command-10
+    10  bit   IN          FALSE  halui.mdi-command-11
+    10  bit   IN          FALSE  halui.mdi-command-12
+    10  bit   IN          FALSE  halui.mdi-command-13
+    10  bit   IN          FALSE  halui.mdi-command-14 <== pdnt.button.m-home
+    10  bit   IN          FALSE  halui.mdi-command-15
+    10  bit   IN          FALSE  halui.mdi-command-16
+    10  bit   IN          FALSE  halui.mdi-command-17
+    10  bit   IN          FALSE  halui.mdi-command-18
+    10  bit   OUT         FALSE  halui.mist.is-on ==> pdnt.mist.is-on
+    10  bit   IN          FALSE  halui.mist.off <== pdnt.mist.off
+    10  bit   IN          FALSE  halui.mist.on <== pdnt.mist.on
+    10  bit   IN          FALSE  halui.mode.auto
+    10  bit   OUT         FALSE  halui.mode.is-auto ==> pdnt.mode.is-auto
+    10  bit   OUT          TRUE  halui.mode.is-joint ==> pdnt.mode.is-joint
+    10  bit   OUT          TRUE  halui.mode.is-manual ==> pdnt.mode.is-manual
+    10  bit   OUT         FALSE  halui.mode.is-mdi ==> MDI-mode
+    10  bit   OUT         FALSE  halui.mode.is-teleop ==> pdnt.mode.is-teleop
+    10  bit   IN          FALSE  halui.mode.joint <== pdnt.mode.joint
+    10  bit   IN          FALSE  halui.mode.manual <== pdnt.mode.manual
+    10  bit   IN          FALSE  halui.mode.mdi <== pdnt.mode.mdi
+    10  bit   IN          FALSE  halui.mode.teleop
+    10  bit   OUT          TRUE  halui.program.block-delete.is-on
+    10  bit   IN          FALSE  halui.program.block-delete.off
+    10  bit   IN          FALSE  halui.program.block-delete.on
+    10  bit   OUT          TRUE  halui.program.is-idle ==> idle-on
+    10  bit   OUT         FALSE  halui.program.is-paused ==> prog-paused
+    10  bit   OUT         FALSE  halui.program.is-running ==> emc-auto
+    10  bit   OUT          TRUE  halui.program.optional-stop.is-on
+    10  bit   IN          FALSE  halui.program.optional-stop.off
+    10  bit   IN          FALSE  halui.program.optional-stop.on
+    10  bit   IN          FALSE  halui.program.pause
+    10  bit   IN          FALSE  halui.program.resume
+    10  bit   IN          FALSE  halui.program.run
+    10  bit   IN          FALSE  halui.program.step
+    10  bit   IN          FALSE  halui.program.stop
+    10  bit   IN           TRUE  halui.rapid-override.count-enable
+    10  s32   IN              0  halui.rapid-override.counts
+    10  bit   IN          FALSE  halui.rapid-override.decrease
+    10  bit   IN          FALSE  halui.rapid-override.direct-value
+    10  bit   IN          FALSE  halui.rapid-override.increase
+    10  bit   IN          FALSE  halui.rapid-override.reset
+    10  float IN            0.1  halui.rapid-override.scale
+    10  float OUT             1  halui.rapid-override.value
+    10  bit   OUT          TRUE  halui.spindle.0.brake-is-on
+    10  bit   IN          FALSE  halui.spindle.0.brake-off
+    10  bit   IN          FALSE  halui.spindle.0.brake-on
+    10  bit   IN          FALSE  halui.spindle.0.decrease <== pdnt.spindle.decrease
+    10  bit   IN          FALSE  halui.spindle.0.forward <== pdnt.spindle.forward
+    10  bit   IN          FALSE  halui.spindle.0.increase <== pdnt.spindle.increase
+    10  bit   OUT         FALSE  halui.spindle.0.is-on
+    10  bit   IN           TRUE  halui.spindle.0.override.count-enable
+    10  s32   IN              0  halui.spindle.0.override.counts
+    10  bit   IN          FALSE  halui.spindle.0.override.decrease <== pdnt.spindle.override.decrease
+    10  bit   IN          FALSE  halui.spindle.0.override.direct-value
+    10  bit   IN          FALSE  halui.spindle.0.override.increase <== pdnt.spindle.override.increase
+    10  bit   IN          FALSE  halui.spindle.0.override.reset
+    10  float IN            0.1  halui.spindle.0.override.scale
+    10  float OUT             1  halui.spindle.0.override.value ==> pdnt.spindle.override.value
+    10  bit   IN          FALSE  halui.spindle.0.reverse <== pdnt.spindle.reverse
+    10  bit   OUT         FALSE  halui.spindle.0.runs-backward
+    10  bit   OUT         FALSE  halui.spindle.0.runs-forward
+    10  bit   IN          FALSE  halui.spindle.0.start <== pdnt.spindle.start
+    10  bit   IN          FALSE  halui.spindle.0.stop <== pdnt.spindle.stop
+    10  float OUT             0  halui.tool.diameter
+    10  float OUT             0  halui.tool.length_offset.a
+    10  float OUT             0  halui.tool.length_offset.b
+    10  float OUT             0  halui.tool.length_offset.c
+    10  float OUT             0  halui.tool.length_offset.u
+    10  float OUT             0  halui.tool.length_offset.v
+    10  float OUT             0  halui.tool.length_offset.w
+    10  float OUT             0  halui.tool.length_offset.x
+    10  float OUT             0  halui.tool.length_offset.y
+    10  float OUT             0  halui.tool.length_offset.z
+    10  u32   OUT    0x00000000  halui.tool.number
+    61  s32   IN              0  ilowpass.a.enc-smooth.in <== pdnt.axis.a.jog-counts
+    61  s32   OUT             0  ilowpass.a.enc-smooth.out ==> ilowpass-enc-a
+    61  s32   OUT            48  ilowpass.a.enc-smooth.time
+    61  s32   IN              0  ilowpass.x.enc-smooth.in <== pdnt.axis.x.jog-counts
+    61  s32   OUT             0  ilowpass.x.enc-smooth.out ==> ilowpass-enc-x
+    61  s32   OUT           212  ilowpass.x.enc-smooth.time
+    61  s32   IN              0  ilowpass.y.enc-smooth.in <== pdnt.axis.y.jog-counts
+    61  s32   OUT             0  ilowpass.y.enc-smooth.out ==> ilowpass-enc-y
+    61  s32   OUT            40  ilowpass.y.enc-smooth.time
+    61  s32   IN              0  ilowpass.z.enc-smooth.in <== pdnt.axis.z.jog-counts
+    61  s32   OUT             0  ilowpass.z.enc-smooth.out ==> ilowpass-enc-z
+    61  s32   OUT            48  ilowpass.z.enc-smooth.time
+   137  float IN              0  ini.0.backlash
+   137  float IN             10  ini.0.ferror
+   137  float IN              0  ini.0.home
+   137  float IN           -0.5  ini.0.home_offset
+   137  s32   IN              2  ini.0.home_sequence
+   137  float IN           1250  ini.0.max_acceleration
+   137  float IN            672  ini.0.max_limit
+   137  float IN            200  ini.0.max_velocity
+   137  float IN              1  ini.0.min_ferror
+   137  float IN          -0.01  ini.0.min_limit
+   137  float IN              0  ini.1.backlash
+   137  float IN             10  ini.1.ferror
+   137  float IN              0  ini.1.home
+   137  float IN           -1.1  ini.1.home_offset
+   137  s32   IN             -1  ini.1.home_sequence
+   137  float IN           1250  ini.1.max_acceleration
+   137  float IN           1254  ini.1.max_limit
+   137  float IN            180  ini.1.max_velocity
+   137  float IN              1  ini.1.min_ferror
+   137  float IN          -0.01  ini.1.min_limit
+   137  float IN              0  ini.2.backlash
+   137  float IN             10  ini.2.ferror
+   137  float IN              0  ini.2.home
+   137  float IN           -0.1  ini.2.home_offset
+   137  s32   IN             -1  ini.2.home_sequence
+   137  float IN           1250  ini.2.max_acceleration
+   137  float IN           1254  ini.2.max_limit
+   137  float IN            180  ini.2.max_velocity
+   137  float IN              1  ini.2.min_ferror
+   137  float IN          -0.01  ini.2.min_limit
+   137  float IN              0  ini.3.backlash
+   137  float IN             10  ini.3.ferror
+   137  float IN              0  ini.3.home
+   137  float IN            1.5  ini.3.home_offset
+   137  s32   IN              0  ini.3.home_sequence
+   137  float IN           1250  ini.3.max_acceleration
+   137  float IN           0.01  ini.3.max_limit
+   137  float IN            125  ini.3.max_velocity
+   137  float IN              1  ini.3.min_ferror
+   137  float IN           -207  ini.3.min_limit
+   137  float IN              0  ini.4.backlash
+   137  float IN             10  ini.4.ferror
+   137  float IN              0  ini.4.home
+   137  float IN             -1  ini.4.home_offset
+   137  s32   IN              0  ini.4.home_sequence
+   137  float IN           2000  ini.4.max_acceleration
+   137  float IN          1e+99  ini.4.max_limit
+   137  float IN            250  ini.4.max_velocity
+   137  float IN              1  ini.4.min_ferror
+   137  float IN         -1e+99  ini.4.min_limit
+   137  float IN           2000  ini.a.max_acceleration
+   137  float IN          1e+99  ini.a.max_limit
+   137  float IN            250  ini.a.max_velocity
+   137  float IN         -1e+99  ini.a.min_limit
+   137  float IN              0  ini.b.max_acceleration
+   137  float IN              0  ini.b.max_limit
+   137  float IN              0  ini.b.max_velocity
+   137  float IN              0  ini.b.min_limit
+   137  float IN              0  ini.c.max_acceleration
+   137  float IN              0  ini.c.max_limit
+   137  float IN              0  ini.c.max_velocity
+   137  float IN              0  ini.c.min_limit
+   137  bit   IN           TRUE  ini.traj_arc_blend_enable
+   137  bit   IN          FALSE  ini.traj_arc_blend_fallback_enable
+   137  float IN              4  ini.traj_arc_blend_gap_cycles
+   137  s32   IN             50  ini.traj_arc_blend_optimization_depth
+   137  float IN            100  ini.traj_arc_blend_ramp_freq
+   137  float IN            0.1  ini.traj_arc_blend_tangent_kink_ratio
+   137  float IN          1e+99  ini.traj_default_acceleration
+   137  float IN            100  ini.traj_default_velocity
+   137  float IN          1e+99  ini.traj_max_acceleration
+   137  float IN            200  ini.traj_max_velocity
+   137  float IN              0  ini.u.max_acceleration
+   137  float IN              0  ini.u.max_limit
+   137  float IN              0  ini.u.max_velocity
+   137  float IN              0  ini.u.min_limit
+   137  float IN              0  ini.v.max_acceleration
+   137  float IN              0  ini.v.max_limit
+   137  float IN              0  ini.v.max_velocity
+   137  float IN              0  ini.v.min_limit
+   137  float IN              0  ini.w.max_acceleration
+   137  float IN              0  ini.w.max_limit
+   137  float IN              0  ini.w.max_velocity
+   137  float IN              0  ini.w.min_limit
+   137  float IN           1250  ini.x.max_acceleration
+   137  float IN            672  ini.x.max_limit
+   137  float IN            200  ini.x.max_velocity
+   137  float IN          -0.01  ini.x.min_limit
+   137  float IN           1250  ini.y.max_acceleration
+   137  float IN           1254  ini.y.max_limit
+   137  float IN            180  ini.y.max_velocity
+   137  float IN          -0.01  ini.y.min_limit
+   137  float IN           1250  ini.z.max_acceleration
+   137  float IN           0.01  ini.z.max_limit
+   137  float IN            125  ini.z.max_velocity
+   137  float IN           -207  ini.z.min_limit
+     4  bit   OUT         FALSE  iocontrol.0.coolant-flood
+     4  bit   OUT         FALSE  iocontrol.0.coolant-mist
+     4  bit   IN           TRUE  iocontrol.0.emc-enable-in <== emc-enable-groot-error
+     4  bit   OUT         FALSE  iocontrol.0.lube
+     4  bit   IN          FALSE  iocontrol.0.lube_level
+     4  bit   OUT         FALSE  iocontrol.0.tool-change
+     4  bit   IN          FALSE  iocontrol.0.tool-changed
+     4  s32   OUT             0  iocontrol.0.tool-from-pocket
+     4  s32   OUT             0  iocontrol.0.tool-number
+     4  s32   OUT             0  iocontrol.0.tool-prep-index
+     4  s32   OUT             0  iocontrol.0.tool-prep-number
+     4  s32   OUT             0  iocontrol.0.tool-prep-pocket
+     4  bit   OUT         FALSE  iocontrol.0.tool-prepare
+     4  bit   IN          FALSE  iocontrol.0.tool-prepared
+     4  bit   OUT         FALSE  iocontrol.0.user-enable-out ==> SYS-estop-out
+     4  bit   OUT         FALSE  iocontrol.0.user-request-enable
+    29  float OUT             0  joint.0.acc-cmd
+    29  bit   OUT          TRUE  joint.0.active
+    29  bit   OUT         FALSE  joint.0.amp-enable-out
+    29  bit   IN          FALSE  joint.0.amp-fault-in
+    29  float OUT             0  joint.0.backlash-corr
+    29  float OUT             0  joint.0.backlash-filt
+    29  float OUT             0  joint.0.backlash-vel
+    29  float OUT             0  joint.0.coarse-pos-cmd
+    29  bit   OUT         FALSE  joint.0.error
+    29  float OUT             0  joint.0.f-error
+    29  float OUT             1  joint.0.f-error-lim
+    29  bit   OUT         FALSE  joint.0.f-errored
+    29  bit   OUT         FALSE  joint.0.faulted
+    29  float OUT             0  joint.0.free-pos-cmd
+    29  bit   OUT         FALSE  joint.0.free-tp-enable
+    29  float OUT             0  joint.0.free-vel-lim
+    29  s32   OUT             0  joint.0.home-state
+    29  bit   IN          FALSE  joint.0.home-sw-in
+    29  bit   OUT         FALSE  joint.0.homed
+    29  bit   OUT         FALSE  joint.0.homing
+    29  bit   OUT          TRUE  joint.0.in-position
+    29  bit   I/O         FALSE  joint.0.index-enable
+    29  float IN              1  joint.0.jog-accel-fraction
+    29  s32   IN              0  joint.0.jog-counts
+    29  bit   IN          FALSE  joint.0.jog-enable
+    29  float IN              0  joint.0.jog-scale
+    29  bit   IN          FALSE  joint.0.jog-vel-mode
+    29  bit   OUT         FALSE  joint.0.kb-jog-active
+    29  float OUT            -0  joint.0.motor-offset
+    29  float OUT             0  joint.0.motor-pos-cmd
+    29  float IN              0  joint.0.motor-pos-fb
+    29  bit   OUT         FALSE  joint.0.neg-hard-limit
+    29  bit   IN          FALSE  joint.0.neg-lim-sw-in
+    29  float OUT             0  joint.0.pos-cmd
+    29  float OUT             0  joint.0.pos-fb
+    29  bit   OUT         FALSE  joint.0.pos-hard-limit
+    29  bit   IN          FALSE  joint.0.pos-lim-sw-in
+    29  float OUT             0  joint.0.vel-cmd
+    29  bit   OUT         FALSE  joint.0.wheel-jog-active
+    29  float OUT             0  joint.1.acc-cmd
+    29  bit   OUT          TRUE  joint.1.active
+    29  bit   OUT         FALSE  joint.1.amp-enable-out
+    29  bit   IN          FALSE  joint.1.amp-fault-in
+    29  float OUT             0  joint.1.backlash-corr
+    29  float OUT             0  joint.1.backlash-filt
+    29  float OUT             0  joint.1.backlash-vel
+    29  float OUT             0  joint.1.coarse-pos-cmd
+    29  bit   OUT         FALSE  joint.1.error
+    29  float OUT             0  joint.1.f-error
+    29  float OUT             1  joint.1.f-error-lim
+    29  bit   OUT         FALSE  joint.1.f-errored
+    29  bit   OUT         FALSE  joint.1.faulted
+    29  float OUT             0  joint.1.free-pos-cmd
+    29  bit   OUT         FALSE  joint.1.free-tp-enable
+    29  float OUT             0  joint.1.free-vel-lim
+    29  s32   OUT             0  joint.1.home-state
+    29  bit   IN          FALSE  joint.1.home-sw-in
+    29  bit   OUT         FALSE  joint.1.homed
+    29  bit   OUT         FALSE  joint.1.homing
+    29  bit   OUT          TRUE  joint.1.in-position
+    29  bit   I/O         FALSE  joint.1.index-enable
+    29  float IN              1  joint.1.jog-accel-fraction
+    29  s32   IN              0  joint.1.jog-counts
+    29  bit   IN          FALSE  joint.1.jog-enable
+    29  float IN              0  joint.1.jog-scale
+    29  bit   IN          FALSE  joint.1.jog-vel-mode
+    29  bit   OUT         FALSE  joint.1.kb-jog-active
+    29  float OUT            -0  joint.1.motor-offset
+    29  float OUT             0  joint.1.motor-pos-cmd
+    29  float IN              0  joint.1.motor-pos-fb
+    29  bit   OUT         FALSE  joint.1.neg-hard-limit
+    29  bit   IN          FALSE  joint.1.neg-lim-sw-in
+    29  float OUT             0  joint.1.pos-cmd
+    29  float OUT             0  joint.1.pos-fb
+    29  bit   OUT         FALSE  joint.1.pos-hard-limit
+    29  bit   IN          FALSE  joint.1.pos-lim-sw-in
+    29  float OUT             0  joint.1.vel-cmd
+    29  bit   OUT         FALSE  joint.1.wheel-jog-active
+    29  float OUT             0  joint.2.acc-cmd
+    29  bit   OUT          TRUE  joint.2.active
+    29  bit   OUT         FALSE  joint.2.amp-enable-out
+    29  bit   IN          FALSE  joint.2.amp-fault-in
+    29  float OUT             0  joint.2.backlash-corr
+    29  float OUT             0  joint.2.backlash-filt
+    29  float OUT             0  joint.2.backlash-vel
+    29  float OUT             0  joint.2.coarse-pos-cmd
+    29  bit   OUT         FALSE  joint.2.error
+    29  float OUT             0  joint.2.f-error
+    29  float OUT             1  joint.2.f-error-lim
+    29  bit   OUT         FALSE  joint.2.f-errored
+    29  bit   OUT         FALSE  joint.2.faulted
+    29  float OUT             0  joint.2.free-pos-cmd
+    29  bit   OUT         FALSE  joint.2.free-tp-enable
+    29  float OUT             0  joint.2.free-vel-lim
+    29  s32   OUT             0  joint.2.home-state
+    29  bit   IN          FALSE  joint.2.home-sw-in
+    29  bit   OUT         FALSE  joint.2.homed
+    29  bit   OUT         FALSE  joint.2.homing
+    29  bit   OUT          TRUE  joint.2.in-position
+    29  bit   I/O         FALSE  joint.2.index-enable
+    29  float IN              1  joint.2.jog-accel-fraction
+    29  s32   IN              0  joint.2.jog-counts
+    29  bit   IN          FALSE  joint.2.jog-enable
+    29  float IN              0  joint.2.jog-scale
+    29  bit   IN          FALSE  joint.2.jog-vel-mode
+    29  bit   OUT         FALSE  joint.2.kb-jog-active
+    29  float OUT            -0  joint.2.motor-offset
+    29  float OUT             0  joint.2.motor-pos-cmd
+    29  float IN              0  joint.2.motor-pos-fb
+    29  bit   OUT         FALSE  joint.2.neg-hard-limit
+    29  bit   IN          FALSE  joint.2.neg-lim-sw-in
+    29  float OUT             0  joint.2.pos-cmd
+    29  float OUT             0  joint.2.pos-fb
+    29  bit   OUT         FALSE  joint.2.pos-hard-limit
+    29  bit   IN          FALSE  joint.2.pos-lim-sw-in
+    29  float OUT             0  joint.2.vel-cmd
+    29  bit   OUT         FALSE  joint.2.wheel-jog-active
+    29  float OUT             0  joint.3.acc-cmd
+    29  bit   OUT          TRUE  joint.3.active
+    29  bit   OUT         FALSE  joint.3.amp-enable-out
+    29  bit   IN          FALSE  joint.3.amp-fault-in
+    29  float OUT             0  joint.3.backlash-corr
+    29  float OUT             0  joint.3.backlash-filt
+    29  float OUT             0  joint.3.backlash-vel
+    29  float OUT             0  joint.3.coarse-pos-cmd
+    29  bit   OUT         FALSE  joint.3.error
+    29  float OUT             0  joint.3.f-error
+    29  float OUT             1  joint.3.f-error-lim
+    29  bit   OUT         FALSE  joint.3.f-errored
+    29  bit   OUT         FALSE  joint.3.faulted
+    29  float OUT             0  joint.3.free-pos-cmd
+    29  bit   OUT         FALSE  joint.3.free-tp-enable
+    29  float OUT             0  joint.3.free-vel-lim
+    29  s32   OUT             0  joint.3.home-state
+    29  bit   IN          FALSE  joint.3.home-sw-in
+    29  bit   OUT         FALSE  joint.3.homed
+    29  bit   OUT         FALSE  joint.3.homing
+    29  bit   OUT          TRUE  joint.3.in-position
+    29  bit   I/O         FALSE  joint.3.index-enable
+    29  float IN              1  joint.3.jog-accel-fraction
+    29  s32   IN              0  joint.3.jog-counts
+    29  bit   IN          FALSE  joint.3.jog-enable
+    29  float IN              0  joint.3.jog-scale
+    29  bit   IN          FALSE  joint.3.jog-vel-mode
+    29  bit   OUT         FALSE  joint.3.kb-jog-active
+    29  float OUT            -0  joint.3.motor-offset
+    29  float OUT             0  joint.3.motor-pos-cmd
+    29  float IN              0  joint.3.motor-pos-fb
+    29  bit   OUT         FALSE  joint.3.neg-hard-limit
+    29  bit   IN          FALSE  joint.3.neg-lim-sw-in
+    29  float OUT             0  joint.3.pos-cmd
+    29  float OUT             0  joint.3.pos-fb
+    29  bit   OUT         FALSE  joint.3.pos-hard-limit
+    29  bit   IN          FALSE  joint.3.pos-lim-sw-in
+    29  float OUT             0  joint.3.vel-cmd
+    29  bit   OUT         FALSE  joint.3.wheel-jog-active
+    29  float OUT             0  joint.4.acc-cmd
+    29  bit   OUT          TRUE  joint.4.active
+    29  bit   OUT         FALSE  joint.4.amp-enable-out
+    29  bit   IN          FALSE  joint.4.amp-fault-in
+    29  float OUT             0  joint.4.backlash-corr
+    29  float OUT             0  joint.4.backlash-filt
+    29  float OUT             0  joint.4.backlash-vel
+    29  float OUT             0  joint.4.coarse-pos-cmd
+    29  bit   OUT         FALSE  joint.4.error
+    29  float OUT             0  joint.4.f-error
+    29  float OUT             1  joint.4.f-error-lim
+    29  bit   OUT         FALSE  joint.4.f-errored
+    29  bit   OUT         FALSE  joint.4.faulted
+    29  float OUT             0  joint.4.free-pos-cmd
+    29  bit   OUT         FALSE  joint.4.free-tp-enable
+    29  float OUT             0  joint.4.free-vel-lim
+    29  s32   OUT             0  joint.4.home-state
+    29  bit   IN          FALSE  joint.4.home-sw-in
+    29  bit   OUT         FALSE  joint.4.homed
+    29  bit   OUT         FALSE  joint.4.homing
+    29  bit   OUT          TRUE  joint.4.in-position
+    29  bit   I/O         FALSE  joint.4.index-enable
+    29  float IN              1  joint.4.jog-accel-fraction
+    29  s32   IN              0  joint.4.jog-counts
+    29  bit   IN          FALSE  joint.4.jog-enable
+    29  float IN              0  joint.4.jog-scale
+    29  bit   IN          FALSE  joint.4.jog-vel-mode
+    29  bit   OUT         FALSE  joint.4.kb-jog-active
+    29  float OUT            -0  joint.4.motor-offset
+    29  float OUT             0  joint.4.motor-pos-cmd
+    29  float IN              0  joint.4.motor-pos-fb
+    29  bit   OUT         FALSE  joint.4.neg-hard-limit
+    29  bit   IN          FALSE  joint.4.neg-lim-sw-in
+    29  float OUT             0  joint.4.pos-cmd
+    29  float OUT             0  joint.4.pos-fb
+    29  bit   OUT         FALSE  joint.4.pos-hard-limit
+    29  bit   IN          FALSE  joint.4.pos-lim-sw-in
+    29  float OUT             0  joint.4.vel-cmd
+    29  bit   OUT         FALSE  joint.4.wheel-jog-active
+    37  float I/O             0  lcec.0.AI1.ain-0-bias
+    37  bit   OUT         FALSE  lcec.0.AI1.ain-0-error
+    37  bit   OUT         FALSE  lcec.0.AI1.ain-0-overrange
+    37  s32   OUT         13073  lcec.0.AI1.ain-0-raw
+    37  float I/O             1  lcec.0.AI1.ain-0-scale
+    37  bit   OUT         FALSE  lcec.0.AI1.ain-0-underrange
+    37  float OUT     0.3989685  lcec.0.AI1.ain-0-val ==> AI-ATC-temp-sensor
+    37  float I/O             0  lcec.0.AI1.ain-1-bias
+    37  bit   OUT         FALSE  lcec.0.AI1.ain-1-error
+    37  bit   OUT         FALSE  lcec.0.AI1.ain-1-overrange
+    37  s32   OUT             0  lcec.0.AI1.ain-1-raw
+    37  float I/O             1  lcec.0.AI1.ain-1-scale
+    37  bit   OUT         FALSE  lcec.0.AI1.ain-1-underrange
+    37  float OUT             0  lcec.0.AI1.ain-1-val ==> AI-SYS-fieldvoltage
+    37  float I/O             0  lcec.0.AI1.ain-2-bias
+    37  bit   OUT         FALSE  lcec.0.AI1.ain-2-error
+    37  bit   OUT         FALSE  lcec.0.AI1.ain-2-overrange
+    37  s32   OUT             0  lcec.0.AI1.ain-2-raw
+    37  float I/O             1  lcec.0.AI1.ain-2-scale
+    37  bit   OUT         FALSE  lcec.0.AI1.ain-2-underrange
+    37  float OUT             0  lcec.0.AI1.ain-2-val
+    37  float I/O             0  lcec.0.AI1.ain-3-bias
+    37  bit   OUT         FALSE  lcec.0.AI1.ain-3-error
+    37  bit   OUT         FALSE  lcec.0.AI1.ain-3-overrange
+    37  s32   OUT             0  lcec.0.AI1.ain-3-raw
+    37  float I/O             1  lcec.0.AI1.ain-3-scale
+    37  bit   OUT         FALSE  lcec.0.AI1.ain-3-underrange
+    37  float OUT             0  lcec.0.AI1.ain-3-val
+    37  bit   OUT          TRUE  lcec.0.AI1.slave-online
+    37  bit   OUT          TRUE  lcec.0.AI1.slave-oper
+    37  bit   OUT         FALSE  lcec.0.AI1.slave-state-init
+    37  bit   OUT          TRUE  lcec.0.AI1.slave-state-op
+    37  bit   OUT         FALSE  lcec.0.AI1.slave-state-preop
+    37  bit   OUT         FALSE  lcec.0.AI1.slave-state-safeop
+    37  bit   OUT          TRUE  lcec.0.DI1.din-0
+    37  bit   OUT         FALSE  lcec.0.DI1.din-0-not ==> DI-CNC-min-home-x
+    37  bit   OUT          TRUE  lcec.0.DI1.din-1
+    37  bit   OUT         FALSE  lcec.0.DI1.din-1-not
+    37  bit   OUT          TRUE  lcec.0.DI1.din-2
+    37  bit   OUT         FALSE  lcec.0.DI1.din-2-not ==> DI-CNC-min-home-a
+    37  bit   OUT          TRUE  lcec.0.DI1.din-3
+    37  bit   OUT         FALSE  lcec.0.DI1.din-3-not ==> DI-CNC-min-home-y1
+    37  bit   OUT          TRUE  lcec.0.DI1.din-4
+    37  bit   OUT         FALSE  lcec.0.DI1.din-4-not ==> DI-CNC-min-home-y2
+    37  bit   OUT         FALSE  lcec.0.DI1.din-5
+    37  bit   OUT          TRUE  lcec.0.DI1.din-5-not ==> DI-CNC-min-home-z
+    37  bit   OUT         FALSE  lcec.0.DI1.din-6
+    37  bit   OUT          TRUE  lcec.0.DI1.din-6-not
+    37  bit   OUT         FALSE  lcec.0.DI1.din-7
+    37  bit   OUT          TRUE  lcec.0.DI1.din-7-not
+    37  bit   OUT          TRUE  lcec.0.DI1.slave-online
+    37  bit   OUT          TRUE  lcec.0.DI1.slave-oper
+    37  bit   OUT         FALSE  lcec.0.DI1.slave-state-init
+    37  bit   OUT          TRUE  lcec.0.DI1.slave-state-op
+    37  bit   OUT         FALSE  lcec.0.DI1.slave-state-preop
+    37  bit   OUT         FALSE  lcec.0.DI1.slave-state-safeop
+    37  bit   OUT         FALSE  lcec.0.DI2.din-0 ==> DI-ATC-tool-sensor
+    37  bit   OUT          TRUE  lcec.0.DI2.din-0-not
+    37  bit   OUT          TRUE  lcec.0.DI2.din-1 ==> DI-ATC-drawbar-sensor
+    37  bit   OUT         FALSE  lcec.0.DI2.din-1-not ==> DI-ATC-drawbar-sensor-not
+    37  bit   OUT          TRUE  lcec.0.DI2.din-2 ==> DI-ESTOP-ext
+    37  bit   OUT         FALSE  lcec.0.DI2.din-2-not ==> DI-ESTOP-ext-not
+    37  bit   OUT          TRUE  lcec.0.DI2.din-3
+    37  bit   OUT         FALSE  lcec.0.DI2.din-3-not ==> DI-ATC-home
+    37  bit   OUT          TRUE  lcec.0.DI2.slave-online
+    37  bit   OUT          TRUE  lcec.0.DI2.slave-oper
+    37  bit   OUT         FALSE  lcec.0.DI2.slave-state-init
+    37  bit   OUT          TRUE  lcec.0.DI2.slave-state-op
+    37  bit   OUT         FALSE  lcec.0.DI2.slave-state-preop
+    37  bit   OUT         FALSE  lcec.0.DI2.slave-state-safeop
+    37  bit   OUT          TRUE  lcec.0.DI3.din-0
+    37  bit   OUT         FALSE  lcec.0.DI3.din-0-not ==> DI-CNC-tls
+    37  bit   OUT         FALSE  lcec.0.DI3.din-1
+    37  bit   OUT          TRUE  lcec.0.DI3.din-1-not ==> DI-CNC-probe
+    37  bit   OUT          TRUE  lcec.0.DI3.din-2 ==> DI-CNC-tls-ot
+    37  bit   OUT         FALSE  lcec.0.DI3.din-2-not ==> DI-CNC-tls-ot-not
+    37  bit   OUT         FALSE  lcec.0.DI3.din-3
+    37  bit   OUT          TRUE  lcec.0.DI3.din-3-not ==> DI-ATC-pocket
+    37  bit   OUT          TRUE  lcec.0.DI3.slave-online
+    37  bit   OUT          TRUE  lcec.0.DI3.slave-oper
+    37  bit   OUT         FALSE  lcec.0.DI3.slave-state-init
+    37  bit   OUT          TRUE  lcec.0.DI3.slave-state-op
+    37  bit   OUT         FALSE  lcec.0.DI3.slave-state-preop
+    37  bit   OUT         FALSE  lcec.0.DI3.slave-state-safeop
+    37  bit   OUT         FALSE  lcec.0.DI4.din-0 ==> DI-ATC-man-button
+    37  bit   OUT          TRUE  lcec.0.DI4.din-0-not
+    37  bit   OUT         FALSE  lcec.0.DI4.din-1 ==> DI-CNC-pressure-alarm
+    37  bit   OUT          TRUE  lcec.0.DI4.din-1-not
+    37  bit   OUT         FALSE  lcec.0.DI4.din-2
+    37  bit   OUT          TRUE  lcec.0.DI4.din-2-not
+    37  bit   OUT         FALSE  lcec.0.DI4.din-3
+    37  bit   OUT          TRUE  lcec.0.DI4.din-3-not
+    37  bit   OUT         FALSE  lcec.0.DI4.din-4
+    37  bit   OUT          TRUE  lcec.0.DI4.din-4-not
+    37  bit   OUT         FALSE  lcec.0.DI4.din-5 ==> DI-ATC-toolpresence
+    37  bit   OUT          TRUE  lcec.0.DI4.din-5-not
+    37  bit   OUT         FALSE  lcec.0.DI4.din-6 ==> DI-ATC-door1
+    37  bit   OUT          TRUE  lcec.0.DI4.din-6-not
+    37  bit   OUT         FALSE  lcec.0.DI4.din-7 ==> DI-ATC-door2
+    37  bit   OUT          TRUE  lcec.0.DI4.din-7-not
+    37  bit   OUT          TRUE  lcec.0.DI4.slave-online
+    37  bit   OUT          TRUE  lcec.0.DI4.slave-oper
+    37  bit   OUT         FALSE  lcec.0.DI4.slave-state-init
+    37  bit   OUT          TRUE  lcec.0.DI4.slave-state-op
+    37  bit   OUT         FALSE  lcec.0.DI4.slave-state-preop
+    37  bit   OUT         FALSE  lcec.0.DI4.slave-state-safeop
+    37  bit   IN          FALSE  lcec.0.DO1.dout-0 <== DO-CNC-flood
+    37  bit   IN          FALSE  lcec.0.DO1.dout-1 <== DO-CNC-mist
+    37  bit   IN          FALSE  lcec.0.DO1.dout-10
+    37  bit   IN          FALSE  lcec.0.DO1.dout-11
+    37  bit   IN          FALSE  lcec.0.DO1.dout-12
+    37  bit   IN          FALSE  lcec.0.DO1.dout-13
+    37  bit   IN          FALSE  lcec.0.DO1.dout-14
+    37  bit   IN          FALSE  lcec.0.DO1.dout-15
+    37  bit   IN          FALSE  lcec.0.DO1.dout-2 <== DO-ATC-status-light
+    37  bit   IN          FALSE  lcec.0.DO1.dout-3 <== DO-ATC-cone-clean
+    37  bit   IN          FALSE  lcec.0.DO1.dout-4 <== DO-ATC-drawbar-actuator
+    37  bit   IN          FALSE  lcec.0.DO1.dout-5 <== DO-CNC-tls-blowoff
+    37  bit   IN          FALSE  lcec.0.DO1.dout-6 <== DO-CNC-probe-cover-actuator
+    37  bit   IN          FALSE  lcec.0.DO1.dout-7 <== DO-ATC-rack-actuator
+    37  bit   IN          FALSE  lcec.0.DO1.dout-8 <== DO-CNC-vac-remote
+    37  bit   IN          FALSE  lcec.0.DO1.dout-9
+    37  bit   OUT          TRUE  lcec.0.DO1.slave-online
+    37  bit   OUT          TRUE  lcec.0.DO1.slave-oper
+    37  bit   OUT         FALSE  lcec.0.DO1.slave-state-init
+    37  bit   OUT          TRUE  lcec.0.DO1.slave-state-op
+    37  bit   OUT         FALSE  lcec.0.DO1.slave-state-preop
+    37  bit   OUT         FALSE  lcec.0.DO1.slave-state-safeop
+    37  bit   OUT          TRUE  lcec.0.EK1100.slave-online
+    37  bit   OUT          TRUE  lcec.0.EK1100.slave-oper
+    37  bit   OUT         FALSE  lcec.0.EK1100.slave-state-init
+    37  bit   OUT          TRUE  lcec.0.EK1100.slave-state-op
+    37  bit   OUT         FALSE  lcec.0.EK1100.slave-state-preop
+    37  bit   OUT         FALSE  lcec.0.EK1100.slave-state-safeop
+    37  bit   OUT          TRUE  lcec.0.EK1110.slave-online
+    37  bit   OUT          TRUE  lcec.0.EK1110.slave-oper
+    37  bit   OUT         FALSE  lcec.0.EK1110.slave-state-init
+    37  bit   OUT          TRUE  lcec.0.EK1110.slave-state-op
+    37  bit   OUT         FALSE  lcec.0.EK1110.slave-state-preop
+    37  bit   OUT         FALSE  lcec.0.EK1110.slave-state-safeop
+    37  float OUT             0  lcec.0.EasyCAT.analog1
+    37  float OUT             0  lcec.0.EasyCAT.analog2
+    37  s32   OUT             0  lcec.0.EasyCAT.enc1
+    37  s32   OUT             0  lcec.0.EasyCAT.enc2
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-1
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-10
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-11
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-12
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-13
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-14
+    37  bit   OUT         FALSE  lcec.0.EasyCAT.in-15
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-16
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-17
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-18
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-19
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-2
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-20
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-21
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-22
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-23
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-24
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-25
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-26
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-27
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-28
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-29
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-3
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-30
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-31
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-32
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-33
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-34
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-35
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-36
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-37
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-38
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-39
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-4
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-40
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-41
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-42
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-43
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-44
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-45
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-46
+    37  bit   OUT         FALSE  lcec.0.EasyCAT.in-47
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-48
+    37  bit   OUT         FALSE  lcec.0.EasyCAT.in-49
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-5
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-50
+    37  bit   OUT         FALSE  lcec.0.EasyCAT.in-51
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-52
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-53
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-54
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-55
+    37  bit   OUT         FALSE  lcec.0.EasyCAT.in-56
+    37  bit   OUT         FALSE  lcec.0.EasyCAT.in-57
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-58
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-59
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-6
+    37  bit   OUT         FALSE  lcec.0.EasyCAT.in-60
+    37  bit   OUT         FALSE  lcec.0.EasyCAT.in-61
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-62
+    37  bit   OUT         FALSE  lcec.0.EasyCAT.in-63
+    37  bit   OUT         FALSE  lcec.0.EasyCAT.in-64
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-7
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-8
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.in-9
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-1
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-10
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-11
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-12
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-13
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-14
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-15
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-16
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-17
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-18
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-19
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-2
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-20
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-21
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-22
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-23
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-24
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-25
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-26
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-27
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-28
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-29
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-3
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-30
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-31
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-32
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-33
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-34
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-35
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-36
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-37
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-38
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-39
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-4
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-40
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-41
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-42
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-43
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-44
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-45
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-46
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-47
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-48
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-49
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-5
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-50
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-51
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-52
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-53
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-54
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-55
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-56
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-6
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-7
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-8
+    37  bit   IN          FALSE  lcec.0.EasyCAT.out-9
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.slave-online
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.slave-oper
+    37  bit   OUT         FALSE  lcec.0.EasyCAT.slave-state-init
+    37  bit   OUT          TRUE  lcec.0.EasyCAT.slave-state-op
+    37  bit   OUT         FALSE  lcec.0.EasyCAT.slave-state-preop
+    37  bit   OUT         FALSE  lcec.0.EasyCAT.slave-state-safeop
+    37  bit   OUT          TRUE  lcec.0.MQL.slave-online
+    37  bit   OUT          TRUE  lcec.0.MQL.slave-oper
+    37  bit   OUT         FALSE  lcec.0.MQL.slave-state-init
+    37  bit   OUT          TRUE  lcec.0.MQL.slave-state-op
+    37  bit   OUT         FALSE  lcec.0.MQL.slave-state-preop
+    37  bit   OUT         FALSE  lcec.0.MQL.slave-state-safeop
+    37  bit   OUT         FALSE  lcec.0.MQL.srv-din1
+    37  bit   OUT         FALSE  lcec.0.MQL.srv-din2
+    37  bit   IN          FALSE  lcec.0.MQL.srv-enable
+    37  bit   OUT         FALSE  lcec.0.MQL.srv-error
+    37  bit   OUT         FALSE  lcec.0.MQL.srv-move-neg
+    37  bit   OUT         FALSE  lcec.0.MQL.srv-move-pos
+    37  float IN              0  lcec.0.MQL.srv-pos-cmd
+    37  s32   OUT             0  lcec.0.MQL.srv-pos-cmd-raw
+    37  bit   OUT         FALSE  lcec.0.MQL.srv-ready
+    37  bit   OUT          TRUE  lcec.0.MQL.srv-ready-to-enable
+    37  bit   IN          FALSE  lcec.0.MQL.srv-reduce-torque
+    37  bit   IN          FALSE  lcec.0.MQL.srv-reset
+    37  bit   OUT         FALSE  lcec.0.MQL.srv-sync-error
+    37  bit   OUT         FALSE  lcec.0.MQL.srv-torque-reduced
+    37  bit   OUT         FALSE  lcec.0.MQL.srv-tx-toggle
+    37  bit   OUT         FALSE  lcec.0.MQL.srv-warning
+    37  bit   OUT         FALSE  lcec.0.a-axis.din-1
+    37  bit   OUT         FALSE  lcec.0.a-axis.din-2
+    37  bit   OUT         FALSE  lcec.0.a-axis.din-3
+    37  bit   OUT         FALSE  lcec.0.a-axis.din-4
+    37  bit   OUT         FALSE  lcec.0.a-axis.din-5
+    37  bit   OUT         FALSE  lcec.0.a-axis.din-6
+    37  bit   OUT         FALSE  lcec.0.a-axis.din-7
+    37  bit   OUT         FALSE  lcec.0.a-axis.din-home
+    37  bit   OUT         FALSE  lcec.0.a-axis.din-neg-lim
+    37  bit   OUT         FALSE  lcec.0.a-axis.din-pos-lim
+    37  u32   I/O    0x00000000  lcec.0.a-axis.enc-ext-hi
+    37  u32   I/O    0x00000000  lcec.0.a-axis.enc-ext-lo
+    37  bit   I/O         FALSE  lcec.0.a-axis.enc-index-ena
+    37  bit   OUT          TRUE  lcec.0.a-axis.enc-on-home-neg
+    37  bit   OUT          TRUE  lcec.0.a-axis.enc-on-home-pos
+    37  float OUT             0  lcec.0.a-axis.enc-pos
+    37  float OUT             0  lcec.0.a-axis.enc-pos-abs
+    37  float OUT             0  lcec.0.a-axis.enc-pos-enc
+    37  bit   IN          FALSE  lcec.0.a-axis.enc-pos-reset
+    37  s32   OUT             0  lcec.0.a-axis.enc-raw
+    37  u32   OUT    0x00000000  lcec.0.a-axis.enc-ref-hi
+    37  u32   OUT    0x00000000  lcec.0.a-axis.enc-ref-lo
+    37  u32   I/O    0x00000000  lcec.0.a-axis.extenc-ext-hi
+    37  u32   I/O    0x00000000  lcec.0.a-axis.extenc-ext-lo
+    37  bit   I/O         FALSE  lcec.0.a-axis.extenc-index-ena
+    37  bit   OUT          TRUE  lcec.0.a-axis.extenc-on-home-neg
+    37  bit   OUT          TRUE  lcec.0.a-axis.extenc-on-home-pos
+    37  float OUT             0  lcec.0.a-axis.extenc-pos
+    37  float OUT             0  lcec.0.a-axis.extenc-pos-abs
+    37  float OUT             0  lcec.0.a-axis.extenc-pos-enc
+    37  bit   IN          FALSE  lcec.0.a-axis.extenc-pos-reset
+    37  s32   OUT             0  lcec.0.a-axis.extenc-raw
+    37  u32   OUT    0x00000000  lcec.0.a-axis.extenc-ref-hi
+    37  u32   OUT    0x00000000  lcec.0.a-axis.extenc-ref-lo
+    37  bit   OUT          TRUE  lcec.0.a-axis.slave-online
+    37  bit   OUT          TRUE  lcec.0.a-axis.slave-oper
+    37  bit   OUT         FALSE  lcec.0.a-axis.slave-state-init
+    37  bit   OUT          TRUE  lcec.0.a-axis.slave-state-op
+    37  bit   OUT         FALSE  lcec.0.a-axis.slave-state-preop
+    37  bit   OUT         FALSE  lcec.0.a-axis.slave-state-safeop
+    37  bit   OUT         FALSE  lcec.0.a-axis.srv-at-speed
+    37  bit   IN          FALSE  lcec.0.a-axis.srv-enable
+    37  bit   IN          FALSE  lcec.0.a-axis.srv-enable-volt
+    37  bit   OUT         FALSE  lcec.0.a-axis.srv-fault ==> SRV-fault-a
+    37  bit   IN          FALSE  lcec.0.a-axis.srv-fault-reset <== machine-is-on
+    37  bit   IN          FALSE  lcec.0.a-axis.srv-halt
+    37  bit   OUT         FALSE  lcec.0.a-axis.srv-limit-active
+    37  bit   OUT          TRUE  lcec.0.a-axis.srv-on-disabled
+    37  bit   OUT         FALSE  lcec.0.a-axis.srv-oper-enabled
+    37  u32   OUT    0x00000009  lcec.0.a-axis.srv-operation-mode
+    37  bit   IN          FALSE  lcec.0.a-axis.srv-quick-stop
+    37  bit   OUT          TRUE  lcec.0.a-axis.srv-quick-stoped
+    37  bit   OUT         FALSE  lcec.0.a-axis.srv-ready
+    37  bit   OUT          TRUE  lcec.0.a-axis.srv-remote
+    37  bit   IN          FALSE  lcec.0.a-axis.srv-switch-on
+    37  bit   OUT         FALSE  lcec.0.a-axis.srv-switched-on
+    37  float OUT             0  lcec.0.a-axis.srv-torque-rel
+    37  float IN              0  lcec.0.a-axis.srv-vel-cmd
+    37  float OUT             0  lcec.0.a-axis.srv-vel-fb
+    37  float OUT             0  lcec.0.a-axis.srv-vel-fb-rpm
+    37  float OUT             0  lcec.0.a-axis.srv-vel-fb-rpm-abs
+    37  float OUT             0  lcec.0.a-axis.srv-vel-rpm
+    37  bit   OUT          TRUE  lcec.0.a-axis.srv-volt-enabled
+    37  bit   OUT         FALSE  lcec.0.a-axis.srv-warning
+    37  bit   OUT         FALSE  lcec.0.a-axis.srv-zero-speed
+    37  bit   OUT          TRUE  lcec.0.all-op
+    37  bit   OUT          TRUE  lcec.0.link-up
+    37  s32   OUT          -199  lcec.0.pll-err
+    37  s32   OUT         -1000  lcec.0.pll-out
+    37  u32   OUT    0x00000002  lcec.0.pll-reset-count
+    37  s32   OUT             0  lcec.0.read.time
+    37  u32   OUT    0x00000010  lcec.0.slaves-responding
+    37  float OUT             0  lcec.0.spindle.act-current ==> vfd-current
+    37  float OUT          26.4  lcec.0.spindle.drive-temp ==> vfd-temp
+    37  bit   IN          FALSE  lcec.0.spindle.enable <== spindle-enable
+    37  u32   OUT    0x00000000  lcec.0.spindle.error-code ==> vfd-error-code
+    37  bit   IN          FALSE  lcec.0.spindle.fault-reset <== machine-is-on
+    37  bit   IN          FALSE  lcec.0.spindle.halt
+    37  bit   IN          FALSE  lcec.0.spindle.quick-stop <== estop-soft-trigger
+    37  bit   OUT          TRUE  lcec.0.spindle.slave-online
+    37  bit   OUT          TRUE  lcec.0.spindle.slave-oper
+    37  bit   OUT         FALSE  lcec.0.spindle.slave-state-init
+    37  bit   OUT          TRUE  lcec.0.spindle.slave-state-op
+    37  bit   OUT         FALSE  lcec.0.spindle.slave-state-preop
+    37  bit   OUT         FALSE  lcec.0.spindle.slave-state-safeop
+    37  bit   OUT          TRUE  lcec.0.spindle.stat-at-speed ==> spindle-at-speed
+    37  bit   OUT         FALSE  lcec.0.spindle.stat-fault ==> vfd-error
+    37  bit   OUT         FALSE  lcec.0.spindle.stat-op-enabled ==> spindle-is-running
+    37  bit   OUT         FALSE  lcec.0.spindle.stat-quick-stoped
+    37  bit   OUT          TRUE  lcec.0.spindle.stat-remote
+    37  bit   OUT          TRUE  lcec.0.spindle.stat-switch-on-disabled
+    37  bit   OUT         FALSE  lcec.0.spindle.stat-switch-on-ready
+    37  bit   OUT         FALSE  lcec.0.spindle.stat-switched-on
+    37  bit   OUT         FALSE  lcec.0.spindle.stat-volt-enabled
+    37  bit   OUT         FALSE  lcec.0.spindle.stat-warning
+    37  float OUT             0  lcec.0.spindle.vel-fb-rpm
+    37  float OUT             0  lcec.0.spindle.vel-fb-rpm-abs
+    37  u32   IN     0x00000000  lcec.0.spindle.vel-ramp-down
+    37  u32   IN     0x00000000  lcec.0.spindle.vel-ramp-up
+    37  float IN              0  lcec.0.spindle.vel-rpm-cmd <== spindle-rpm-limited
+    37  u32   OUT    0x00000000  lcec.0.spindle.warn-code ==> spindle-warn-code
+    37  bit   OUT         FALSE  lcec.0.state-init
+    37  bit   OUT          TRUE  lcec.0.state-op
+    37  bit   OUT         FALSE  lcec.0.state-preop
+    37  bit   OUT         FALSE  lcec.0.state-safeop
+    37  s32   OUT             0  lcec.0.write.time
+    37  bit   OUT         FALSE  lcec.0.x-axis.din-1
+    37  bit   OUT         FALSE  lcec.0.x-axis.din-2
+    37  bit   OUT         FALSE  lcec.0.x-axis.din-3
+    37  bit   OUT         FALSE  lcec.0.x-axis.din-4
+    37  bit   OUT          TRUE  lcec.0.x-axis.din-5
+    37  bit   OUT          TRUE  lcec.0.x-axis.din-6
+    37  bit   OUT          TRUE  lcec.0.x-axis.din-7
+    37  bit   OUT         FALSE  lcec.0.x-axis.din-home
+    37  bit   OUT         FALSE  lcec.0.x-axis.din-neg-lim
+    37  bit   OUT         FALSE  lcec.0.x-axis.din-pos-lim
+    37  bit   IN          FALSE  lcec.0.x-axis.dout-d01
+    37  bit   IN          FALSE  lcec.0.x-axis.dout-d02
+    37  bit   IN          FALSE  lcec.0.x-axis.dout-d03
+    37  bit   IN          FALSE  lcec.0.x-axis.dout-d04
+    37  u32   I/O    0x00000000  lcec.0.x-axis.enc-ext-hi
+    37  u32   I/O    0x0000014B  lcec.0.x-axis.enc-ext-lo
+    37  bit   I/O         FALSE  lcec.0.x-axis.enc-index-ena
+    37  bit   OUT         FALSE  lcec.0.x-axis.enc-on-home-neg
+    37  bit   OUT          TRUE  lcec.0.x-axis.enc-on-home-pos
+    37  float OUT  2.384186e-07  lcec.0.x-axis.enc-pos
+    37  float OUT  1.972914e-05  lcec.0.x-axis.enc-pos-abs
+    37  float OUT  1.972914e-05  lcec.0.x-axis.enc-pos-enc
+    37  bit   IN          FALSE  lcec.0.x-axis.enc-pos-reset
+    37  s32   OUT           331  lcec.0.x-axis.enc-raw
+    37  u32   OUT    0x00000000  lcec.0.x-axis.enc-ref-hi
+    37  u32   OUT    0x00000147  lcec.0.x-axis.enc-ref-lo
+    37  u32   I/O    0x00000000  lcec.0.x-axis.extenc-ext-hi
+    37  u32   I/O    0x00000000  lcec.0.x-axis.extenc-ext-lo
+    37  bit   I/O         FALSE  lcec.0.x-axis.extenc-index-ena
+    37  bit   OUT          TRUE  lcec.0.x-axis.extenc-on-home-neg
+    37  bit   OUT          TRUE  lcec.0.x-axis.extenc-on-home-pos
+    37  float OUT             0  lcec.0.x-axis.extenc-pos
+    37  float OUT             0  lcec.0.x-axis.extenc-pos-abs
+    37  float OUT             0  lcec.0.x-axis.extenc-pos-enc
+    37  bit   IN          FALSE  lcec.0.x-axis.extenc-pos-reset
+    37  s32   OUT             0  lcec.0.x-axis.extenc-raw
+    37  u32   OUT    0x00000000  lcec.0.x-axis.extenc-ref-hi
+    37  u32   OUT    0x00000000  lcec.0.x-axis.extenc-ref-lo
+    37  bit   OUT          TRUE  lcec.0.x-axis.slave-online
+    37  bit   OUT          TRUE  lcec.0.x-axis.slave-oper
+    37  bit   OUT         FALSE  lcec.0.x-axis.slave-state-init
+    37  bit   OUT          TRUE  lcec.0.x-axis.slave-state-op
+    37  bit   OUT         FALSE  lcec.0.x-axis.slave-state-preop
+    37  bit   OUT         FALSE  lcec.0.x-axis.slave-state-safeop
+    37  bit   OUT          TRUE  lcec.0.x-axis.srv-at-speed
+    37  bit   IN          FALSE  lcec.0.x-axis.srv-enable
+    37  bit   IN          FALSE  lcec.0.x-axis.srv-enable-volt
+    37  bit   OUT         FALSE  lcec.0.x-axis.srv-fault ==> SRV-fault-x
+    37  bit   IN          FALSE  lcec.0.x-axis.srv-fault-reset <== machine-is-on
+    37  bit   IN          FALSE  lcec.0.x-axis.srv-halt
+    37  bit   OUT         FALSE  lcec.0.x-axis.srv-limit-active
+    37  bit   OUT          TRUE  lcec.0.x-axis.srv-on-disabled
+    37  bit   OUT         FALSE  lcec.0.x-axis.srv-oper-enabled
+    37  u32   OUT    0x00000008  lcec.0.x-axis.srv-operation-mode
+    37  float IN              0  lcec.0.x-axis.srv-pos-cmd
+    37  bit   IN          FALSE  lcec.0.x-axis.srv-quick-stop
+    37  bit   OUT          TRUE  lcec.0.x-axis.srv-quick-stoped
+    37  bit   OUT         FALSE  lcec.0.x-axis.srv-ready
+    37  bit   OUT          TRUE  lcec.0.x-axis.srv-remote
+    37  bit   IN          FALSE  lcec.0.x-axis.srv-switch-on
+    37  bit   OUT         FALSE  lcec.0.x-axis.srv-switched-on
+    37  float OUT             0  lcec.0.x-axis.srv-torque-rel
+    37  float OUT             0  lcec.0.x-axis.srv-vel-fb
+    37  float OUT             0  lcec.0.x-axis.srv-vel-fb-rpm
+    37  float OUT             0  lcec.0.x-axis.srv-vel-fb-rpm-abs
+    37  float OUT             0  lcec.0.x-axis.srv-vel-rpm
+    37  bit   OUT          TRUE  lcec.0.x-axis.srv-volt-enabled
+    37  bit   OUT         FALSE  lcec.0.x-axis.srv-warning
+    37  bit   OUT         FALSE  lcec.0.x-axis.srv-zero-speed
+    37  bit   OUT         FALSE  lcec.0.y1-axis.din-1
+    37  bit   OUT         FALSE  lcec.0.y1-axis.din-2
+    37  bit   OUT         FALSE  lcec.0.y1-axis.din-3
+    37  bit   OUT         FALSE  lcec.0.y1-axis.din-4
+    37  bit   OUT         FALSE  lcec.0.y1-axis.din-5
+    37  bit   OUT         FALSE  lcec.0.y1-axis.din-6
+    37  bit   OUT         FALSE  lcec.0.y1-axis.din-7
+    37  bit   OUT         FALSE  lcec.0.y1-axis.din-home
+    37  bit   OUT         FALSE  lcec.0.y1-axis.din-neg-lim
+    37  bit   OUT         FALSE  lcec.0.y1-axis.din-pos-lim
+    37  bit   IN          FALSE  lcec.0.y1-axis.dout-d01
+    37  bit   IN          FALSE  lcec.0.y1-axis.dout-d02
+    37  bit   IN          FALSE  lcec.0.y1-axis.dout-d03
+    37  bit   IN          FALSE  lcec.0.y1-axis.dout-d04
+    37  u32   I/O    0x00000000  lcec.0.y1-axis.enc-ext-hi
+    37  u32   I/O    0x00000006  lcec.0.y1-axis.enc-ext-lo
+    37  bit   I/O         FALSE  lcec.0.y1-axis.enc-index-ena
+    37  bit   OUT         FALSE  lcec.0.y1-axis.enc-on-home-neg
+    37  bit   OUT          TRUE  lcec.0.y1-axis.enc-on-home-pos
+    37  float OUT             0  lcec.0.y1-axis.enc-pos
+    37  float OUT  3.576279e-07  lcec.0.y1-axis.enc-pos-abs
+    37  float OUT  3.576279e-07  lcec.0.y1-axis.enc-pos-enc
+    37  bit   IN          FALSE  lcec.0.y1-axis.enc-pos-reset
+    37  s32   OUT             6  lcec.0.y1-axis.enc-raw
+    37  u32   OUT    0x00000000  lcec.0.y1-axis.enc-ref-hi
+    37  u32   OUT    0x00000006  lcec.0.y1-axis.enc-ref-lo
+    37  u32   I/O    0x00000000  lcec.0.y1-axis.extenc-ext-hi
+    37  u32   I/O    0x00000000  lcec.0.y1-axis.extenc-ext-lo
+    37  bit   I/O         FALSE  lcec.0.y1-axis.extenc-index-ena
+    37  bit   OUT          TRUE  lcec.0.y1-axis.extenc-on-home-neg
+    37  bit   OUT          TRUE  lcec.0.y1-axis.extenc-on-home-pos
+    37  float OUT             0  lcec.0.y1-axis.extenc-pos
+    37  float OUT             0  lcec.0.y1-axis.extenc-pos-abs
+    37  float OUT             0  lcec.0.y1-axis.extenc-pos-enc
+    37  bit   IN          FALSE  lcec.0.y1-axis.extenc-pos-reset
+    37  s32   OUT             0  lcec.0.y1-axis.extenc-raw
+    37  u32   OUT    0x00000000  lcec.0.y1-axis.extenc-ref-hi
+    37  u32   OUT    0x00000000  lcec.0.y1-axis.extenc-ref-lo
+    37  bit   OUT          TRUE  lcec.0.y1-axis.slave-online
+    37  bit   OUT          TRUE  lcec.0.y1-axis.slave-oper
+    37  bit   OUT         FALSE  lcec.0.y1-axis.slave-state-init
+    37  bit   OUT          TRUE  lcec.0.y1-axis.slave-state-op
+    37  bit   OUT         FALSE  lcec.0.y1-axis.slave-state-preop
+    37  bit   OUT         FALSE  lcec.0.y1-axis.slave-state-safeop
+    37  bit   OUT          TRUE  lcec.0.y1-axis.srv-at-speed
+    37  bit   IN          FALSE  lcec.0.y1-axis.srv-enable
+    37  bit   IN          FALSE  lcec.0.y1-axis.srv-enable-volt
+    37  bit   OUT         FALSE  lcec.0.y1-axis.srv-fault ==> SRV-fault-y1
+    37  bit   IN          FALSE  lcec.0.y1-axis.srv-fault-reset <== machine-is-on
+    37  bit   IN          FALSE  lcec.0.y1-axis.srv-halt
+    37  bit   OUT         FALSE  lcec.0.y1-axis.srv-limit-active
+    37  bit   OUT          TRUE  lcec.0.y1-axis.srv-on-disabled
+    37  bit   OUT         FALSE  lcec.0.y1-axis.srv-oper-enabled
+    37  u32   OUT    0x00000008  lcec.0.y1-axis.srv-operation-mode
+    37  float IN              0  lcec.0.y1-axis.srv-pos-cmd
+    37  bit   IN          FALSE  lcec.0.y1-axis.srv-quick-stop
+    37  bit   OUT          TRUE  lcec.0.y1-axis.srv-quick-stoped
+    37  bit   OUT         FALSE  lcec.0.y1-axis.srv-ready
+    37  bit   OUT          TRUE  lcec.0.y1-axis.srv-remote
+    37  bit   IN          FALSE  lcec.0.y1-axis.srv-switch-on
+    37  bit   OUT         FALSE  lcec.0.y1-axis.srv-switched-on
+    37  float OUT             0  lcec.0.y1-axis.srv-torque-rel
+    37  float OUT             0  lcec.0.y1-axis.srv-vel-fb
+    37  float OUT             0  lcec.0.y1-axis.srv-vel-fb-rpm
+    37  float OUT             0  lcec.0.y1-axis.srv-vel-fb-rpm-abs
+    37  float OUT             0  lcec.0.y1-axis.srv-vel-rpm
+    37  bit   OUT          TRUE  lcec.0.y1-axis.srv-volt-enabled
+    37  bit   OUT         FALSE  lcec.0.y1-axis.srv-warning
+    37  bit   OUT         FALSE  lcec.0.y1-axis.srv-zero-speed
+    37  bit   OUT         FALSE  lcec.0.y2-axis.din-1
+    37  bit   OUT         FALSE  lcec.0.y2-axis.din-2
+    37  bit   OUT         FALSE  lcec.0.y2-axis.din-3
+    37  bit   OUT         FALSE  lcec.0.y2-axis.din-4
+    37  bit   OUT         FALSE  lcec.0.y2-axis.din-5
+    37  bit   OUT         FALSE  lcec.0.y2-axis.din-6
+    37  bit   OUT         FALSE  lcec.0.y2-axis.din-7
+    37  bit   OUT         FALSE  lcec.0.y2-axis.din-home
+    37  bit   OUT         FALSE  lcec.0.y2-axis.din-neg-lim
+    37  bit   OUT         FALSE  lcec.0.y2-axis.din-pos-lim
+    37  bit   IN          FALSE  lcec.0.y2-axis.dout-d01
+    37  bit   IN          FALSE  lcec.0.y2-axis.dout-d02
+    37  bit   IN          FALSE  lcec.0.y2-axis.dout-d03
+    37  bit   IN          FALSE  lcec.0.y2-axis.dout-d04
+    37  u32   I/O    0xFFFFFFFF  lcec.0.y2-axis.enc-ext-hi
+    37  u32   I/O    0xFFFFFFFF  lcec.0.y2-axis.enc-ext-lo
+    37  bit   I/O         FALSE  lcec.0.y2-axis.enc-index-ena
+    37  bit   OUT          TRUE  lcec.0.y2-axis.enc-on-home-neg
+    37  bit   OUT         FALSE  lcec.0.y2-axis.enc-on-home-pos
+    37  float OUT             0  lcec.0.y2-axis.enc-pos
+    37  float OUT  -5.960464e-08  lcec.0.y2-axis.enc-pos-abs
+    37  float OUT  -5.960464e-08  lcec.0.y2-axis.enc-pos-enc
+    37  bit   IN          FALSE  lcec.0.y2-axis.enc-pos-reset
+    37  s32   OUT            -1  lcec.0.y2-axis.enc-raw
+    37  u32   OUT    0xFFFFFFFF  lcec.0.y2-axis.enc-ref-hi
+    37  u32   OUT    0xFFFFFFFF  lcec.0.y2-axis.enc-ref-lo
+    37  u32   I/O    0x00000000  lcec.0.y2-axis.extenc-ext-hi
+    37  u32   I/O    0x00000000  lcec.0.y2-axis.extenc-ext-lo
+    37  bit   I/O         FALSE  lcec.0.y2-axis.extenc-index-ena
+    37  bit   OUT          TRUE  lcec.0.y2-axis.extenc-on-home-neg
+    37  bit   OUT          TRUE  lcec.0.y2-axis.extenc-on-home-pos
+    37  float OUT             0  lcec.0.y2-axis.extenc-pos
+    37  float OUT             0  lcec.0.y2-axis.extenc-pos-abs
+    37  float OUT             0  lcec.0.y2-axis.extenc-pos-enc
+    37  bit   IN          FALSE  lcec.0.y2-axis.extenc-pos-reset
+    37  s32   OUT             0  lcec.0.y2-axis.extenc-raw
+    37  u32   OUT    0x00000000  lcec.0.y2-axis.extenc-ref-hi
+    37  u32   OUT    0x00000000  lcec.0.y2-axis.extenc-ref-lo
+    37  bit   OUT          TRUE  lcec.0.y2-axis.slave-online
+    37  bit   OUT          TRUE  lcec.0.y2-axis.slave-oper
+    37  bit   OUT         FALSE  lcec.0.y2-axis.slave-state-init
+    37  bit   OUT          TRUE  lcec.0.y2-axis.slave-state-op
+    37  bit   OUT         FALSE  lcec.0.y2-axis.slave-state-preop
+    37  bit   OUT         FALSE  lcec.0.y2-axis.slave-state-safeop
+    37  bit   OUT          TRUE  lcec.0.y2-axis.srv-at-speed
+    37  bit   IN          FALSE  lcec.0.y2-axis.srv-enable
+    37  bit   IN          FALSE  lcec.0.y2-axis.srv-enable-volt
+    37  bit   OUT         FALSE  lcec.0.y2-axis.srv-fault ==> SRV-fault-y2
+    37  bit   IN          FALSE  lcec.0.y2-axis.srv-fault-reset <== machine-is-on
+    37  bit   IN          FALSE  lcec.0.y2-axis.srv-halt
+    37  bit   OUT         FALSE  lcec.0.y2-axis.srv-limit-active
+    37  bit   OUT          TRUE  lcec.0.y2-axis.srv-on-disabled
+    37  bit   OUT         FALSE  lcec.0.y2-axis.srv-oper-enabled
+    37  u32   OUT    0x00000008  lcec.0.y2-axis.srv-operation-mode
+    37  float IN              0  lcec.0.y2-axis.srv-pos-cmd
+    37  bit   IN          FALSE  lcec.0.y2-axis.srv-quick-stop
+    37  bit   OUT          TRUE  lcec.0.y2-axis.srv-quick-stoped
+    37  bit   OUT         FALSE  lcec.0.y2-axis.srv-ready
+    37  bit   OUT          TRUE  lcec.0.y2-axis.srv-remote
+    37  bit   IN          FALSE  lcec.0.y2-axis.srv-switch-on
+    37  bit   OUT         FALSE  lcec.0.y2-axis.srv-switched-on
+    37  float OUT             0  lcec.0.y2-axis.srv-torque-rel
+    37  float OUT             0  lcec.0.y2-axis.srv-vel-fb
+    37  float OUT             0  lcec.0.y2-axis.srv-vel-fb-rpm
+    37  float OUT             0  lcec.0.y2-axis.srv-vel-fb-rpm-abs
+    37  float OUT             0  lcec.0.y2-axis.srv-vel-rpm
+    37  bit   OUT          TRUE  lcec.0.y2-axis.srv-volt-enabled
+    37  bit   OUT         FALSE  lcec.0.y2-axis.srv-warning
+    37  bit   OUT         FALSE  lcec.0.y2-axis.srv-zero-speed
+    37  bit   OUT         FALSE  lcec.0.z-axis.din-1
+    37  bit   OUT         FALSE  lcec.0.z-axis.din-2
+    37  bit   OUT         FALSE  lcec.0.z-axis.din-3
+    37  bit   OUT         FALSE  lcec.0.z-axis.din-4
+    37  bit   OUT         FALSE  lcec.0.z-axis.din-5
+    37  bit   OUT         FALSE  lcec.0.z-axis.din-6
+    37  bit   OUT         FALSE  lcec.0.z-axis.din-7
+    37  bit   OUT         FALSE  lcec.0.z-axis.din-home
+    37  bit   OUT         FALSE  lcec.0.z-axis.din-neg-lim
+    37  bit   OUT         FALSE  lcec.0.z-axis.din-pos-lim
+    37  bit   IN          FALSE  lcec.0.z-axis.dout-d01
+    37  bit   IN          FALSE  lcec.0.z-axis.dout-d02
+    37  bit   IN          FALSE  lcec.0.z-axis.dout-d03
+    37  bit   IN          FALSE  lcec.0.z-axis.dout-d04
+    37  u32   I/O    0x00000000  lcec.0.z-axis.enc-ext-hi
+    37  u32   I/O    0x0000001A  lcec.0.z-axis.enc-ext-lo
+    37  bit   I/O         FALSE  lcec.0.z-axis.enc-index-ena
+    37  bit   OUT         FALSE  lcec.0.z-axis.enc-on-home-neg
+    37  bit   OUT          TRUE  lcec.0.z-axis.enc-on-home-pos
+    37  float OUT  1.788139e-07  lcec.0.z-axis.enc-pos
+    37  float OUT  1.549721e-06  lcec.0.z-axis.enc-pos-abs
+    37  float OUT  1.549721e-06  lcec.0.z-axis.enc-pos-enc
+    37  bit   IN          FALSE  lcec.0.z-axis.enc-pos-reset
+    37  s32   OUT            26  lcec.0.z-axis.enc-raw
+    37  u32   OUT    0x00000000  lcec.0.z-axis.enc-ref-hi
+    37  u32   OUT    0x00000017  lcec.0.z-axis.enc-ref-lo
+    37  u32   I/O    0x00000000  lcec.0.z-axis.extenc-ext-hi
+    37  u32   I/O    0x00000000  lcec.0.z-axis.extenc-ext-lo
+    37  bit   I/O         FALSE  lcec.0.z-axis.extenc-index-ena
+    37  bit   OUT          TRUE  lcec.0.z-axis.extenc-on-home-neg
+    37  bit   OUT          TRUE  lcec.0.z-axis.extenc-on-home-pos
+    37  float OUT             0  lcec.0.z-axis.extenc-pos
+    37  float OUT             0  lcec.0.z-axis.extenc-pos-abs
+    37  float OUT             0  lcec.0.z-axis.extenc-pos-enc
+    37  bit   IN          FALSE  lcec.0.z-axis.extenc-pos-reset
+    37  s32   OUT             0  lcec.0.z-axis.extenc-raw
+    37  u32   OUT    0x00000000  lcec.0.z-axis.extenc-ref-hi
+    37  u32   OUT    0x00000000  lcec.0.z-axis.extenc-ref-lo
+    37  bit   OUT          TRUE  lcec.0.z-axis.slave-online
+    37  bit   OUT          TRUE  lcec.0.z-axis.slave-oper
+    37  bit   OUT         FALSE  lcec.0.z-axis.slave-state-init
+    37  bit   OUT          TRUE  lcec.0.z-axis.slave-state-op
+    37  bit   OUT         FALSE  lcec.0.z-axis.slave-state-preop
+    37  bit   OUT         FALSE  lcec.0.z-axis.slave-state-safeop
+    37  bit   OUT          TRUE  lcec.0.z-axis.srv-at-speed
+    37  bit   IN          FALSE  lcec.0.z-axis.srv-enable
+    37  bit   IN          FALSE  lcec.0.z-axis.srv-enable-volt
+    37  bit   OUT         FALSE  lcec.0.z-axis.srv-fault ==> SRV-fault-z
+    37  bit   IN          FALSE  lcec.0.z-axis.srv-fault-reset <== machine-is-on
+    37  bit   IN          FALSE  lcec.0.z-axis.srv-halt
+    37  bit   OUT         FALSE  lcec.0.z-axis.srv-limit-active
+    37  bit   OUT          TRUE  lcec.0.z-axis.srv-on-disabled
+    37  bit   OUT         FALSE  lcec.0.z-axis.srv-oper-enabled
+    37  u32   OUT    0x00000008  lcec.0.z-axis.srv-operation-mode
+    37  float IN              0  lcec.0.z-axis.srv-pos-cmd
+    37  bit   IN          FALSE  lcec.0.z-axis.srv-quick-stop
+    37  bit   OUT          TRUE  lcec.0.z-axis.srv-quick-stoped
+    37  bit   OUT         FALSE  lcec.0.z-axis.srv-ready
+    37  bit   OUT          TRUE  lcec.0.z-axis.srv-remote
+    37  bit   IN          FALSE  lcec.0.z-axis.srv-switch-on
+    37  bit   OUT         FALSE  lcec.0.z-axis.srv-switched-on
+    37  float OUT             0  lcec.0.z-axis.srv-torque-rel
+    37  float OUT             0  lcec.0.z-axis.srv-vel-fb
+    37  float OUT             0  lcec.0.z-axis.srv-vel-fb-rpm
+    37  float OUT             0  lcec.0.z-axis.srv-vel-fb-rpm-abs
+    37  float OUT             0  lcec.0.z-axis.srv-vel-rpm
+    37  bit   OUT          TRUE  lcec.0.z-axis.srv-volt-enabled
+    37  bit   OUT         FALSE  lcec.0.z-axis.srv-warning
+    37  bit   OUT         FALSE  lcec.0.z-axis.srv-zero-speed
+    37  bit   OUT          TRUE  lcec.all-op ==> ec-all-op
+    34  u32   OUT    0x00000001  lcec.conf.master-count
+    34  u32   OUT    0x00000010  lcec.conf.slave-count
+    37  bit   OUT          TRUE  lcec.link-up ==> ec-link-up
+    37  s32   OUT         16580  lcec.read-all.time
+    37  u32   OUT    0x00000010  lcec.slaves-responding ==> ec-slaves-responding
+    37  bit   OUT         FALSE  lcec.state-init
+    37  bit   OUT          TRUE  lcec.state-op
+    37  bit   OUT         FALSE  lcec.state-preop
+    37  bit   OUT         FALSE  lcec.state-safeop
+    37  s32   OUT         26876  lcec.write-all.time
+   109  float IN              0  limit1.spindle.in <== spindle-rpm
+   109  float IN           6000  limit1.spindle.max
+   109  float IN              0  limit1.spindle.min
+   109  float OUT             0  limit1.spindle.out ==> spindle-rpm-limited
+   109  s32   OUT           152  limit1.spindle.time
+   106  float IN              0  limit2.mql.in
+   106  bit   IN          FALSE  limit2.mql.load
+   106  float IN          1e+20  limit2.mql.max
+   106  float IN          1e+20  limit2.mql.maxv
+   106  float IN         -1e+20  limit2.mql.min
+   106  float OUT             0  limit2.mql.out
+   106  s32   OUT           192  limit2.mql.time
+    58  float IN              0  lowpass.feed.in
+    58  bit   IN          FALSE  lowpass.feed.load
+    58  float OUT             0  lowpass.feed.out
+    58  s32   OUT           160  lowpass.feed.time
+    58  float IN              0  lowpass.spindle.in
+    58  bit   IN          FALSE  lowpass.spindle.load
+    58  float OUT             0  lowpass.spindle.out
+    58  s32   OUT           108  lowpass.spindle.time
+    64  bit   IN           TRUE  lut5.spindleinhibit.in-0 <== DI-ATC-drawbar-sensor
+    64  bit   IN          FALSE  lut5.spindleinhibit.in-1 <== DO-ATC-drawbar-actuator
+    64  bit   IN          FALSE  lut5.spindleinhibit.in-2 <== DI-ATC-tool-sensor
+    64  bit   IN          FALSE  lut5.spindleinhibit.in-3
+    64  bit   IN          FALSE  lut5.spindleinhibit.in-4
+    64  bit   OUT          TRUE  lut5.spindleinhibit.out ==> spindle-inhibit
+    64  s32   OUT           140  lut5.spindleinhibit.time
+    64  bit   IN          FALSE  lut5.toolchange.in-0
+    64  bit   IN          FALSE  lut5.toolchange.in-1
+    64  bit   IN          FALSE  lut5.toolchange.in-2
+    64  bit   IN          FALSE  lut5.toolchange.in-3
+    64  bit   IN          FALSE  lut5.toolchange.in-4
+    64  bit   OUT         FALSE  lut5.toolchange.out
+    64  s32   OUT            72  lut5.toolchange.time
+   103  bit   IN          FALSE  m_drivealm.force
+   103  s32   OUT            40  m_drivealm.time
+   103  bit   IN          FALSE  m_drivealm.trigger
+   103  bit   IN          FALSE  m_drivewarn.force
+   103  s32   OUT            56  m_drivewarn.time
+   103  bit   IN          FALSE  m_drivewarn.trigger
+   103  bit   IN          FALSE  m_estopext.force
+   103  s32   OUT           112  m_estopext.time
+   103  bit   IN          FALSE  m_estopext.trigger
+   103  bit   IN          FALSE  m_lowpressure.force
+   103  s32   OUT            80  m_lowpressure.time
+   103  bit   IN          FALSE  m_lowpressure.trigger
+   103  bit   IN          FALSE  m_pendantestop.force
+   103  s32   OUT            48  m_pendantestop.time
+   103  bit   IN          FALSE  m_pendantestop.trigger
+   103  bit   IN          FALSE  m_tempwarn.force
+   103  s32   OUT            48  m_tempwarn.time
+   103  bit   IN          FALSE  m_tempwarn.trigger
+   103  bit   IN          FALSE  m_tlsovertravel.force
+   103  s32   OUT            72  m_tlsovertravel.time
+   103  bit   IN          FALSE  m_tlsovertravel.trigger
+   103  bit   IN          FALSE  m_vfderror.force
+   103  s32   OUT           168  m_vfderror.time
+   103  bit   IN          FALSE  m_vfderror.trigger
+    29  s32   OUT           328  motion-command-handler.time
+    29  s32   OUT          7996  motion-controller.time
+    29  float IN              1  motion.adaptive-feed
+    29  float IN              0  motion.analog-in-00 <== carousel_current-position-conv
+    29  float IN              0  motion.analog-in-01 <== preppocket
+    29  float IN              0  motion.analog-in-02
+    29  float IN              0  motion.analog-in-03
+    29  float OUT             0  motion.analog-out-00
+    29  float OUT             0  motion.analog-out-01
+    29  float OUT             0  motion.analog-out-02
+    29  float OUT             0  motion.analog-out-03
+    29  bit   OUT         FALSE  motion.coord-error
+    29  bit   OUT         FALSE  motion.coord-mode
+    29  float OUT             0  motion.current-vel
+    29  bit   IN          FALSE  motion.digital-in-00 <== carousel_homed
+    29  bit   IN          FALSE  motion.digital-in-01 <== carousel_ready
+    29  bit   IN          FALSE  motion.digital-in-02 <== DI-ATC-toolpresence
+    29  bit   IN          FALSE  motion.digital-in-03 <== DI-ATC-tool-sensor
+    29  bit   IN           TRUE  motion.digital-in-04 <== DI-ATC-drawbar-sensor
+    29  bit   IN          FALSE  motion.digital-in-05 <== motion-digitial-in-05
+    29  bit   IN          FALSE  motion.digital-in-06 <== motion-digitial-in-06
+    29  bit   IN          FALSE  motion.digital-in-07 <== motion-digitial-in-07
+    29  bit   IN          FALSE  motion.digital-in-08
+    29  bit   IN          FALSE  motion.digital-in-09
+    29  bit   IN          FALSE  motion.digital-in-10
+    29  bit   IN          FALSE  motion.digital-in-11
+    29  bit   IN          FALSE  motion.digital-in-12
+    29  bit   IN          FALSE  motion.digital-in-13
+    29  bit   IN          FALSE  motion.digital-in-14
+    29  bit   IN          FALSE  motion.digital-in-15
+    29  bit   IN          FALSE  motion.digital-in-16
+    29  bit   IN          FALSE  motion.digital-in-17
+    29  bit   IN          FALSE  motion.digital-in-18
+    29  bit   IN          FALSE  motion.digital-in-19
+    29  bit   OUT         FALSE  motion.digital-out-00 ==> DO-CNC-tls-blowoff
+    29  bit   OUT         FALSE  motion.digital-out-01 ==> motion-digitial-out-01
+    29  bit   OUT         FALSE  motion.digital-out-02 ==> tls-active-signal
+    29  bit   OUT         FALSE  motion.digital-out-03 ==> probe-active-signal
+    29  bit   OUT         FALSE  motion.digital-out-04 ==> motion-digitial-out-04
+    29  bit   OUT         FALSE  motion.digital-out-05 ==> motion-digitial-out-05
+    29  bit   OUT         FALSE  motion.digital-out-06 ==> motion-digitial-out-06
+    29  bit   OUT         FALSE  motion.digital-out-07 ==> motion-digitial-out-07
+    29  bit   OUT         FALSE  motion.digital-out-08
+    29  bit   OUT         FALSE  motion.digital-out-09
+    29  bit   OUT         FALSE  motion.digital-out-10
+    29  bit   OUT         FALSE  motion.digital-out-11
+    29  bit   OUT         FALSE  motion.digital-out-12
+    29  bit   OUT         FALSE  motion.digital-out-13
+    29  bit   OUT         FALSE  motion.digital-out-14
+    29  bit   OUT         FALSE  motion.digital-out-15
+    29  bit   OUT         FALSE  motion.digital-out-16
+    29  bit   OUT         FALSE  motion.digital-out-17
+    29  bit   OUT         FALSE  motion.digital-out-18
+    29  bit   OUT         FALSE  motion.digital-out-19
+    29  float OUT             0  motion.distance-to-go
+    29  bit   IN           TRUE  motion.enable
+    29  bit   OUT         FALSE  motion.eoffset-active
+    29  bit   OUT         FALSE  motion.eoffset-limited
+    29  bit   IN          FALSE  motion.feed-hold
+    29  float OUT             0  motion.feed-inches-per-minute
+    29  float OUT             0  motion.feed-inches-per-second
+    29  bit   IN          FALSE  motion.feed-inhibit
+    29  float OUT             0  motion.feed-mm-per-minute
+    29  float OUT             0  motion.feed-mm-per-second
+    29  float OUT             0  motion.feed-upm
+    29  bit   IN          FALSE  motion.homing-inhibit
+    29  bit   OUT          TRUE  motion.in-position ==> SYS-in-position
+    29  bit   OUT         FALSE  motion.is-all-homed
+    29  bit   IN          FALSE  motion.jog-inhibit
+    29  bit   OUT         FALSE  motion.jog-is-active
+    29  bit   IN          FALSE  motion.jog-stop
+    29  bit   IN          FALSE  motion.jog-stop-immediate
+    29  bit   OUT         FALSE  motion.motion-enabled ==> SYS-machine-is-enabled
+    29  s32   OUT             0  motion.motion-type
+    29  bit   OUT         FALSE  motion.on-soft-limit
+    29  bit   IN          FALSE  motion.probe-input
+    29  s32   OUT             0  motion.program-line
+    29  float OUT             0  motion.requested-vel
+    29  u32   OUT    0x001FF9DC  motion.servo.last-period
+    29  bit   OUT         FALSE  motion.teleop-mode
+    29  float OUT             0  motion.tooloffset.a
+    29  float OUT             0  motion.tooloffset.b
+    29  float OUT             0  motion.tooloffset.c
+    29  float OUT             0  motion.tooloffset.u
+    29  float OUT             0  motion.tooloffset.v
+    29  float OUT             0  motion.tooloffset.w
+    29  float OUT             0  motion.tooloffset.x
+    29  float OUT             0  motion.tooloffset.y
+    29  float OUT             0  motion.tooloffset.z
+    29  bit   OUT         FALSE  motion.tp-reverse
+    70  float IN              0  mux2.mqlvol.in0
+    70  float IN              0  mux2.mqlvol.in1
+    70  float OUT             0  mux2.mqlvol.out
+    70  bit   IN          FALSE  mux2.mqlvol.sel
+    70  s32   OUT           228  mux2.mqlvol.time
+    73  float IN              0  mux4.ledgreen.in0
+    73  float IN              0  mux4.ledgreen.in1
+    73  float IN              0  mux4.ledgreen.in2
+    73  float IN              0  mux4.ledgreen.in3
+    73  float OUT             0  mux4.ledgreen.out
+    73  bit   IN          FALSE  mux4.ledgreen.sel0
+    73  bit   IN          FALSE  mux4.ledgreen.sel1
+    73  s32   OUT           100  mux4.ledgreen.time
+    73  float IN              0  mux4.mql.in0
+    73  float IN              0  mux4.mql.in1
+    73  float IN              0  mux4.mql.in2
+    73  float IN              0  mux4.mql.in3
+    73  float OUT             0  mux4.mql.out
+    73  bit   IN          FALSE  mux4.mql.sel0
+    73  bit   IN          FALSE  mux4.mql.sel1
+    73  s32   OUT            80  mux4.mql.time
+    76  float IN              0  mux8.atcstatusled.in0
+    76  float IN              0  mux8.atcstatusled.in1
+    76  float IN              0  mux8.atcstatusled.in2
+    76  float IN              0  mux8.atcstatusled.in3
+    76  float IN              0  mux8.atcstatusled.in4
+    76  float IN              0  mux8.atcstatusled.in5
+    76  float IN              0  mux8.atcstatusled.in6
+    76  float IN              0  mux8.atcstatusled.in7
+    76  float OUT             0  mux8.atcstatusled.out
+    76  bit   IN          FALSE  mux8.atcstatusled.sel0
+    76  bit   IN          FALSE  mux8.atcstatusled.sel1
+    76  bit   IN          FALSE  mux8.atcstatusled.sel2
+    76  s32   OUT           188  mux8.atcstatusled.time
+    79  bit   IN          FALSE  not.atcledfast.in
+    79  bit   OUT          TRUE  not.atcledfast.out
+    79  s32   OUT            72  not.atcledfast.time
+    79  bit   IN          FALSE  not.atcledslow.in
+    79  bit   OUT          TRUE  not.atcledslow.out
+    79  s32   OUT           196  not.atcledslow.time
+    79  bit   IN           TRUE  not.estop.in <== emc-enable-groot-error
+    79  bit   OUT         FALSE  not.estop.out ==> DO-HMI-light-red
+    79  s32   OUT            56  not.estop.time
+    79  bit   IN          FALSE  not.estoplight.in
+    79  bit   OUT          TRUE  not.estoplight.out
+    79  s32   OUT            32  not.estoplight.time
+    79  bit   IN          FALSE  not.ledgreen.in
+    79  bit   OUT          TRUE  not.ledgreen.out
+    79  s32   OUT            76  not.ledgreen.time
+    79  bit   IN           TRUE  not.pbtime.in <== idle-on
+    79  bit   OUT         FALSE  not.pbtime.out ==> cycle-timer
+    79  s32   OUT            28  not.pbtime.time
+    79  bit   IN          FALSE  not.pdntestop.in <== pdtn.estop-toggle-invert
+    79  bit   OUT          TRUE  not.pdntestop.out ==> pendant-estop
+    79  s32   OUT            28  not.pdntestop.time
+    79  bit   IN          FALSE  not.spindleinhibit.in
+    79  bit   OUT          TRUE  not.spindleinhibit.out
+    79  s32   OUT            36  not.spindleinhibit.time
+    46  float IN              0  offset.feed.fb-in
+    46  float OUT             0  offset.feed.fb-out
+    46  float IN              0  offset.feed.in
+    46  float IN              0  offset.feed.offset
+    46  float OUT             0  offset.feed.out
+    46  s32   OUT             0  offset.feed.update-feedback.time
+    46  s32   OUT             0  offset.feed.update-output.time
+    46  float IN              0  offset.ntc.fb-in <== AI-SYS-fieldvoltage
+    46  float OUT    -0.3989685  offset.ntc.fb-out ==> ntc-voltage-drop
+    46  float IN              0  offset.ntc.in
+    46  float IN      0.3989685  offset.ntc.offset <== AI-ATC-temp-sensor
+    46  float OUT             0  offset.ntc.out
+    46  s32   OUT           116  offset.ntc.update-feedback.time
+    46  s32   OUT             0  offset.ntc.update-output.time
+    46  float IN              0  offset.rapid.fb-in
+    46  float OUT             0  offset.rapid.fb-out
+    46  float IN              0  offset.rapid.in
+    46  float IN              0  offset.rapid.offset
+    46  float OUT             0  offset.rapid.out
+    46  s32   OUT             0  offset.rapid.update-feedback.time
+    46  s32   OUT             0  offset.rapid.update-output.time
+    46  float IN              0  offset.spindle.fb-in
+    46  float OUT             0  offset.spindle.fb-out
+    46  float IN              0  offset.spindle.in
+    46  float IN              0  offset.spindle.offset
+    46  float OUT             0  offset.spindle.out
+    46  s32   OUT             0  offset.spindle.update-feedback.time
+    46  s32   OUT             0  offset.spindle.update-output.time
+   118  bit   IN          FALSE  oneshot.mql.in
+   118  bit   OUT         FALSE  oneshot.mql.out
+   118  bit   OUT          TRUE  oneshot.mql.out-not
+   118  bit   IN          FALSE  oneshot.mql.reset
+   118  s32   OUT           196  oneshot.mql.time
+   118  float OUT             0  oneshot.mql.time-left
+   118  float IN              0  oneshot.mql.width
+    85  bit   IN          FALSE  or.auto.in0
+    85  bit   IN          FALSE  or.auto.in1 <== pdnt.mode.auto
+    85  bit   OUT         FALSE  or.auto.out
+    85  s32   OUT            28  or.auto.time
+    85  bit   IN          FALSE  or.externalprogram.in0
+    85  bit   IN          FALSE  or.externalprogram.in1
+    85  bit   OUT         FALSE  or.externalprogram.out
+    85  s32   OUT            28  or.externalprogram.time
+    85  bit   IN          FALSE  or.floodin.in0
+    85  bit   IN          FALSE  or.floodin.in1
+    85  bit   OUT         FALSE  or.floodin.out
+    85  s32   OUT            28  or.floodin.time
+    85  bit   IN          FALSE  or.mistflood.in0
+    85  bit   IN          FALSE  or.mistflood.in1
+    85  bit   OUT         FALSE  or.mistflood.out
+    85  s32   OUT            64  or.mistflood.time
+    85  bit   IN          FALSE  or.probe.in0
+    85  bit   IN          FALSE  or.probe.in1
+    85  bit   OUT         FALSE  or.probe.out
+    85  s32   OUT            88  or.probe.time
+    85  bit   IN          FALSE  or.program-pause.in0
+    85  bit   IN          FALSE  or.program-pause.in1 <== pdnt.program.pause
+    85  bit   OUT         FALSE  or.program-pause.out
+    85  s32   OUT           156  or.program-pause.time
+    85  bit   IN          FALSE  or.program-resume.in0
+    85  bit   IN          FALSE  or.program-resume.in1 <== pdnt.program.resume
+    85  bit   OUT         FALSE  or.program-resume.out
+    85  s32   OUT            56  or.program-resume.time
+    85  bit   IN          FALSE  or.program-run.in0
+    85  bit   IN          FALSE  or.program-run.in1 <== pdnt.program.run
+    85  bit   OUT         FALSE  or.program-run.out
+    85  s32   OUT           200  or.program-run.time
+    85  bit   IN          FALSE  or.program-stop.in0
+    85  bit   IN          FALSE  or.program-stop.in1 <== pdnt.program.stop
+    85  bit   OUT         FALSE  or.program-stop.out
+    85  s32   OUT            28  or.program-stop.time
+    85  bit   IN          FALSE  or.spindle-auto-cone-clean.in0
+    85  bit   IN          FALSE  or.spindle-auto-cone-clean.in1
+    85  bit   OUT         FALSE  or.spindle-auto-cone-clean.out
+    85  s32   OUT            32  or.spindle-auto-cone-clean.time
+    85  bit   IN          FALSE  or.spindle-auto-drawbar.in0
+    85  bit   IN          FALSE  or.spindle-auto-drawbar.in1
+    85  bit   OUT         FALSE  or.spindle-auto-drawbar.out
+    85  s32   OUT            92  or.spindle-auto-drawbar.time
+    43  float IN              0  pid.a.Dgain
+    43  float IN              0  pid.a.FF0
+    43  float IN              0  pid.a.FF1
+    43  float IN              0  pid.a.FF2
+    43  float IN              0  pid.a.FF3
+    43  float IN              0  pid.a.Igain
+    43  float IN              1  pid.a.Pgain
+    43  float IN              0  pid.a.bias
+    43  float IN              0  pid.a.command
+    43  float IN              0  pid.a.command-deriv
+    43  float IN              0  pid.a.deadband
+    43  s32   OUT           180  pid.a.do-pid-calcs.time
+    43  bit   IN          FALSE  pid.a.enable
+    43  float OUT             0  pid.a.error
+    43  bit   IN           TRUE  pid.a.error-previous-target
+    43  float IN              0  pid.a.feedback
+    43  float IN              0  pid.a.feedback-deriv
+    43  bit   IN          FALSE  pid.a.index-enable
+    43  float IN              0  pid.a.maxcmdD
+    43  float IN              0  pid.a.maxcmdDD
+    43  float IN              0  pid.a.maxcmdDDD
+    43  float IN              0  pid.a.maxerror
+    43  float IN              0  pid.a.maxerrorD
+    43  float IN              0  pid.a.maxerrorI
+    43  float IN              0  pid.a.maxoutput
+    43  float OUT             0  pid.a.output
+    43  bit   OUT         FALSE  pid.a.saturated
+    43  s32   OUT             0  pid.a.saturated-count
+    43  float OUT             0  pid.a.saturated-s
+    43  u32   I/O    0x00000032  pid.a.tune-cycles
+    43  float I/O           0.5  pid.a.tune-effort
+    43  bit   IN          FALSE  pid.a.tune-mode
+    43  bit   I/O         FALSE  pid.a.tune-start
+    43  u32   I/O    0x00000000  pid.a.tune-type
+    43  float IN              0  pid.x.Dgain
+    43  float IN              0  pid.x.FF0
+    43  float IN              0  pid.x.FF1
+    43  float IN              0  pid.x.FF2
+    43  float IN              0  pid.x.FF3
+    43  float IN              0  pid.x.Igain
+    43  float IN              1  pid.x.Pgain
+    43  float IN              0  pid.x.bias
+    43  float IN              0  pid.x.command
+    43  float IN              0  pid.x.command-deriv
+    43  float IN              0  pid.x.deadband
+    43  s32   OUT           588  pid.x.do-pid-calcs.time
+    43  bit   IN          FALSE  pid.x.enable
+    43  float OUT             0  pid.x.error
+    43  bit   IN           TRUE  pid.x.error-previous-target
+    43  float IN              0  pid.x.feedback
+    43  float IN              0  pid.x.feedback-deriv
+    43  bit   IN          FALSE  pid.x.index-enable
+    43  float IN              0  pid.x.maxcmdD
+    43  float IN              0  pid.x.maxcmdDD
+    43  float IN              0  pid.x.maxcmdDDD
+    43  float IN              0  pid.x.maxerror
+    43  float IN              0  pid.x.maxerrorD
+    43  float IN              0  pid.x.maxerrorI
+    43  float IN              0  pid.x.maxoutput
+    43  float OUT             0  pid.x.output
+    43  bit   OUT         FALSE  pid.x.saturated
+    43  s32   OUT             0  pid.x.saturated-count
+    43  float OUT             0  pid.x.saturated-s
+    43  u32   I/O    0x00000032  pid.x.tune-cycles
+    43  float I/O           0.5  pid.x.tune-effort
+    43  bit   IN          FALSE  pid.x.tune-mode
+    43  bit   I/O         FALSE  pid.x.tune-start
+    43  u32   I/O    0x00000000  pid.x.tune-type
+    43  float IN              0  pid.y1.Dgain
+    43  float IN              0  pid.y1.FF0
+    43  float IN              0  pid.y1.FF1
+    43  float IN              0  pid.y1.FF2
+    43  float IN              0  pid.y1.FF3
+    43  float IN              0  pid.y1.Igain
+    43  float IN              1  pid.y1.Pgain
+    43  float IN              0  pid.y1.bias
+    43  float IN              0  pid.y1.command
+    43  float IN              0  pid.y1.command-deriv
+    43  float IN              0  pid.y1.deadband
+    43  s32   OUT           164  pid.y1.do-pid-calcs.time
+    43  bit   IN          FALSE  pid.y1.enable
+    43  float OUT             0  pid.y1.error
+    43  bit   IN           TRUE  pid.y1.error-previous-target
+    43  float IN              0  pid.y1.feedback
+    43  float IN              0  pid.y1.feedback-deriv
+    43  bit   IN          FALSE  pid.y1.index-enable
+    43  float IN              0  pid.y1.maxcmdD
+    43  float IN              0  pid.y1.maxcmdDD
+    43  float IN              0  pid.y1.maxcmdDDD
+    43  float IN              0  pid.y1.maxerror
+    43  float IN              0  pid.y1.maxerrorD
+    43  float IN              0  pid.y1.maxerrorI
+    43  float IN              0  pid.y1.maxoutput
+    43  float OUT             0  pid.y1.output
+    43  bit   OUT         FALSE  pid.y1.saturated
+    43  s32   OUT             0  pid.y1.saturated-count
+    43  float OUT             0  pid.y1.saturated-s
+    43  u32   I/O    0x00000032  pid.y1.tune-cycles
+    43  float I/O           0.5  pid.y1.tune-effort
+    43  bit   IN          FALSE  pid.y1.tune-mode
+    43  bit   I/O         FALSE  pid.y1.tune-start
+    43  u32   I/O    0x00000000  pid.y1.tune-type
+    43  float IN              0  pid.y2.Dgain
+    43  float IN              0  pid.y2.FF0
+    43  float IN              0  pid.y2.FF1
+    43  float IN              0  pid.y2.FF2
+    43  float IN              0  pid.y2.FF3
+    43  float IN              0  pid.y2.Igain
+    43  float IN              1  pid.y2.Pgain
+    43  float IN              0  pid.y2.bias
+    43  float IN              0  pid.y2.command
+    43  float IN              0  pid.y2.command-deriv
+    43  float IN              0  pid.y2.deadband
+    43  s32   OUT           204  pid.y2.do-pid-calcs.time
+    43  bit   IN          FALSE  pid.y2.enable
+    43  float OUT             0  pid.y2.error
+    43  bit   IN           TRUE  pid.y2.error-previous-target
+    43  float IN              0  pid.y2.feedback
+    43  float IN              0  pid.y2.feedback-deriv
+    43  bit   IN          FALSE  pid.y2.index-enable
+    43  float IN              0  pid.y2.maxcmdD
+    43  float IN              0  pid.y2.maxcmdDD
+    43  float IN              0  pid.y2.maxcmdDDD
+    43  float IN              0  pid.y2.maxerror
+    43  float IN              0  pid.y2.maxerrorD
+    43  float IN              0  pid.y2.maxerrorI
+    43  float IN              0  pid.y2.maxoutput
+    43  float OUT             0  pid.y2.output
+    43  bit   OUT         FALSE  pid.y2.saturated
+    43  s32   OUT             0  pid.y2.saturated-count
+    43  float OUT             0  pid.y2.saturated-s
+    43  u32   I/O    0x00000032  pid.y2.tune-cycles
+    43  float I/O           0.5  pid.y2.tune-effort
+    43  bit   IN          FALSE  pid.y2.tune-mode
+    43  bit   I/O         FALSE  pid.y2.tune-start
+    43  u32   I/O    0x00000000  pid.y2.tune-type
+    43  float IN              0  pid.z.Dgain
+    43  float IN              0  pid.z.FF0
+    43  float IN              0  pid.z.FF1
+    43  float IN              0  pid.z.FF2
+    43  float IN              0  pid.z.FF3
+    43  float IN              0  pid.z.Igain
+    43  float IN              1  pid.z.Pgain
+    43  float IN              0  pid.z.bias
+    43  float IN              0  pid.z.command
+    43  float IN              0  pid.z.command-deriv
+    43  float IN              0  pid.z.deadband
+    43  s32   OUT           164  pid.z.do-pid-calcs.time
+    43  bit   IN          FALSE  pid.z.enable
+    43  float OUT             0  pid.z.error
+    43  bit   IN           TRUE  pid.z.error-previous-target
+    43  float IN              0  pid.z.feedback
+    43  float IN              0  pid.z.feedback-deriv
+    43  bit   IN          FALSE  pid.z.index-enable
+    43  float IN              0  pid.z.maxcmdD
+    43  float IN              0  pid.z.maxcmdDD
+    43  float IN              0  pid.z.maxcmdDDD
+    43  float IN              0  pid.z.maxerror
+    43  float IN              0  pid.z.maxerrorD
+    43  float IN              0  pid.z.maxerrorI
+    43  float IN              0  pid.z.maxoutput
+    43  float OUT             0  pid.z.output
+    43  bit   OUT         FALSE  pid.z.saturated
+    43  s32   OUT             0  pid.z.saturated-count
+    43  float OUT             0  pid.z.saturated-s
+    43  u32   I/O    0x00000032  pid.z.tune-cycles
+    43  float I/O           0.5  pid.z.tune-effort
+    43  bit   IN          FALSE  pid.z.tune-mode
+    43  bit   I/O         FALSE  pid.z.tune-start
+    43  u32   I/O    0x00000000  pid.z.tune-type
+   139  bit   IN          FALSE  qtpyvcp.feed-override.reset
+   139  bit   IN           TRUE  qtpyvcp.probe-in.enable
+   139  bit   I/O         FALSE  qtpyvcp.probe-in.io
+   139  bit   OUT         FALSE  qtpyvcp.probe-in.out
+   139  bit   IN          FALSE  qtpyvcp.probe-led.flash
+   139  u32   IN     0x00000000  qtpyvcp.probe-led.flash-rate
+   139  bit   IN          FALSE  qtpyvcp.probe-led.on
+   139  bit   IN          FALSE  qtpyvcp.rapid-override.reset
+   139  bit   IN           TRUE  qtpyvcp.spindle-encoder-rpm.enable
+   139  float IN              0  qtpyvcp.spindle-encoder-rpm.in
+   139  float IN              0  qtpyvcp.spindle-load-indicator.in-f
+   139  u32   IN     0x00000000  qtpyvcp.spindle-load-indicator.in-i
+   139  float IN            150  qtpyvcp.spindle-load-indicator.max-val
+   139  float IN              0  qtpyvcp.spindle-load-indicator.min-val
+   139  bit   IN          FALSE  qtpyvcp.spindle-override.reset
+   139  bit   IN           TRUE  qtpyvcp.timerhours.enable
+   139  u32   IN     0x00000000  qtpyvcp.timerhours.in <== cycle-hours
+   139  bit   IN           TRUE  qtpyvcp.timerminutes.enable
+   139  u32   IN     0x00000000  qtpyvcp.timerminutes.in <== cycle-minutes
+   139  bit   IN           TRUE  qtpyvcp.timerseconds.enable
+   139  u32   IN     0x00000000  qtpyvcp.timerseconds.in <== cycle-seconds
+   140  bit   IN          FALSE  qtpyvcp_manualtoolchange.change
+   140  bit   IN          FALSE  qtpyvcp_manualtoolchange.change_button
+   140  bit   OUT         FALSE  qtpyvcp_manualtoolchange.changed
+   140  s32   IN              0  qtpyvcp_manualtoolchange.number
+   115  float IN         0.0005  scale.ajog.gain
+   115  float IN              0  scale.ajog.in <== pdnt.axis.a.jog-scale
+   115  float IN              0  scale.ajog.offset
+   115  float OUT             0  scale.ajog.out ==> pdnt.axis.a.jog-scale-scale
+   115  s32   OUT            68  scale.ajog.time
+   115  float IN              0  scale.mql.gain
+   115  float IN              0  scale.mql.in
+   115  float IN              0  scale.mql.offset
+   115  float OUT             0  scale.mql.out
+   115  s32   OUT            56  scale.mql.time
+   115  float IN              0  scale.mqlvolover.gain
+   115  float IN              0  scale.mqlvolover.in
+   115  float IN              0  scale.mqlvolover.offset
+   115  float OUT             0  scale.mqlvolover.out
+   115  s32   OUT            36  scale.mqlvolover.time
+   115  float IN              0  scale.spindleload.gain
+   115  float IN              0  scale.spindleload.in
+   115  float IN              0  scale.spindleload.offset
+   115  float OUT             0  scale.spindleload.out
+   115  s32   OUT           136  scale.spindleload.time
+   115  float IN         0.0005  scale.xjog.gain
+   115  float IN              0  scale.xjog.in <== pdnt.axis.x.jog-scale
+   115  float IN              0  scale.xjog.offset
+   115  float OUT             0  scale.xjog.out ==> pdnt.axis.x.jog-scale-scale
+   115  s32   OUT           112  scale.xjog.time
+   115  float IN         0.0005  scale.yjog.gain
+   115  float IN              0  scale.yjog.in <== pdnt.axis.y.jog-scale
+   115  float IN              0  scale.yjog.offset
+   115  float OUT             0  scale.yjog.out ==> pdnt.axis.y.jog-scale-scale
+   115  s32   OUT           100  scale.yjog.time
+   115  float IN         0.0005  scale.zjog.gain
+   115  float IN              0  scale.zjog.in <== pdnt.axis.z.jog-scale
+   115  float IN              0  scale.zjog.offset
+   115  float OUT             0  scale.zjog.out ==> pdnt.axis.z.jog-scale-scale
+   115  s32   OUT            32  scale.zjog.time
+    30  s32   OUT         60760  servo-thread.time
+    29  bit   IN          FALSE  spindle.0.amp-fault-in
+    29  bit   IN           TRUE  spindle.0.at-speed <== spindle-at-speed
+    29  bit   OUT          TRUE  spindle.0.brake
+    29  bit   OUT         FALSE  spindle.0.forward
+    29  bit   I/O         FALSE  spindle.0.index-enable
+    29  bit   IN           TRUE  spindle.0.inhibit <== spindle-inhibit
+    29  bit   IN          FALSE  spindle.0.is-oriented
+    29  bit   OUT         FALSE  spindle.0.locked
+    29  bit   OUT         FALSE  spindle.0.on ==> spindle-enable
+    29  bit   OUT         FALSE  spindle.0.orient
+    29  float OUT             0  spindle.0.orient-angle
+    29  s32   IN              0  spindle.0.orient-fault
+    29  s32   OUT             0  spindle.0.orient-mode
+    29  bit   OUT         FALSE  spindle.0.reverse
+    29  float IN              0  spindle.0.revs
+    29  float OUT             0  spindle.0.speed-cmd-rps
+    29  float IN              0  spindle.0.speed-in
+    29  float OUT             0  spindle.0.speed-out ==> spindle-rpm
+    29  float OUT             0  spindle.0.speed-out-abs ==> pdnt.spindle-speed-abs
+    29  float OUT             0  spindle.0.speed-out-rps
+    29  float OUT             0  spindle.0.speed-out-rps-abs
+   128  float IN           3950  thermistor.0.beta
+   128  float IN           9825  thermistor.0.r-other
+   128  float IN          10000  thermistor.0.r0
+   128  float OUT             0  thermistor.0.resistance
+   128  float IN             25  thermistor.0.t0-c
+   128  float OUT       9725.85  thermistor.0.temperature-c ==> SPINDLE-temp
+   128  float OUT      17538.53  thermistor.0.temperature-f
+   128  float OUT          9999  thermistor.0.temperature-k
+   128  float IN     -0.3989685  thermistor.0.v-thermistor <== ntc-voltage-drop
+   128  float IN              0  thermistor.0.v-total <== AI-SYS-fieldvoltage
+   112  u32   OUT    0x00000000  time.pb.hours ==> cycle-hours
+   112  u32   OUT    0x00000000  time.pb.minutes ==> cycle-minutes
+   112  bit   IN          FALSE  time.pb.pause <== prog-paused
+   112  u32   OUT    0x00000000  time.pb.seconds ==> cycle-seconds
+   112  bit   IN          FALSE  time.pb.start <== cycle-timer
+   112  s32   OUT           152  time.pb.time
+    67  float OUT             0  timedelay.atcledfast.elapsed
+    67  bit   IN          FALSE  timedelay.atcledfast.in
+    67  float IN            0.5  timedelay.atcledfast.off-delay
+    67  float IN            0.5  timedelay.atcledfast.on-delay
+    67  bit   OUT         FALSE  timedelay.atcledfast.out
+    67  s32   OUT            28  timedelay.atcledfast.time
+    67  float OUT             0  timedelay.atcledslow.elapsed
+    67  bit   IN          FALSE  timedelay.atcledslow.in
+    67  float IN            0.5  timedelay.atcledslow.off-delay
+    67  float IN            0.5  timedelay.atcledslow.on-delay
+    67  bit   OUT         FALSE  timedelay.atcledslow.out
+    67  s32   OUT           116  timedelay.atcledslow.time
+    67  float OUT             0  timedelay.conecleaning.elapsed
+    67  bit   IN          FALSE  timedelay.conecleaning.in
+    67  float IN            0.5  timedelay.conecleaning.off-delay
+    67  float IN            0.5  timedelay.conecleaning.on-delay
+    67  bit   OUT         FALSE  timedelay.conecleaning.out
+    67  s32   OUT           152  timedelay.conecleaning.time
+    67  float OUT             0  timedelay.ledgreen.elapsed
+    67  bit   IN          FALSE  timedelay.ledgreen.in
+    67  float IN            0.5  timedelay.ledgreen.off-delay
+    67  float IN            0.5  timedelay.ledgreen.on-delay
+    67  bit   OUT         FALSE  timedelay.ledgreen.out
+    67  s32   OUT            64  timedelay.ledgreen.time
+    67  float OUT             0  timedelay.mql.elapsed
+    67  bit   IN          FALSE  timedelay.mql.in
+    67  float IN            0.5  timedelay.mql.off-delay
+    67  float IN            0.5  timedelay.mql.on-delay
+    67  bit   OUT         FALSE  timedelay.mql.out
+    67  s32   OUT            28  timedelay.mql.time
+    67  float OUT             0  timedelay.stepsig.elapsed
+    67  bit   IN          FALSE  timedelay.stepsig.in
+    67  float IN            0.5  timedelay.stepsig.off-delay
+    67  float IN            0.5  timedelay.stepsig.on-delay
+    67  bit   OUT         FALSE  timedelay.stepsig.out
+    67  s32   OUT            72  timedelay.stepsig.time
+    67  float OUT             0  timedelay.toolchange.elapsed
+    67  bit   IN          FALSE  timedelay.toolchange.in
+    67  float IN            0.5  timedelay.toolchange.off-delay
+    67  float IN            0.5  timedelay.toolchange.on-delay
+    67  bit   OUT         FALSE  timedelay.toolchange.out
+    67  s32   OUT            80  timedelay.toolchange.time
+    55  bit   IN          FALSE  toggle.externalprogram.in
+    55  bit   I/O         FALSE  toggle.externalprogram.out
+    55  s32   OUT            48  toggle.externalprogram.time
+    55  bit   IN          FALSE  toggle.machineon.in
+    55  bit   I/O         FALSE  toggle.machineon.out
+    55  s32   OUT           120  toggle.machineon.time
+    55  bit   IN          FALSE  toggle.mql.in
+    55  bit   I/O         FALSE  toggle.mql.out
+    55  s32   OUT            52  toggle.mql.time
+    55  bit   IN          FALSE  toggle.pdntestop.in <== pdnt.button.reset
+    55  bit   I/O         FALSE  toggle.pdntestop.out <=> pdtn.estop-toggle-invert
+    55  s32   OUT            36  toggle.pdntestop.time
+    55  bit   IN          FALSE  toggle.probe3d.in
+    55  bit   I/O         FALSE  toggle.probe3d.out
+    55  s32   OUT             0  toggle.probe3d.time
+    55  bit   IN          FALSE  toggle.probetls.in
+    55  bit   I/O         FALSE  toggle.probetls.out
+    55  s32   OUT             0  toggle.probetls.time
+    55  bit   IN          FALSE  toggle.toolchange.in
+    55  bit   I/O         FALSE  toggle.toolchange.out
+    55  s32   OUT            36  toggle.toolchange.time
+    52  bit   IN          FALSE  toggle2nist.externalprogram.in
+    52  bit   IN          FALSE  toggle2nist.externalprogram.is-on
+    52  bit   OUT         FALSE  toggle2nist.externalprogram.off
+    52  bit   OUT         FALSE  toggle2nist.externalprogram.on
+    52  s32   OUT            96  toggle2nist.externalprogram.time
+    52  bit   IN          FALSE  toggle2nist.machineon.in
+    52  bit   IN          FALSE  toggle2nist.machineon.is-on
+    52  bit   OUT         FALSE  toggle2nist.machineon.off
+    52  bit   OUT         FALSE  toggle2nist.machineon.on
+    52  s32   OUT            88  toggle2nist.machineon.time
+   148  s32   OUT             0  whb.axis.a.jog-counts ==> pdnt.axis.a.jog-counts
+   148  bit   OUT         FALSE  whb.axis.a.jog-enable ==> pdnt.axis.a.jog-enable
+   148  float OUT             0  whb.axis.a.jog-scale ==> pdnt.axis.a.jog-scale
+   148  bit   OUT         FALSE  whb.axis.a.jog-vel-mode ==> pdnt.axis.a.jog-vel-mode
+   148  s32   OUT             0  whb.axis.b.jog-counts
+   148  bit   OUT         FALSE  whb.axis.b.jog-enable
+   148  float OUT             0  whb.axis.b.jog-scale
+   148  bit   OUT         FALSE  whb.axis.b.jog-vel-mode
+   148  s32   OUT             0  whb.axis.c.jog-counts
+   148  bit   OUT         FALSE  whb.axis.c.jog-enable
+   148  float OUT             0  whb.axis.c.jog-scale
+   148  bit   OUT         FALSE  whb.axis.c.jog-vel-mode
+   148  s32   OUT             0  whb.axis.x.jog-counts ==> pdnt.axis.x.jog-counts
+   148  bit   OUT         FALSE  whb.axis.x.jog-enable ==> pdnt.axis.x.jog-enable
+   148  float OUT             0  whb.axis.x.jog-scale ==> pdnt.axis.x.jog-scale
+   148  bit   OUT         FALSE  whb.axis.x.jog-vel-mode ==> pdnt.axis.x.jog-vel-mode
+   148  s32   OUT             0  whb.axis.y.jog-counts ==> pdnt.axis.y.jog-counts
+   148  bit   OUT         FALSE  whb.axis.y.jog-enable ==> pdnt.axis.y.jog-enable
+   148  float OUT             0  whb.axis.y.jog-scale ==> pdnt.axis.y.jog-scale
+   148  bit   OUT         FALSE  whb.axis.y.jog-vel-mode ==> pdnt.axis.y.jog-vel-mode
+   148  s32   OUT             0  whb.axis.z.jog-counts ==> pdnt.axis.z.jog-counts
+   148  bit   OUT         FALSE  whb.axis.z.jog-enable ==> pdnt.axis.z.jog-enable
+   148  float OUT             0  whb.axis.z.jog-scale ==> pdnt.axis.z.jog-scale
+   148  bit   OUT         FALSE  whb.axis.z.jog-vel-mode ==> pdnt.axis.z.jog-vel-mode
+   148  bit   OUT         FALSE  whb.button.feed-minus
+   148  bit   OUT         FALSE  whb.button.feed-plus
+   148  bit   OUT         FALSE  whb.button.fn
+   148  bit   OUT         FALSE  whb.button.m-home ==> pdnt.button.m-home
+   148  bit   OUT         FALSE  whb.button.macro-1 ==> pdnt.macro-1
+   148  bit   OUT         FALSE  whb.button.macro-10
+   148  bit   OUT         FALSE  whb.button.macro-11
+   148  bit   OUT         FALSE  whb.button.macro-12
+   148  bit   OUT         FALSE  whb.button.macro-13
+   148  bit   OUT         FALSE  whb.button.macro-14
+   148  bit   OUT         FALSE  whb.button.macro-15
+   148  bit   OUT         FALSE  whb.button.macro-16
+   148  bit   OUT         FALSE  whb.button.macro-2 ==> pdnt.macro-2
+   148  bit   OUT         FALSE  whb.button.macro-3
+   148  bit   OUT         FALSE  whb.button.macro-4
+   148  bit   OUT         FALSE  whb.button.macro-5 ==> pdnt.macro-5
+   148  bit   OUT         FALSE  whb.button.macro-6 ==> pdnt.macro-6
+   148  bit   OUT         FALSE  whb.button.macro-7 ==> pdnt.macro-7
+   148  bit   OUT         FALSE  whb.button.macro-8
+   148  bit   OUT         FALSE  whb.button.macro-9
+   148  bit   OUT         FALSE  whb.button.mode-continuous
+   148  bit   OUT         FALSE  whb.button.mode-step
+   148  bit   OUT         FALSE  whb.button.probe-z ==> pdnt.button.probe-z
+   148  bit   OUT         FALSE  whb.button.reset ==> pdnt.button.reset
+   148  bit   OUT         FALSE  whb.button.s-on-off
+   148  bit   OUT         FALSE  whb.button.safe-z ==> pdnt.button.safe-z
+   148  bit   OUT         FALSE  whb.button.spindle-minus
+   148  bit   OUT         FALSE  whb.button.spindle-plus
+   148  bit   OUT         FALSE  whb.button.start-pause
+   148  bit   OUT         FALSE  whb.button.stop
+   148  bit   OUT         FALSE  whb.button.w-home ==> pdnt.button.w-home
+   148  float IN              0  whb.halui.axis.a.pos-feedback <== pdnt.axis.a.pos-feedback
+   148  float IN              0  whb.halui.axis.a.pos-relative <== pdnt.axis.a.pos-relative
+   148  bit   OUT         FALSE  whb.halui.axis.a.select ==> axis-select-a
+   148  float IN              0  whb.halui.axis.b.pos-feedback
+   148  float IN              0  whb.halui.axis.b.pos-relative
+   148  bit   OUT         FALSE  whb.halui.axis.b.select
+   148  float IN              0  whb.halui.axis.c.pos-feedback
+   148  float IN              0  whb.halui.axis.c.pos-relative
+   148  bit   OUT         FALSE  whb.halui.axis.c.select
+   148  float IN              0  whb.halui.axis.x.pos-feedback <== pdnt.axis.x.pos-feedback
+   148  float IN              0  whb.halui.axis.x.pos-relative <== pdnt.axis.x.pos-relative
+   148  bit   OUT         FALSE  whb.halui.axis.x.select ==> axis-select-x
+   148  float IN              0  whb.halui.axis.y.pos-feedback <== pdnt.axis.y.pos-feedback
+   148  float IN              0  whb.halui.axis.y.pos-relative <== pdnt.axis.y.pos-relative
+   148  bit   OUT         FALSE  whb.halui.axis.y.select ==> axis-select-y
+   148  float IN              0  whb.halui.axis.z.pos-feedback <== pdnt.axis.z.pos-feedback
+   148  float IN              0  whb.halui.axis.z.pos-relative <== pdnt.axis.z.pos-relative
+   148  bit   OUT         FALSE  whb.halui.axis.z.select ==> axis-select-z
+   148  bit   OUT         FALSE  whb.halui.feed-override.decrease ==> pdnt.feed-override.decrease
+   148  bit   OUT         FALSE  whb.halui.feed-override.increase ==> pdnt.feed-override.increase
+   148  float OUT             0  whb.halui.feed-override.scale
+   148  float IN              1  whb.halui.feed-override.value <== pdnt.feed-override.value
+   148  bit   OUT         FALSE  whb.halui.feed.selected-10
+   148  bit   OUT         FALSE  whb.halui.feed.selected-100
+   148  bit   OUT         FALSE  whb.halui.feed.selected-2
+   148  bit   OUT         FALSE  whb.halui.feed.selected-30
+   148  bit   OUT         FALSE  whb.halui.feed.selected-5
+   148  bit   OUT         FALSE  whb.halui.feed.selected-60
+   148  bit   OUT         FALSE  whb.halui.feed.selected-continuous
+   148  bit   OUT         FALSE  whb.halui.feed.selected-lead
+   148  bit   OUT         FALSE  whb.halui.feed.selected-mpg-feed
+   148  bit   OUT         FALSE  whb.halui.feed.selected-step
+   148  bit   IN          FALSE  whb.halui.flood.is-on <== pdnt.flood.is-on
+   148  bit   OUT         FALSE  whb.halui.flood.off ==> pdnt.flood.off
+   148  bit   OUT         FALSE  whb.halui.flood.on ==> pdnt.flood.on
+   148  bit   IN          FALSE  whb.halui.joint.a.is-homed <== a-is-homed
+   148  bit   IN          FALSE  whb.halui.joint.b.is-homed
+   148  bit   IN          FALSE  whb.halui.joint.c.is-homed
+   148  bit   IN          FALSE  whb.halui.joint.x.is-homed <== x-is-homed
+   148  bit   IN          FALSE  whb.halui.joint.y.is-homed <== y-is-homed
+   148  bit   IN          FALSE  whb.halui.joint.z.is-homed <== z-is-homed
+   148  bit   IN          FALSE  whb.halui.lube.is-on
+   148  bit   OUT         FALSE  whb.halui.lube.off
+   148  bit   OUT         FALSE  whb.halui.lube.on
+   148  bit   IN          FALSE  whb.halui.machine.is-on <== machine-is-on
+   148  bit   OUT         FALSE  whb.halui.machine.off
+   148  bit   OUT         FALSE  whb.halui.machine.on
+   148  float IN            200  whb.halui.max-velocity.value <== pdnt.max-velocity.value
+   148  bit   IN          FALSE  whb.halui.mist.is-on <== pdnt.mist.is-on
+   148  bit   OUT         FALSE  whb.halui.mist.off ==> pdnt.mist.off
+   148  bit   OUT         FALSE  whb.halui.mist.on ==> pdnt.mist.on
+   148  bit   OUT         FALSE  whb.halui.mode.auto ==> pdnt.mode.auto
+   148  bit   IN          FALSE  whb.halui.mode.is-auto <== pdnt.mode.is-auto
+   148  bit   IN           TRUE  whb.halui.mode.is-joint <== pdnt.mode.is-joint
+   148  bit   IN           TRUE  whb.halui.mode.is-manual <== pdnt.mode.is-manual
+   148  bit   IN          FALSE  whb.halui.mode.is-mdi <== MDI-mode
+   148  bit   IN           TRUE  whb.halui.mode.is-teleop <== pdnt.mode.is-manual
+   148  bit   OUT         FALSE  whb.halui.mode.joint ==> pdnt.mode.joint
+   148  bit   OUT         FALSE  whb.halui.mode.manual ==> pdnt.mode.manual
+   148  bit   OUT         FALSE  whb.halui.mode.mdi ==> pdnt.mode.mdi
+   148  bit   OUT         FALSE  whb.halui.mode.teleop
+   148  bit   IN           TRUE  whb.halui.program.is-idle <== idle-on
+   148  bit   IN          FALSE  whb.halui.program.is-paused <== DO-HMI-light-yellow
+   148  bit   IN          FALSE  whb.halui.program.is-running <== run-on
+   148  bit   OUT         FALSE  whb.halui.program.pause ==> pdnt.program.pause
+   148  bit   OUT         FALSE  whb.halui.program.resume ==> pdnt.program.resume
+   148  bit   OUT         FALSE  whb.halui.program.run ==> pdnt.program.run
+   148  bit   OUT         FALSE  whb.halui.program.stop ==> pdnt.program.stop
+   148  bit   OUT         FALSE  whb.halui.spindle-override.decrease ==> pdnt.spindle.override.decrease
+   148  bit   OUT         FALSE  whb.halui.spindle-override.increase ==> pdnt.spindle.override.increase
+   148  float OUT             0  whb.halui.spindle-override.scale
+   148  float IN              1  whb.halui.spindle-override.value <== pdnt.spindle.override.value
+   148  float IN              0  whb.halui.spindle-speed-cmd <== pdnt.spindle-speed-abs
+   148  bit   OUT         FALSE  whb.halui.spindle.decrease ==> pdnt.spindle.decrease
+   148  bit   OUT         FALSE  whb.halui.spindle.forward ==> pdnt.spindle.forward
+   148  bit   OUT         FALSE  whb.halui.spindle.increase ==> pdnt.spindle.increase
+   148  bit   IN          FALSE  whb.halui.spindle.is-on <== spindle-enable
+   148  bit   OUT         FALSE  whb.halui.spindle.reverse ==> pdnt.spindle.reverse
+   148  bit   OUT         FALSE  whb.halui.spindle.start ==> pdnt.spindle.start
+   148  bit   OUT         FALSE  whb.halui.spindle.stop ==> pdnt.spindle.stop
+   148  bit   OUT          TRUE  whb.pendant.is-connected
+   148  bit   OUT         FALSE  whb.pendant.is-sleeping
+
