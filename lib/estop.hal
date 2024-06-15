@@ -18,35 +18,42 @@ net     SYS-estop-out                               <= iocontrol.0.user-enable-o
 net emc-enable-groot-error <= groot-error.emc-enable-out
 net emc-enable-groot-error => iocontrol.0.emc-enable-in
 
+setp groot-error.emc-enable-in 1
+
 
 net machine-on => groot-error.emc-on
 net emc-auto => groot-error.emc-auto
 
-
 net spindle-enable => groot-error.spindle-enable-in 
 
 net DI-ESTOP-ext  => groot-error.estop-external
-net pendant-estop  => groot-error.estop-pendant
+#net pendant-estop  => groot-error.estop-pendant
+setp groot-error.estop-pendant 1
 
-net vfd-error  => groot-error.spindle-err
-net vfd-error-code => groot-error.spindle-error-code
+net vfd-error  => groot-error.vfd-err
+net vfd-error-code => groot-error.vfd-error-code
 
-net comp.temp.out => groot-error.spindle-temp-err
+# net spindle-max-temp-trigger    comp.temp.out => groot-error.spindle-temp-err
+setp groot-error.spindle-temp-err 0
+
 
 net    DI-CNC-tls-ot         => groot-error.tls-overtravel
 
-net DI-CNC-pressure-alarm  => groot-error.air-ok
+#net DI-CNC-pressure-alarm  => groot-error.air-ok
+setp groot-error.air-ok 1
 
 #TODO Move drive part to axis.hal
 
-net     SRV-fault-a         => groot-error.axis-fault-a         lcec.0.a-axis.srv-fault
-net     SRV-fault-x         => groot-error.axis-fault-x         lcec.0.x-axis.srv-fault
-net     SRV-fault-y1        => groot-error.axis-fault-y1        lcec.0.y1-axis.srv-fault
-net     SRV-fault-y2        => groot-error.axis-fault-y2        lcec.0.y2-axis.srv-fault
-net     SRV-fault-z         => groot-error.axis-fault-z         lcec.0.z-axis.srv-fault
+net     SRV-fault-a         lcec.0.a-axis.srv-fault    # => groot-error.axis-fault-a
+net     SRV-fault-x         lcec.0.x-axis.srv-fault    # => groot-error.axis-fault-x
+net     SRV-fault-y1        lcec.0.y1-axis.srv-fault   #  => groot-error.axis-fault-y1
+net     SRV-fault-y2        lcec.0.y2-axis.srv-fault   #  => groot-error.axis-fault-y2
+net     SRV-fault-z         lcec.0.z-axis.srv-fault    # => groot-error.axis-fault-z
+
+
 
 #TODO Define no of slaves
-setp groot-error.ec-slaves 10
+setp groot-error.ec-slaves 16
 
 net ec-slaves-responding => groot-error.ec-slaves-responding
 net ec-link-up => groot-error.ec-link-up
@@ -55,12 +62,12 @@ net ec-all-op => groot-error.ec-all-op
 
 ### Fault Reset on Machine-on
 
-net machine-on  => lcec.0.a-axis.srv-fault-reset
-net machine-on  => lcec.0.x-axis.srv-fault-reset
-net machine-on  => lcec.0.y1-axis.srv-fault-reset
-net machine-on  => lcec.0.y2-axis.srv-fault-reset
-net machine-on  => lcec.0.z-axis.srv-fault-reset
-net machine-on  => lcec.0.spindle.fault-reset
+net machine-is-on  => lcec.0.a-axis.srv-fault-reset
+net machine-is-on  => lcec.0.x-axis.srv-fault-reset
+net machine-is-on  => lcec.0.y1-axis.srv-fault-reset
+net machine-is-on  => lcec.0.y2-axis.srv-fault-reset
+net machine-is-on  => lcec.0.z-axis.srv-fault-reset
+net machine-is-on  => lcec.0.spindle.fault-reset
 
 
 # ----- ESTOP LIGHT  ----- 

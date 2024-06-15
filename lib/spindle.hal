@@ -36,15 +36,14 @@ setp     lcec.0.spindle.vel-scale 1
 net      spindle-enable                        spindle.0.on                        lcec.0.spindle.enable         
 net      spindle-rpm                           spindle.0.speed-out                 limit1.spindle.in
 net      spindle-rpm-limited                   limit1.spindle.out                  lcec.0.spindle.vel-rpm-cmd
-net      spindle-at-speed                      lcec.0.spindle.stat-at-speed            spindle.0.at-speed
+net      spindle-at-speed                      lcec.0.spindle.stat-at-speed        spindle.0.at-speed
 net      spindle-is-running                    lcec.0.spindle.stat-op-enabled # TODO: Validate the signal!
 net      vfd-current                           lcec.0.spindle.act-current
 net      vfd-temp                              lcec.0.spindle.drive-temp
 net      vfd-error                             lcec.0.spindle.stat-fault
-net      vfd-fault-reset                       lcec.0.spindle.fault-reset
 net      estop-soft-trigger                    lcec.0.spindle.quick-stop
 net      vfd-error-code                        lcec.0.spindle.error-code
-net      spindle-warn-code                      <= lcec.0.spindle.warn-code
+net      spindle-warn-code                  <= lcec.0.spindle.warn-code
 # TODO: This may be BS
 
 # ---------- SPINDLE NTC ----------
