@@ -17,6 +17,7 @@ pin in bit estop_pendant;
 pin in bit estop_external;
 pin in bit vfd_err;
 pin in bit spindle_temp_err;
+pin out bit spindle_fault_out;
 pin in bit air_ok;
 pin in u32 vfd_error_code;
 pin in bit tls_overtravel;
@@ -84,8 +85,9 @@ FUNCTION(_) {
   int ec_slaves_responding_ok;
 
   emc_enable_out = emc_enable_in;
+  spindle_fault_out = 0;
 
-  // check if emc is on
+//  check if emc is on
   if (!emc_on) {
     data.last_estop_pendant = 0;
     data.last_estop_external = 0;
@@ -97,7 +99,7 @@ FUNCTION(_) {
     data.last_axis_fault_y1 = 0;
     data.last_axis_fault_y2 = 0;
     data.last_axis_fault_z = 0;
-    data.last_tls_overtravel = 0;
+    data.last_tls_overtravel = 1;
     data.last_auto_err = 0;
     data.last_ec_slaves_responding_ok = 1;
     data.last_ec_link_up = 1;
@@ -105,8 +107,7 @@ FUNCTION(_) {
 
     return;
   }
-
-
+  
 
   if (!estop_pendant) {
        emc_enable_out = 0;
@@ -117,8 +118,7 @@ FUNCTION(_) {
   data.last_estop_pendant = estop_pendant;
 
   if (!estop_external) {
-       emc_enable_out = 0;
-    if (!data.last_estop_external) {
+    if (data.last_estop_external) {
       
       rtapi_print_msg(RTAPI_MSG_ERR, "Hardware E-Stop safety relay triggered!\n");
     }
@@ -127,6 +127,7 @@ FUNCTION(_) {
 
   if (vfd_err && vfd_error_code != VFD_ERROR_STO) {
     emc_enable_out = 0;
+    spindle_fault_out = 1;
     if (!data.last_vfd_err) {
       rtapi_print_msg(RTAPI_MSG_ERR, "Spindle drive error!\n");
     }
@@ -198,15 +199,15 @@ FUNCTION(_) {
   }
   data.last_tls_overtravel = tls_overtravel;
 
-  if ((emc_auto || spindle_enable_in)) {
-    emc_enable_out = 0;
-    if (!data.last_auto_err) {
-      rtapi_print_msg(RTAPI_MSG_ERR, "Automatic mode disabled!\n");
-    }
-    data.last_auto_err = 1;
-  } else {
-    data.last_auto_err = 0;
-  }
+  // if ((emc_auto || spindle_enable_in)) {
+  //   emc_enable_out = 0;
+  //   if (!data.last_auto_err) {
+  //     rtapi_print_msg(RTAPI_MSG_ERR, "Automatic mode disabled!\n");
+  //   }
+  //   data.last_auto_err = 1;
+  // } else {
+  //   data.last_auto_err = 0;
+  // }
 
   ec_slaves_responding_ok = (ec_slaves_responding == ec_slaves);
   if (!ec_slaves_responding_ok) {

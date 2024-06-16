@@ -9,7 +9,9 @@
     <slave idx="6" type="EL2809" name="DO1"/>
     <slave idx="7" type="EL7031" name="MQL"/>
     <slave idx="8" type="EK1110" name="EK1110"/>
-    <slave idx="9" type="DeMS300" name="spindle"/>
+    <slave idx="9" type="DeMS300" name="spindle">
+		      <initCmds filename="initcmd/spindle.xml"/>
+	</slave>
     <slave idx="10" type="DeASDA" name="a-axis">
       <dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="0"/>
       <modParam name="enableDigitalOutput" value="false"/>

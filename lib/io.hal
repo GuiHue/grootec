@@ -40,16 +40,15 @@ net     DI-CNC-min-home-a               <= lcec.0.DI1.din-2-not
 
 
 ################## DI2 ##################
-# --- DI ATC-TOOL-SENSOR (11) --- D2 PIN 1
-# Note: Sensor to indicate the presence of a tool (high when tool present)
-net     DI-ATC-tool-sensor              <= lcec.0.DI2.din-0
-#TODO Verify input
-
-# --- DI ATC-DRAWBAR-SENSOR (22) --- D2 PIN 5
+# --- DI SPINDLE-DRAWBAR-SENSOR (11) --- D2 PIN 1
 # Note: Sensor to indicate that the drawbar has been activated (high when drawbar open)
-net     DI-ATC-drawbar-sensor           <= lcec.0.DI2.din-1
-net     DI-ATC-drawbar-sensor-not       <= lcec.0.DI2.din-1-not
-#TODO Verify input
+net     DI-SPINDLE-drawbar-sensor              <= lcec.0.DI2.din-0
+net     DI-SPINDLE-drawbar-sensor-not              <= lcec.0.DI2.din-0-not
+
+# --- DI SPINDLE-TOOL-SENSOR (22) --- D2 PIN 5
+# Note: Sensor to indicate the presence of a tool in spindle (high when tool present)
+net     DI-SPINDLE-tool-sensor           <= lcec.0.DI2.din-1
+net     DI-SPINDLE-tool-sensor-not       <= lcec.0.DI2.din-1-not
 
 # --- DI ESTOP-EXT --- D2 PIN 4
 net     DI-ESTOP-ext                    <= lcec.0.DI2.din-2
@@ -76,8 +75,8 @@ net     DI-CNC-tls-ot-not             <= lcec.0.DI3.din-2-not
 net     DI-ATC-pocket                   <= lcec.0.DI3.din-3-not
 
 ################## DI4 ##################
-# --- DI ATC-MAN-BUTTON --- D4 PIN1 I1
-net     DI-ATC-man-button               <= lcec.0.DI4.din-0
+# --- DI SPINDLE-MAN-BUTTON --- D4 PIN1 I1
+net     DI-SPINDLE-man-button               <= lcec.0.DI4.din-0
 
 # --- DI AIR-PRESSURE-ALARM --- D4 PIN5 I2
 # Note: High when OK
@@ -102,15 +101,16 @@ net     DO-CNC-flood                    => lcec.0.DO1.dout-0
 net     DO-CNC-mist                     => lcec.0.DO1.dout-1
 
 # --- DO ATC-STATUS-LIGHT  --- DO1 O3
-net     DO-ATC-status-light             => lcec.0.DO1.dout-2
+# light at z axis for spindle bt30 clamp
+net     DO-SPINDLE-status-light             => lcec.0.DO1.dout-2
 
 # --- DO ATC-CONE-CLEAN   --- DO1 O4
 # Note: High = Cone clean airblast on
-net     DO-ATC-cone-clean               => lcec.0.DO1.dout-3
+net     DO-SPINDLE-cone-clean               => lcec.0.DO1.dout-3
 
 # --- DO ATC-DRAWBAR-ACTUATOR  --- DO1 O5
 # Note: Triggers 5/2 via 2 position relais, high = open drawbar, Low = retract drawbar
-net     DO-ATC-drawbar-actuator         => lcec.0.DO1.dout-4
+net     DO-SPINDLE-drawbar-actuator         => lcec.0.DO1.dout-4
 
 # --- DO CNC-PROBE-BLOWOFF  --- DO1 O6
 net     DO-CNC-tls-blowoff            => lcec.0.DO1.dout-5

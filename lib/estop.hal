@@ -18,15 +18,15 @@ net     SYS-estop-out                               <= iocontrol.0.user-enable-o
 net emc-enable-groot-error <= groot-error.emc-enable-out
 net emc-enable-groot-error => iocontrol.0.emc-enable-in
 
-setp groot-error.emc-enable-in 1
+#setp groot-error.emc-enable-in 1
 
 
-net machine-on => groot-error.emc-on
+net machine-is-on => groot-error.emc-on
 net emc-auto => groot-error.emc-auto
 
 net spindle-enable => groot-error.spindle-enable-in 
 
-net DI-ESTOP-ext  => groot-error.estop-external
+net DI-ESTOP-ext  => groot-error.estop-external groot-error.emc-enable-in
 #net pendant-estop  => groot-error.estop-pendant
 setp groot-error.estop-pendant 1
 

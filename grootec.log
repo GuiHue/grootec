@@ -1,0 +1,3 @@
+2024-06-16 22:24:59,477 - qtpyvcp.plugins.notifications - ERROR - EtherCAT: Not all slaves in 
+ OP mode!
+2024-06-16 22:29:55,289 - qtpyvcp.plugins.notifications - ERROR - Bad character '1' used

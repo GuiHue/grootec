@@ -16,9 +16,9 @@
 # DI-ATC-tool-sensor
 
 setp    lut5.spindleinhibit.function            0xEF
-net     DI-ATC-drawbar-sensor                   lut5.spindleinhibit.in-0
-net     DO-ATC-drawbar-actuator                 lut5.spindleinhibit.in-1
-net     DI-ATC-tool-sensor                      lut5.spindleinhibit.in-2     
+net     DI-SPINDLE-drawbar-sensor                   lut5.spindleinhibit.in-0
+net     DO-SPINDLE-drawbar-actuator                 lut5.spindleinhibit.in-1
+net     DI-SPINDLE-tool-sensor                      lut5.spindleinhibit.in-2     
 net     spindle-inhibit                         lut5.spindleinhibit.out                     spindle.0.inhibit
 
 # TODO Review example
@@ -28,10 +28,14 @@ net     spindle-inhibit                         lut5.spindleinhibit.out         
 # SETUP SPINDLE CONTROL for Delta MS300 via EtherCAT
 #******************************
 # Set max spindle rpm to avoid stupid vfd behaviour (vfd handles this though)
-setp     limit1.spindle.max 6000
+setp     limit1.spindle.max 24000
 # TODO: Update limit to 24000 - currently limit due to non tested spindle!
 setp     limit1.spindle.min 0
 setp     lcec.0.spindle.vel-scale 1
+
+setp lcec.0.spindle.vel-ramp-down 10000
+setp lcec.0.spindle.vel-ramp-up 10000
+
 # TODO: Review the scale
 net      spindle-enable                        spindle.0.on                        lcec.0.spindle.enable         
 net      spindle-rpm                           spindle.0.speed-out                 limit1.spindle.in
@@ -44,6 +48,9 @@ net      vfd-error                             lcec.0.spindle.stat-fault
 net      estop-soft-trigger                    lcec.0.spindle.quick-stop
 net      vfd-error-code                        lcec.0.spindle.error-code
 net      spindle-warn-code                  <= lcec.0.spindle.warn-code
+net      spindle-fb-rpm                        <= lcec.0.spindle.vel-fb-rpm
+net      spindle-fb-rpm-abs                     <= lcec.0.spindle.vel-fb-rpm-abs
+net      spindle-fault-out                      groot-error.spindle-fault-out spindle.0.amp-fault-in
 # TODO: This may be BS
 
 # ---------- SPINDLE NTC ----------
