@@ -9,13 +9,11 @@
     <slave idx="6" type="EL2809" name="DO1"/>
     <slave idx="7" type="EL7031" name="MQL"/>
     <slave idx="8" type="EK1110" name="EK1110"/>
-    <slave idx="9" type="DeMS300" name="spindle"/><!--
-		      <initCmds filename="initcmd/spindle2.xml"/>
-	</slave>-->
+    <slave idx="9" type="DeMS300" name="spindle"/>
     <slave idx="10" type="DeASDA" name="a-axis">
       <dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="0"/>
       <modParam name="enableDigitalOutput" value="false"/>
-      <modParam name="opmode" value="CSV"/>
+      <modParam name="opmode" value="CSP"/>
     </slave>
     <slave idx="11" type="DeASDA3" name="z-axis">
       <dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="0"/>
@@ -96,8 +94,6 @@
 			<complexEntry bitLen="1" halPin="out-47" halType="bit"/>
 			<complexEntry bitLen="1" halPin="out-48" halType="bit"/>
 		  </pdoEntry> 
-		  <!-- Outputs 57-64 excluded to reduce number of pins in example
-
 		 <pdoEntry idx="0005" subIdx="07" bitLen="8" halType="complex">
 			<complexEntry bitLen="1" halPin="out-49" halType="bit"/>
 			<complexEntry bitLen="1" halPin="out-50" halType="bit"/>
@@ -107,7 +103,8 @@
 			<complexEntry bitLen="1" halPin="out-54" halType="bit"/>
 			<complexEntry bitLen="1" halPin="out-55" halType="bit"/>
 			<complexEntry bitLen="1" halPin="out-56" halType="bit"/>
-		  </pdoEntry>-->
+		  </pdoEntry>
+		  <!-- Outputs 57-64 excluded to reduce number of pins in example
 		  <pdoEntry idx="0005" subIdx="08" bitLen="8" halType="complex">
 			<complexEntry bitLen="1" halPin="out-57" halType="bit"/>
 			<complexEntry bitLen="1" halPin="out-58" halType="bit"/>
@@ -117,7 +114,7 @@
 			<complexEntry bitLen="1" halPin="out-62" halType="bit"/>
 			<complexEntry bitLen="1" halPin="out-63" halType="bit"/>
 			<complexEntry bitLen="1" halPin="out-64" halType="bit"/>
-		  </pdoEntry>
+		  </pdoEntry>-->
 		</pdo>
 	</syncManager>	
 	<syncManager idx="1" dir="in">
