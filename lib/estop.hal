@@ -18,17 +18,13 @@ net     SYS-estop-out                               <= iocontrol.0.user-enable-o
 net emc-enable-groot-error <= groot-error.emc-enable-out
 net emc-enable-groot-error => iocontrol.0.emc-enable-in
 
-#setp groot-error.emc-enable-in 1
-
-
 net machine-is-on => groot-error.emc-on
 net emc-auto => groot-error.emc-auto
 
 net spindle-enable => groot-error.spindle-enable-in 
 
 net DI-ESTOP-ext  => groot-error.estop-external groot-error.emc-enable-in
-#net pendant-estop  => groot-error.estop-pendant
-setp groot-error.estop-pendant 1
+net pendant-estop  => groot-error.estop-pendant
 
 net vfd-error  => groot-error.vfd-err
 net vfd-error-code => groot-error.vfd-error-code
@@ -62,12 +58,17 @@ net ec-all-op => groot-error.ec-all-op
 
 ### Fault Reset on Machine-on
 
-net machine-is-on  => lcec.0.a-axis.srv-fault-reset
-net machine-is-on  => lcec.0.x-axis.srv-fault-reset
-net machine-is-on  => lcec.0.y1-axis.srv-fault-reset
-net machine-is-on  => lcec.0.y2-axis.srv-fault-reset
-net machine-is-on  => lcec.0.z-axis.srv-fault-reset
-net machine-is-on  => lcec.0.spindle.fault-reset
+net machine-is-on  => oneshot.fault.in
+setp oneshot.fault.width 0.1
+setp oneshot.fault.retriggerable false
+
+net machine-on-fault-clear <= oneshot.fault.out
+net machine-on-fault-clear lcec.0.a-axis.srv-fault-reset
+net machine-on-fault-clear  => lcec.0.x-axis.srv-fault-reset
+net machine-on-fault-clear => lcec.0.y1-axis.srv-fault-reset
+net machine-on-fault-clear => lcec.0.y2-axis.srv-fault-reset
+net machine-on-fault-clear => lcec.0.z-axis.srv-fault-reset
+net machine-on-fault-clear  => lcec.0.spindle.fault-reset
 
 
 # ----- ESTOP LIGHT  ----- 

@@ -27,21 +27,19 @@ net     spindle-inhibit                         lut5.spindleinhibit.out         
 #******************************
 # SETUP SPINDLE CONTROL for Delta MS300 via EtherCAT
 #******************************
-# Set max spindle rpm to avoid stupid vfd behaviour (vfd handles this though)
+# hard limit spindle rpm
 setp     limit1.spindle.max 24000
-# TODO: Update limit to 24000 - currently limit due to non tested spindle!
-setp     limit1.spindle.min 0
-setp     lcec.0.spindle.vel-scale 1
+setp     limit1.spindle.min -1000
 
-setp lcec.0.spindle.vel-ramp-down 10000
-setp lcec.0.spindle.vel-ramp-up 10000
+setp     lcec.0.spindle.vel-scale 0.1
+setp     lcec.0.spindle.vel-ramp-down 7000
+setp     lcec.0.spindle.vel-ramp-up 7000
 
-# TODO: Review the scale
 net      spindle-enable                        spindle.0.on                        lcec.0.spindle.enable         
-net      spindle-rpm                           spindle.0.speed-out                 limit1.spindle.in
+net      spindle-rpm                           spindle.0.speed-out                 limit1.spindle.in 
 net      spindle-rpm-limited                   limit1.spindle.out                  lcec.0.spindle.vel-rpm-cmd
 net      spindle-at-speed                      lcec.0.spindle.stat-at-speed        spindle.0.at-speed
-net      spindle-is-running                    lcec.0.spindle.stat-op-enabled # TODO: Validate the signal!
+net      spindle-is-running                    lcec.0.spindle.stat-op-enabled 
 net      vfd-current                           lcec.0.spindle.act-current
 net      vfd-temp                              lcec.0.spindle.drive-temp
 net      vfd-error                             lcec.0.spindle.stat-fault
@@ -51,7 +49,10 @@ net      spindle-warn-code                  <= lcec.0.spindle.warn-code
 net      spindle-fb-rpm                        <= lcec.0.spindle.vel-fb-rpm
 net      spindle-fb-rpm-abs                     <= lcec.0.spindle.vel-fb-rpm-abs
 net      spindle-fault-out                      groot-error.spindle-fault-out spindle.0.amp-fault-in
-# TODO: This may be BS
+
+
+
+
 
 # ---------- SPINDLE NTC ----------
 # NTC: 103F3950, R25: 10K 1% B: 3950K

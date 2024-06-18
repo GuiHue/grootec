@@ -34,8 +34,7 @@ loadrt  limit2                              names=limit2.mql
 loadrt  limit1                              names=limit1.spindle
 loadrt  time                                names=time.pb
 loadrt  scale                               names=scale.spindleload,scale.xjog,scale.yjog,scale.zjog,scale.ajog,scale.mql,scale.mqlvolover
-loadrt  oneshot                             names=oneshot.mql
-
+loadrt  oneshot                             names=oneshot.mql,oneshot.fault
 ###########################################################
 # Functions servo-thread
 ###########################################################
@@ -75,7 +74,10 @@ addf    toggle2nist.externalprogram         servo-thread
 addf    toggle2nist.machineon               servo-thread
 addf    lut5.spindleinhibit                 servo-thread
 addf    lut5.toolchange                     servo-thread
+
 addf    oneshot.mql                         servo-thread
+addf    oneshot.fault                         servo-thread
+
 addf    timedelay.conecleaning              servo-thread
 addf    timedelay.toolchange                servo-thread
 addf    timedelay.atcledslow                servo-thread

@@ -111,7 +111,7 @@ FUNCTION(_) {
 
   if (!estop_pendant) {
        emc_enable_out = 0;
-    if (!data.last_estop_pendant) {
+    if (data.last_estop_pendant) {
       rtapi_print_msg(RTAPI_MSG_ERR, "E-Stop pendant!\n");
     }
   }
