@@ -7,7 +7,11 @@
     <slave idx="4" type="EL1008" name="DI4"/>
     <slave idx="5" type="EL3064" name="AI1"/>
     <slave idx="6" type="EL2809" name="DO1"/>
-    <slave idx="7" type="EL7031" name="MQL"/>
+    <slave idx="7" type="EL7031" name="MQL">
+			<modParam name="maxCurrent" value="0.9"/>
+			<modParam name="nominalVoltage" value="24"/>
+			<modParam name="motorFullsteps" value="200"/>
+	</slave>  
     <slave idx="8" type="EK1110" name="EK1110"/>
     <slave idx="9" type="DeMS300" name="spindle"/>
     <slave idx="10" type="DeASDA" name="a-axis">
