@@ -6,8 +6,7 @@
 #*******************
 #  AXIS X JOINT 0 U20 W2020 W2021
 #*******************
-
-#   -- Axis related PID for internal stepgen
+#   -- Axis related PID 
 setp        pid.x.Pgain                                 [JOINT_0]P
 setp        pid.x.Igain                                 [JOINT_0]I
 setp        pid.x.Dgain                                 [JOINT_0]D
@@ -26,8 +25,10 @@ net         x-pos-cmd                                   =>  pid.x.command
 net         x-pos-fb                                    =>  pid.x.feedback
 net         x-output                                    <=  pid.x.output
 
-net         machine-is-on                               lcec.0.x-axis.srv-enable-volt
-net         machine-on-fault-clear                      => lcec.0.x-axis.srv-fault-reset
+# always enable
+setp        lcec.0.x-axis.srv-enable-volt               1
+setp        lcec.0.x-axis.srv-fault-reset 	            0
+net         machine-is-on                               lcec.0.x-axis.srv-fault-reset
 
 #   -- Motion Parameters
 setp        lcec.0.x-axis.pos-scale                     [JOINT_0]POS_SCALE    
@@ -37,12 +38,13 @@ setp        lcec.0.x-axis.extenc-scale                  [JOINT_0]EXTENC_SCALE
 net         x-pos-cmd                                   <= joint.0.motor-pos-cmd
 net         x-pos-cmd                                   => lcec.0.x-axis.srv-pos-cmd 
 net         x-vel-cmd                                   <= joint.0.vel-cmd
+# net       x-output                                    <= lcec.0.x-axis.srv-vel-cmd
 net         x-pos-fb                                    <= lcec.0.x-axis.enc-pos-abs
 net         x-pos-fb                                    => joint.0.motor-pos-fb
 net         x-enable                                    <= joint.0.amp-enable-out
 net         x-enable                                    => lcec.0.x-axis.srv-switch-on
 net         x-enable                                    => lcec.0.x-axis.srv-enable
-
+net         x-enable                                    <= joint.0.amp-enable-out
 net         x-alarm                                     joint.0.amp-fault-in                    lcec.0.x-axis.srv-fault
 
 # ---setup home / limit switch signals---
@@ -50,3 +52,204 @@ net         x-alarm                                     joint.0.amp-fault-in    
 net         DI-CNC-min-home-x                           => joint.0.home-sw-in
 net         DI-CNC-min-home-x                           => joint.0.neg-lim-sw-in
 net         x-pos-limit                                 => joint.0.pos-lim-sw-in
+
+#*******************
+#  AXIS Y1 JOINT 1 U30 W2030 W2031
+#*******************
+#   -- Axis related PID 
+setp        pid.y1.Pgain                                 [JOINT_1]P
+setp        pid.y1.Igain                                 [JOINT_1]I
+setp        pid.y1.Dgain                                 [JOINT_1]D
+setp        pid.y1.bias                                  [JOINT_1]BIAS
+setp        pid.y1.FF0                                   [JOINT_1]FF0
+setp        pid.y1.FF1                                   [JOINT_1]FF1
+setp        pid.y1.FF2                                   [JOINT_1]FF2
+setp        pid.y1.deadband                              [JOINT_1]DEADBAND
+setp        pid.y1.maxoutput                             [JOINT_1]MAX_OUTPUT
+setp        pid.y1.error-previous-target                 true
+setp        pid.y1.maxerror 0.012700
+
+net         y1-index-enable                              <=> pid.y1.index-enable
+net         y1-enable                                    =>  pid.y1.enable
+net         y1-pos-cmd                                   =>  pid.y1.command
+net         y1-pos-fb                                    =>  pid.y1.feedback
+net         y1-output                                    <=  pid.y1.output
+
+# always enable
+setp        lcec.0.y1-axis.srv-enable-volt               1
+setp        lcec.0.y1-axis.srv-fault-reset 	             0
+net         machine-is-on                                lcec.0.y1-axis.srv-fault-reset
+
+#   -- Motion Parameters
+setp        lcec.0.y1-axis.pos-scale                     [JOINT_1]POS_SCALE    
+setp        lcec.0.y1-axis.srv-pulses-per-rev            [JOINT_1]SRV_PPREV 
+setp        lcec.0.y1-axis.extenc-scale                  [JOINT_1]EXTENC_SCALE 
+
+net         y1-pos-cmd                                   <= joint.1.motor-pos-cmd
+net         y1-pos-cmd                                   => lcec.0.y1-axis.srv-pos-cmd 
+net         y1-vel-cmd                                   <= joint.1.vel-cmd
+# net       y1-output                                    <= lcec.0.y1-axis.srv-vel-cmd
+net         y1-pos-fb                                    <= lcec.0.y1-axis.enc-pos-abs
+net         y1-pos-fb                                    => joint.1.motor-pos-fb
+net         y1-enable                                    <= joint.1.amp-enable-out
+net         y1-enable                                    => lcec.0.y1-axis.srv-switch-on
+net         y1-enable                                    => lcec.0.y1-axis.srv-enable
+net         y1-enable                                    <= joint.1.amp-enable-out
+net         y1-alarm                                     joint.1.amp-fault-in                    lcec.0.y1-axis.srv-fault
+
+# ---setup home / limit switch signals---
+
+net         DI-CNC-min-home-y1                           => joint.1.home-sw-in
+net         DI-CNC-min-home-y1                           => joint.1.neg-lim-sw-in
+net         y1-pos-limit                                 => joint.1.pos-lim-sw-in
+
+#*******************
+#  AXIS Y2 JOINT 2 U40 W2040 W2041
+#*******************
+#   -- Axis related PID 
+setp        pid.y2.Pgain                                 [JOINT_2]P
+setp        pid.y2.Igain                                 [JOINT_2]I
+setp        pid.y2.Dgain                                 [JOINT_2]D
+setp        pid.y2.bias                                  [JOINT_2]BIAS
+setp        pid.y2.FF0                                   [JOINT_2]FF0
+setp        pid.y2.FF1                                   [JOINT_2]FF1
+setp        pid.y2.FF2                                   [JOINT_2]FF2
+setp        pid.y2.deadband                              [JOINT_2]DEADBAND
+setp        pid.y2.maxoutput                             [JOINT_2]MAX_OUTPUT
+setp        pid.y2.error-previous-target                 true
+setp        pid.y2.maxerror 0.012700
+
+net         y2-index-enable                              <=> pid.y2.index-enable
+net         y2-enable                                    =>  pid.y2.enable
+net         y2-pos-cmd                                   =>  pid.y2.command
+net         y2-pos-fb                                    =>  pid.y2.feedback
+net         y2-output                                    <=  pid.y2.output
+
+# always enable
+setp        lcec.0.y2-axis.srv-enable-volt               1
+setp        lcec.0.y2-axis.srv-fault-reset 	             0
+net         machine-is-on                                lcec.0.y2-axis.srv-fault-reset
+
+#   -- Motion Parameters
+setp        lcec.0.y2-axis.pos-scale                     [JOINT_2]POS_SCALE    
+setp        lcec.0.y2-axis.srv-pulses-per-rev            [JOINT_2]SRV_PPREV 
+setp        lcec.0.y2-axis.extenc-scale                  [JOINT_2]EXTENC_SCALE 
+
+net         y2-pos-cmd                                   <= joint.2.motor-pos-cmd
+net         y2-pos-cmd                                   => lcec.0.y2-axis.srv-pos-cmd 
+net         y2-vel-cmd                                   <= joint.2.vel-cmd
+# net       y2-output                                    <= lcec.0.y2-axis.srv-vel-cmd
+net         y2-pos-fb                                    <= lcec.0.y2-axis.enc-pos-abs
+net         y2-pos-fb                                    => joint.2.motor-pos-fb
+net         y2-enable                                    <= joint.2.amp-enable-out
+net         y2-enable                                    => lcec.0.y2-axis.srv-switch-on
+net         y2-enable                                    => lcec.0.y2-axis.srv-enable
+net         y2-enable                                    <= joint.2.amp-enable-out
+net         y2-alarm                                     joint.2.amp-fault-in                    lcec.0.y2-axis.srv-fault
+
+# ---setup home / limit switch signals---
+
+net         DI-CNC-min-home-y2                           => joint.2.home-sw-in
+net         DI-CNC-min-home-y2                           => joint.2.neg-lim-sw-in
+net         y2-pos-limit                                 => joint.2.pos-lim-sw-in
+
+#*******************
+#  AXIS Z JOINT 3 U50 W2050 W2051
+#*******************
+#   -- Axis related PID 
+setp        pid.z.Pgain                                 [JOINT_3]P
+setp        pid.z.Igain                                 [JOINT_3]I
+setp        pid.z.Dgain                                 [JOINT_3]D
+setp        pid.z.bias                                  [JOINT_3]BIAS
+setp        pid.z.FF0                                   [JOINT_3]FF0
+setp        pid.z.FF1                                   [JOINT_3]FF1
+setp        pid.z.FF2                                   [JOINT_3]FF2
+setp        pid.z.deadband                              [JOINT_3]DEADBAND
+setp        pid.z.maxoutput                             [JOINT_3]MAX_OUTPUT
+setp        pid.z.error-previous-target                 true
+setp        pid.z.maxerror 0.012700
+
+net         z-index-enable                              <=> pid.z.index-enable
+net         z-enable                                    =>  pid.z.enable
+net         z-pos-cmd                                   =>  pid.z.command
+net         z-pos-fb                                    =>  pid.z.feedback
+net         z-output                                    <=  pid.z.output
+
+# always enable
+setp        lcec.0.z-axis.srv-enable-volt               1
+setp        lcec.0.z-axis.srv-fault-reset 	            0
+net         machine-is-on                               lcec.0.z-axis.srv-fault-reset
+
+#   -- Motion Parameters
+setp        lcec.0.z-axis.pos-scale                     [JOINT_3]POS_SCALE    
+setp        lcec.0.z-axis.srv-pulses-per-rev            [JOINT_3]SRV_PPREV 
+setp        lcec.0.z-axis.extenc-scale                  [JOINT_3]EXTENC_SCALE 
+
+net         z-pos-cmd                                   <= joint.3.motor-pos-cmd
+net         z-pos-cmd                                   => lcec.0.z-axis.srv-pos-cmd 
+net         z-vel-cmd                                   <= joint.3.vel-cmd
+# net       z-output                                    <= lcec.0.z-axis.srv-vel-cmd
+net         z-pos-fb                                    <= lcec.0.z-axis.enc-pos-abs
+net         z-pos-fb                                    => joint.3.motor-pos-fb
+net         z-enable                                    <= joint.3.amp-enable-out
+net         z-enable                                    => lcec.0.z-axis.srv-switch-on
+net         z-enable                                    => lcec.0.z-axis.srv-enable
+net         z-enable                                    <= joint.3.amp-enable-out
+net         z-alarm                                    joint.3.amp-fault-in                    lcec.0.z-axis.srv-fault
+
+# ---setup home / limit switch signals---
+
+net         DI-CNC-min-home-z                           => joint.3.home-sw-in
+net         DI-CNC-min-home-z                           => joint.3.neg-lim-sw-in
+net         z-pos-limit                                 => joint.3.pos-lim-sw-in
+
+
+#*******************
+#  AXIS A JOINT 4 U60 W2060 W2061
+#*******************
+#   -- Axis related PID 
+setp        pid.a.Pgain                                 [JOINT_4]P
+setp        pid.a.Igain                                 [JOINT_4]I
+setp        pid.a.Dgain                                 [JOINT_4]D
+setp        pid.a.bias                                  [JOINT_4]BIAS
+setp        pid.a.FF0                                   [JOINT_4]FF0
+setp        pid.a.FF1                                   [JOINT_4]FF1
+setp        pid.a.FF2                                   [JOINT_4]FF2
+setp        pid.a.deadband                              [JOINT_4]DEADBAND
+setp        pid.a.maxoutput                             [JOINT_4]MAX_OUTPUT
+setp        pid.a.error-previous-target                 true
+setp        pid.a.maxerror 0.012700
+
+net         a-index-enable                              <=> pid.a.index-enable
+net         a-enable                                    =>  pid.a.enable
+net         a-pos-cmd                                   =>  pid.a.command
+net         a-pos-fb                                    =>  pid.a.feedback
+net         a-output                                    <=  pid.a.output
+
+# always enable
+setp        lcec.0.a-axis.srv-enable-volt               1
+setp        lcec.0.a-axis.srv-fault-reset 	            0
+net         machine-is-on                               lcec.0.a-axis.srv-fault-reset
+
+#   -- Motion Parameters
+setp        lcec.0.a-axis.pos-scale                     [JOINT_4]POS_SCALE    
+setp        lcec.0.a-axis.srv-pulses-per-rev            [JOINT_4]SRV_PPREV 
+setp        lcec.0.a-axis.extenc-scale                  [JOINT_4]EXTENC_SCALE 
+
+net         a-pos-cmd                                   <= joint.4.motor-pos-cmd
+net         a-pos-cmd                                   => lcec.0.a-axis.srv-pos-cmd 
+net         a-vel-cmd                                   <= joint.4.vel-cmd
+# net       a-output                                    <= lcec.0.a-axis.srv-vel-cmd
+net         a-pos-fb                                    <= lcec.0.a-axis.enc-pos-abs
+net         a-pos-fb                                    => joint.4.motor-pos-fb
+net         a-enable                                    <= joint.4.amp-enable-out
+net         a-enable                                    => lcec.0.a-axis.srv-switch-on
+net         a-enable                                    => lcec.0.a-axis.srv-enable
+net         a-enable                                    <= joint.4.amp-enable-out
+net         a-alarm                                    joint.4.amp-fault-in                    lcec.0.a-axis.srv-fault
+
+# ---setup home / limit switch signals---
+
+net         DI-CNC-min-home-a                           => joint.4.home-sw-in
+net         DI-CNC-min-home-a                           => joint.4.neg-lim-sw-in
+net         a-pos-limit                                 => joint.4.pos-lim-sw-in

@@ -27,16 +27,16 @@ net     AI-SYS-fieldvoltage             <= lcec.0.AI1.ain-1-val
 net     DI-CNC-min-home-x               <= lcec.0.DI1.din-0-not
 
 # --- DI CNC-MIN-HOME-Y1 --- D1 PIN 2
-net     DI-CNC-min-home-y1              <= lcec.0.DI1.din-3-not
+net     DI-CNC-min-home-y1              <= lcec.0.DI1.din-2-not
 
 # --- DI CNC-MIN-HOME-Y2 --- D1 PIN 6 
-net     DI-CNC-min-home-y2              <= lcec.0.DI1.din-4-not
+net     DI-CNC-min-home-y2              <= lcec.0.DI1.din-3-not
 
 # --- DI CNC-MIN-HOME-Z --- D1 PIN 3
-net     DI-CNC-min-home-z               <= lcec.0.DI1.din-5-not
+net     DI-CNC-min-home-z               <= lcec.0.DI1.din-4-not
 
 # --- DI CNC-MIN-HOME-A --- D1 PIN 5 
-net     DI-CNC-min-home-a               <= lcec.0.DI1.din-2-not
+net     DI-CNC-min-home-a               <= lcec.0.DI1.din-1-not
 
 
 ################## DI2 ##################
