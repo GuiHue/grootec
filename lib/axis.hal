@@ -251,5 +251,5 @@ net         a-alarm                                    joint.4.amp-fault-in     
 # ---setup home / limit switch signals---
 
 net         DI-CNC-min-home-a                           => joint.4.home-sw-in
-net         DI-CNC-min-home-a                           => joint.4.neg-lim-sw-in
-net         a-pos-limit                                 => joint.4.pos-lim-sw-in
+#net         DI-CNC-min-home-a                           => joint.4.neg-lim-sw-in
+#net         a-pos-limit                                 => joint.4.pos-lim-sw-in

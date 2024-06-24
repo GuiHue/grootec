@@ -45,8 +45,8 @@ net ec-slaves-responding => groot-error.ec-slaves-responding
 net ec-link-up => groot-error.ec-link-up
 net ec-all-op => groot-error.ec-all-op
 
-### Fault Reset on Machine-on
-net machine-is-on  => oneshot.fault.in
+### Fault Reset on Estop  ok
+net emc-enable-groot-error  => oneshot.fault.in
 setp oneshot.fault.width 0.1
 setp oneshot.fault.retriggerable false
 net machine-on-fault-clear <= oneshot.fault.out
