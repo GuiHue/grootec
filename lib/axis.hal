@@ -67,7 +67,7 @@ setp        pid.y1.FF2                                   [JOINT_1]FF2
 setp        pid.y1.deadband                              [JOINT_1]DEADBAND
 setp        pid.y1.maxoutput                             [JOINT_1]MAX_OUTPUT
 setp        pid.y1.error-previous-target                 true
-setp        pid.y1.maxerror 0.012700
+setp        pid.y1.maxerror 0.2
 
 net         y1-index-enable                              <=> pid.y1.index-enable
 net         y1-enable                                    =>  pid.y1.enable
@@ -86,9 +86,9 @@ setp        lcec.0.y1-axis.srv-pulses-per-rev            [JOINT_1]SRV_PPREV
 setp        lcec.0.y1-axis.extenc-scale                  [JOINT_1]EXTENC_SCALE 
 
 net         y1-pos-cmd                                   <= joint.1.motor-pos-cmd
-net         y1-pos-cmd                                   => lcec.0.y1-axis.srv-pos-cmd 
 net         y1-vel-cmd                                   <= joint.1.vel-cmd
-# net       y1-output                                    <= lcec.0.y1-axis.srv-vel-cmd
+net         y1-pos-cmd                                   => lcec.0.y1-axis.srv-pos-cmd 
+#net         y1-output                                    <= lcec.0.y1-axis.srv-vel-cmd
 net         y1-pos-fb                                    <= lcec.0.y1-axis.enc-pos-abs
 net         y1-pos-fb                                    => joint.1.motor-pos-fb
 net         y1-enable                                    <= joint.1.amp-enable-out
@@ -117,7 +117,7 @@ setp        pid.y2.FF2                                   [JOINT_2]FF2
 setp        pid.y2.deadband                              [JOINT_2]DEADBAND
 setp        pid.y2.maxoutput                             [JOINT_2]MAX_OUTPUT
 setp        pid.y2.error-previous-target                 true
-setp        pid.y2.maxerror 0.012700
+setp        pid.y2.maxerror                              0.2
 
 net         y2-index-enable                              <=> pid.y2.index-enable
 net         y2-enable                                    =>  pid.y2.enable
@@ -136,9 +136,9 @@ setp        lcec.0.y2-axis.srv-pulses-per-rev            [JOINT_2]SRV_PPREV
 setp        lcec.0.y2-axis.extenc-scale                  [JOINT_2]EXTENC_SCALE 
 
 net         y2-pos-cmd                                   <= joint.2.motor-pos-cmd
-net         y2-pos-cmd                                   => lcec.0.y2-axis.srv-pos-cmd 
 net         y2-vel-cmd                                   <= joint.2.vel-cmd
-# net       y2-output                                    <= lcec.0.y2-axis.srv-vel-cmd
+net         y2-pos-cmd                                   => lcec.0.y2-axis.srv-pos-cmd 
+# net         y2-output                                    <= lcec.0.y2-axis.srv-vel-cmd
 net         y2-pos-fb                                    <= lcec.0.y2-axis.enc-pos-abs
 net         y2-pos-fb                                    => joint.2.motor-pos-fb
 net         y2-enable                                    <= joint.2.amp-enable-out
