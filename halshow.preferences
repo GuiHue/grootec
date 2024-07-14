@@ -5,41 +5,13 @@ placeFrames 0.23552123552123552
 set ::ratio 0.23552123552123552
 set ::old_w_leftf 160
 set ::watchlist {
-    param+lcec.0.x-axis.pos-scale
-    param+lcec.0.x-axis.srv-pulses-per-rev
-    pin+lcec.0.x-axis.enc-pos
-    pin+lcec.0.x-axis.enc-pos-abs
-    pin+lcec.0.x-axis.enc-pos-reset
-    pin+lcec.0.x-axis.enc-raw
-    pin+lcec.0.x-axis.slave-online
-    pin+lcec.0.x-axis.slave-oper
-    pin+lcec.0.x-axis.srv-at-speed
-    pin+lcec.0.x-axis.srv-enable
-    pin+lcec.0.x-axis.srv-enable-volt
-    pin+lcec.0.x-axis.srv-fault
-    pin+lcec.0.x-axis.srv-fault-reset
-    pin+lcec.0.x-axis.srv-halt
-    pin+lcec.0.x-axis.srv-limit-active
-    pin+lcec.0.x-axis.srv-on-disabled
-    pin+lcec.0.x-axis.srv-oper-enabled
-    pin+lcec.0.x-axis.srv-operation-mode
-    pin+lcec.0.x-axis.srv-pos-cmd
-    pin+lcec.0.x-axis.srv-quick-stop
-    pin+lcec.0.x-axis.srv-quick-stoped
-    pin+lcec.0.x-axis.srv-ready
-    pin+lcec.0.x-axis.srv-remote
-    pin+lcec.0.x-axis.srv-switch-on
-    pin+lcec.0.x-axis.srv-switched-on
-    pin+lcec.0.x-axis.srv-torque-rel
-    pin+lcec.0.x-axis.srv-volt-enabled
-    pin+lcec.0.x-axis.srv-warning
-    pin+lcec.0.x-axis.srv-zero-speed
-    pin+joint.0.amp-fault-in
-    pin+joint.0.amp-enable-out
-    pin+joint.3.home-sw-in
-    pin+joint.3.neg-lim-sw-in
-    pin+joint.3.pos-lim-sw-in
-    pin+joint.2.home-sw-in
+    pin+lcec.read-all.time
+    pin+lcec.write-all.time
+    sig+DI-CNC-min-home-y1
+    sig+DI-CNC-min-home-y2
+    sig+DI-CNC-min-home-a
+    sig+DI-CNC-min-home-x
+    sig+DI-CNC-min-home-z
 }
 set ::workmode watchhal
 set ::watchInterval 100
