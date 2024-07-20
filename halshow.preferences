@@ -5,13 +5,15 @@ placeFrames 0.23552123552123552
 set ::ratio 0.23552123552123552
 set ::old_w_leftf 160
 set ::watchlist {
-    pin+lcec.read-all.time
-    pin+lcec.write-all.time
-    sig+DI-CNC-min-home-y1
-    sig+DI-CNC-min-home-y2
-    sig+DI-CNC-min-home-a
-    sig+DI-CNC-min-home-x
-    sig+DI-CNC-min-home-z
+    pin+lcec.0.AI1.ain-3-val
+    pin+lcec.0.AI1.ain-2-val
+    pin+lcec.0.AI1.ain-1-val
+    pin+lcec.0.AI1.ain-0-val
+    pin+lcec.0.AI1.ain-0-error
+    pin+lcec.0.AI1.ain-0-overrange
+    pin+lcec.0.AI1.ain-0-raw
+    pin+lcec.0.AI1.ain-0-scale
+    pin+lcec.0.AI1.ain-0-underrange
 }
 set ::workmode watchhal
 set ::watchInterval 100

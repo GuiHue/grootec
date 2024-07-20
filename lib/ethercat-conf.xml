@@ -19,11 +19,11 @@
       <dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="0"/>
       <modParam name="opmode" value="CSP"/>
     </slave> 
-    <slave idx="12" type="DeASDA3" name="y1-axis">
+    <slave idx="12" type="DeASDA3" name="y2-axis">
       <dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="0"/>
       <modParam name="opmode" value="CSP"/>
     </slave> 
-    <slave idx="13" type="DeASDA3" name="y2-axis">
+    <slave idx="13" type="DeASDA3" name="y1-axis">
       <dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="0"/>
       <modParam name="opmode" value="CSP"/>
     </slave> 

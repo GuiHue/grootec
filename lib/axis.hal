@@ -54,7 +54,7 @@ net         DI-CNC-min-home-x                           => joint.0.neg-lim-sw-in
 net         x-pos-limit                                 => joint.0.pos-lim-sw-in
 
 #*******************
-#  AXIS Y1 JOINT 1 U30 W2030 W2031
+#  AXIS Y1 JOINT 1 U30 W2040 W2031 room
 #*******************
 #   -- Axis related PID 
 setp        pid.y1.Pgain                                 [JOINT_1]P
@@ -104,7 +104,7 @@ net         DI-CNC-min-home-y1                           => joint.1.neg-lim-sw-i
 net         y1-pos-limit                                 => joint.1.pos-lim-sw-in
 
 #*******************
-#  AXIS Y2 JOINT 2 U40 W2040 W2041
+#  AXIS Y2 JOINT 2 U40 W2040 W2041 Wall
 #*******************
 #   -- Axis related PID 
 setp        pid.y2.Pgain                                 [JOINT_2]P
