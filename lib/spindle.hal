@@ -64,10 +64,14 @@ setp     thermistor.0.beta                     [NTC]NTC_BETA
 setp     thermistor.0.r-other                  [NTC]VDIV_RES
 setp     comp.temp.in0                         [NTC]NTC_MAX_TEMP
 
-net      AI-SYS-fieldvoltage                   offset.ntc.fb-in                    
+net      RefFieldvoltage                       offset.ntc.fb-in    
 net      AI-ATC-temp-sensor                    offset.ntc.offset                   
 net      ntc-voltage-drop                      offset.ntc.fb-out                   thermistor.0.v-thermistor
 
-net      AI-SYS-fieldvoltage                   thermistor.0.v-total
+
+# Determine Ref Voltage
+net      AI-SYS-fieldvoltage                   scale.refvoltage.in        
+setp     scale.refvoltage.gain                 [NTC]VDIV_REFSCALE 
+net      RefFieldvoltage                       scale.refvoltage.out                 thermistor.0.v-total
 net      SPINDLE-temp                          thermistor.0.temperature-c          
 

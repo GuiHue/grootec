@@ -1,0 +1,117 @@
+o<atc_tctemp> sub
+(print, in change tool_in_spindle=#<tool_in_spindle>; current_pocket=#<current_pocket>)
+(print, selected_tool=#<selected_tool>; selected_pocket=#<selected_pocket>)
+#<new_tool> = #<selected_tool>
+#<current_tool> = #5400
+#<atc_size> =#<_ini[ATC]POCKETS>
+#<probe_tool_number_ini> = #<_ini[TOOLSENSOR]PROBE_NO> 
+
+
+
+(print, #<_task>)
+(print, Starting M6 tool change macro; New Tool::  #<new_tool>)
+(print, M6: here)
+(print, M6: Current tool: #<current_tool> )
+
+
+
+O10 IF [#<_task> EQ 0]
+        (debug, M6: Task is Null)
+O10 return [999]
+O10 ENDIF
+
+(print, M6: here2)
+; checks if tool in the spindle is same as requested
+O20 IF [#<current_tool> EQ #<new_tool>] 
+    (print, M6: No toolchange necessary: Old=New Tool)
+    o<atc_tctemp> endsub [1]
+    M2
+O20 ENDIF
+
+
+(print, M6: here3)
+
+; Ensure everything that we do is done in absolute coordinates
+G90
+G40
+G92.1
+G49
+G53 G0 Z0X0
+(print, M6: here4)
+
+; Step 1: check if a tool is in the spindle and put away (Physical sensor > current_tool)
+M66 P#<_ini[ATC]SENSOR_TOOL> L0
+(print, M6: here3)
+O100 IF [#5399 EQ 0]
+    ; NO tool in spindle, proceed
+    O110 IF [#<current_tool> EQ 0]
+        ; NO Tool in spindle, proceed
+    O110 ELSE
+        (abort, M6: Mismatch Spindle Tool Sensor and Program - Check manually!)
+    O110 ENDIF
+O100 ELSE 
+    ; There is a tool in the spindle and we know the toolnumber
+        (print, M6: Current tool not from carousel - Manual PickUp)
+        G53 G0 Z0
+        G53 G0 X[#<_ini[MTC_POS]X>] Y[#<_ini[MTC_POS]Y>]
+        G53 G0 Z[#<_ini[MTC_POS]Z>]
+        O121 IF [#<current_tool> EQ #<probe_tool_number_ini>]
+            (print, Current tool is probe - turn off pin)
+            M65 P #<_ini[ATC]3D_PIN>
+            (debug, Probe Deactivated - NO CRASH DETECTION FOR PROBE)
+        O121 ENDIF
+
+            ; New tool not in carousel, hence we can M6 to new tool with dialog
+            M6
+  
+O100 ENDIF
+
+(print, M6: here4)
+O199 IF [#<new_tool> EQ 0]
+    (print, M6: New tool = 0, nothing to do)    
+    G53 G0Z0
+    M61 Q0
+    #5231 =0
+    
+O199 ELSE
+
+    (print, M6: New tool not in ATC, manual pickup)
+
+        ; in this case we have not and we need to move to MTC an trigger dialogue
+        G53 G0 Z0
+        G53 G0 X[#<_ini[MTC_POS]X>] Y[#<_ini[MTC_POS]Y>]
+        G53 G0 Z[#<_ini[MTC_POS]Z>]
+        T #<new_tool> 
+        M6 
+    
+    ; we can now assume that M6 has run through - check tool presence
+    M66 P#<_ini[ATC]SENSOR_TOOL> L0
+    O220 IF [#5399 EQ 0]
+        (abort, M6: No tool in spindle after M6)
+    O220 ENDIF
+
+    ; We don't trust external tools - send to tool measurement
+    O230 IF[#<new_tool> EQ #<probe_tool_number_ini>]
+        M64 P #<_ini[ATC]3D_PIN>
+        (MSG, M6: Probe Activated! - Crash Protection on)
+        S0 M5
+    O230 ELSE
+        (print, M6: Measure tool lenght - no probe)
+        O<tool_touch_off> call
+    O230 ENDIF
+
+
+O199 ENDIF
+T #<new_tool>  G43  H #<new_tool>     (enable tool length offset)
+#5231 =  #<new_tool>
+
+
+
+
+
+
+(PRINT, o<atc_tctemp> endsub)
+
+o<atc_tctemp> endsub [1]
+M2
+;

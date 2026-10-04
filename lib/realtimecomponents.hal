@@ -33,7 +33,7 @@ loadrt  message                             names=m_lowpressure,m_tempwarn messa
 loadrt  limit2                              names=limit2.mql
 loadrt  limit1                              names=limit1.spindle
 loadrt  time                                names=time.pb
-loadrt  scale                               names=scale.spindleload,scale.xjog,scale.yjog,scale.zjog,scale.ajog,scale.mql,scale.mqlvolover
+loadrt  scale                               names=scale.spindleload,scale.xjog,scale.yjog,scale.zjog,scale.ajog,scale.mql,scale.mqlvolover,scale.refvoltage
 loadrt  oneshot                             names=oneshot.mql,oneshot.fault
 ###########################################################
 # Functions servo-thread
@@ -126,6 +126,7 @@ addf    scale.zjog                          servo-thread
 addf    scale.ajog                          servo-thread
 addf    scale.mql                           servo-thread
 addf    scale.mqlvolover                    servo-thread
+addf    scale.refvoltage                    servo-thread
 addf    ilowpass.x.enc-smooth               servo-thread
 addf    ilowpass.y.enc-smooth               servo-thread
 addf    ilowpass.z.enc-smooth               servo-thread

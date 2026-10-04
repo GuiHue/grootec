@@ -84,12 +84,15 @@ net     DO-SPINDLE-status-light                         conv_u32b.atcstatusledou
 
 
 # ---------- MANUAL TOOLCHANGE----------
-#loadusr -W hal_manualtoolchange
-#net tool-change iocontrol.0.tool-change => hal_manualtoolchange.change
-#net tool-changed iocontrol.0.tool-changed <= hal_manualtoolchange.changed
-#net tool-number iocontrol.0.tool-prep-number => hal_manualtoolchange.number
+#net tool-change iocontrol.0.tool-change #=> hal_manualtoolchange.change
+#net tool-changed iocontrol.0.tool-changed# <= hal_manualtoolchange.changed
+#net tool-number iocontrol.0.tool-prep-number# => hal_manualtoolchange.number
 #net tool-prepare-loopback iocontrol.0.tool-prepare => iocontrol.0.tool-prepared
-
+net tool-change-request    <= iocontrol.0.tool-change
+net tool-change-confirmed  => iocontrol.0.tool-changed
+net tool-number            <= iocontrol.0.tool-prep-number
+#  ---ignore tool prepare requests---
+net tool-prepare-loopback   iocontrol.0.tool-prepare      =>  iocontrol.0.tool-prepared
 
 # ---------- CAROUSEL TOOL CHANGER  ----------
 

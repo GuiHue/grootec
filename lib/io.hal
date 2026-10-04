@@ -11,15 +11,15 @@
 # ---Inputs---
 
 ################## AI1 ##################
-# --- AI ATC-TEMP-SENSOR ---
-# Note: Voltage from voltage divider over spindle temperature sensor
-net     AI-ATC-temp-sensor              <= lcec.0.AI1.ain-0-val
-# TODO: Validate PIN Numbers
+# --- AI FIELDVOLTAGE  ---
+# Note: Voltage from voltage divider 
+net     AI-SYS-fieldvoltage             <= lcec.0.AI1.ain-0-val
+setp    lcec.0.AI1.ain-0-scale          10
 
 # --- AI FIELDVOLTAGE ---
-# Note: Reference voltage 24v  through external port, as mesa internal ref voltage is garbage
-net     AI-SYS-fieldvoltage             <= lcec.0.AI1.ain-1-val
-# TODO: Validate PIN Numbers
+# Note: Voltage from voltage divider 
+net     AI-ATC-temp-sensor              <= lcec.0.AI1.ain-1-val
+setp    lcec.0.AI1.ain-1-scale          10
 
 
 ################## DI1 ##################
@@ -149,8 +149,8 @@ net     DO-CNC-vac-remote               => lcec.0.DO1.dout-8
 net     carousel_homed          motion.digital-in-00
 net     carousel_ready          motion.digital-in-01
 net     DI-ATC-toolpresence     motion.digital-in-02
-net     DI-ATC-tool-sensor      motion.digital-in-03
-net     DI-ATC-drawbar-sensor   motion.digital-in-04
+net     DI-SPINDLE-tool-sensor      motion.digital-in-03
+net     DI-SPINDLE-drawbar-sensor   motion.digital-in-04
 # Unused
 net     motion-digitial-in-05          motion.digital-in-05
 # Unused

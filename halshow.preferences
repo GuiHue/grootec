@@ -5,15 +5,10 @@ placeFrames 0.23552123552123552
 set ::ratio 0.23552123552123552
 set ::old_w_leftf 160
 set ::watchlist {
-    pin+lcec.0.AI1.ain-3-val
-    pin+lcec.0.AI1.ain-2-val
-    pin+lcec.0.AI1.ain-1-val
-    pin+lcec.0.AI1.ain-0-val
-    pin+lcec.0.AI1.ain-0-error
-    pin+lcec.0.AI1.ain-0-overrange
-    pin+lcec.0.AI1.ain-0-raw
-    pin+lcec.0.AI1.ain-0-scale
-    pin+lcec.0.AI1.ain-0-underrange
+    pin+lcec.0.spindle.act-current
+    pin+lcec.0.spindle.drive-temp
+    pin+lcec.0.spindle.vel-fb-rpm
+    pin+thermistor.0.temperature-c
 }
 set ::workmode watchhal
 set ::watchInterval 100

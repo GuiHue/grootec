@@ -11,33 +11,6 @@
 o<program_coolant> sub
 (PRINT, o<program_coolant>)
 
-  #<activate_programmable_coolant> = #3000
-  #<horizontal_spindle_nozzle_dist> = #3001
-  #<vertical_spindle_nozzle_dist> = #3002
-  #<pc_angle_offset> = #3003
-
-  o100 if [#<activate_programmable_coolant> EQ 0]
-    o100 return
-  o100 endif
-
-  #<pc_tool_length> = #5403
-
-  #<tool_diameter> = #5410
-
-  #<tool_radius_offset_dist> = [#<tool_diameter> / 2]
-
-  #<tool_diameter_offset_dist> = [#<horizontal_spindle_nozzle_dist> - #<tool_radius_offset_dist>]
-
-  #<tool_tip_position> = [[#<vertical_spindle_nozzle_dist>] + [#<pc_tool_length>]]
-
-  #<coolant_abs_angle> = [ATAN[#<tool_tip_position>] / [#<tool_diameter_offset_dist>]]
-
-  #<coolant_final_angle> = [[#<coolant_abs_angle>] + [#<pc_angle_offset>]]
-
-  #1000 = #<coolant_final_angle>
-  (DEBUG, EVAL[vcp.getWidget{"coolant_final_angle"}.setValue{#1000}])
-
-  M68 E20 Q[#<coolant_final_angle>]
 
   (PRINT, o<program_coolant> endsub)
 o<program_coolant> endsub
