@@ -1,6 +1,6 @@
 (author: Chris P)
-(version: 0.2)
-(date: 06/27/24)
+(version: 0.3)
+(date: 01/28/26)
 
 (Probe round pocket center start measure x and y Diam, find xy center position)
 (Start probe position is rough center of pocket a safe distance below top edge)
@@ -28,13 +28,15 @@ o<probe_round_pocket_center_start> sub
   (Cancel G92 offsets)
   G92.1
 
+  (Cancel Feedrate Override)
+  M50 P0
+
   #<workspace_x> = #[5201 + [20 * #5220]]
   #<workspace_y> = #[5202 + [20 * #5220]]
 
   (Probe Tool Safety Check)
   o100 if [#5400 NE #<probe_tool_number>]
-      (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
-      o<probe_round_pocket_center_start> return
+      (abort, Specified probe tool %d#<probe_tool_number> not in spindle, aborting)
   o100 endif
 
   (Probe Diameter)
@@ -44,12 +46,12 @@ o<probe_round_pocket_center_start> sub
   #<probe_diameter_offset> = [#<probe_diameter> - [#<calibration_offset> * 2]]
 
   (Call sub "probe_x_minus" to Probe x-)
-  o<probe_x_minus> call [#3014][#3015][#3016][3017][#3018 + #3025 / 2][#3019][#3032]
+  o<probe_x_minus> call [#3014][#3015][#3016][#3017][#3018 + #3025 / 2][#3019][#3032]
 
   #<x_minus_probed> = #5061
 
   (Call sub "probe_x_plus" to Probe x+)
-  o<probe_x_plus> call [#3014][#3015][#3016][3017][#3018 + #3025][#3019][#3032]
+  o<probe_x_plus> call [#3014][#3015][#3016][#3017][#3018 + #3025][#3019][#3032]
 
   #<x_plus_probed> = #5061
 
@@ -65,12 +67,12 @@ o<probe_round_pocket_center_start> sub
   G38.3 X[#<x_center_probed>]
 
   (Call sub "probe_y_plus" to Probe Y+)
-  o<probe_y_plus> call [#3014][#3015][#3016][3017][#3018 + #3025 / 2][#3019][#3032]
+  o<probe_y_plus> call [#3014][#3015][#3016][#3017][#3018 + #3025 / 2][#3019][#3032]
 
   #<y_plus_probed> = #5062
 
   (Call sub "probe_y_minus" to Probe Y-)
-  o<probe_y_minus> call [#3014][#3015][#3016][3017][#3018 + #3025][#3019][#3032]
+  o<probe_y_minus> call [#3014][#3015][#3016][#3017][#3018 + #3025][#3019][#3032]
 
   #<y_minus_probed> = #5062
 
@@ -86,12 +88,12 @@ o<probe_round_pocket_center_start> sub
   G38.3 Y[#<y_center_probed>]
 
   (Call sub "probe_x_minus" to Probe x-)
-  o<probe_x_minus> call [#3014][#3015][#3016][3017][#3018 + #3025 / 2][#3019][#3032]
+  o<probe_x_minus> call [#3014][#3015][#3016][#3017][#3018 + #3025 / 2][#3019][#3032]
 
   #<x_minus_probed> = #5061
 
   (Call sub "probe_x_plus" to Probe x+)
-  o<probe_x_plus> call [#3014][#3015][#3016][3017][#3018 + #3025][#3019][#3032]
+  o<probe_x_plus> call [#3014][#3015][#3016][#3017][#3018 + #3025][#3019][#3032]
 
   #<x_plus_probed> = #5061
 
@@ -115,12 +117,12 @@ o<probe_round_pocket_center_start> sub
   G38.3 X[#<x_center_probed>]
 
   (Call sub "probe_y_plus" to Probe Y+)
-  o<probe_y_plus> call [#3014][#3015][#3016][3017][#3018 + #3025 / 2][#3019][#3032]
+  o<probe_y_plus> call [#3014][#3015][#3016][#3017][#3018 + #3025 / 2][#3019][#3032]
 
   #<y_plus_probed> = #5062
 
   (Call sub "probe_y_minus" to Probe Y-)
-  o<probe_y_minus> call [#3014][#3015][#3016][3017][#3018 + #3025][#3019][#3032]
+  o<probe_y_minus> call [#3014][#3015][#3016][#3017][#3018 + #3025][#3019][#3032]
 
   #<y_minus_probed> = #5062
 
@@ -153,8 +155,10 @@ o<probe_round_pocket_center_start> sub
       (Record Y Zero in selected WCO)
       G10 L2 P#5220 X[#<x_center_probed> + #<workspace_x>]
       G10 L2 P#5220 Y[#<y_center_probed> + #<workspace_y>]
-      o<probe_round_pocket_center_start> return
   o110 endif
+
+  (Reinstate Feedrate Override)
+  M50 P1
 
 o<probe_round_pocket_center_start> endsub
 

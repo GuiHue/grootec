@@ -1,0 +1,77 @@
+# ---------- SPINDLE  ----------
+# Handles connection for VFD Delta MS300 via EtherCAT with CMM-Ec02
+# Handles processing of temperature sensor in spindle
+
+# ---------- SPINDLE LOCK ----------
+# Lock the spindle through spindle.0.inhibit whenever either the drawbar is open (=high), no tool is present (=low) or the drawbar actuator valve is active (=high)
+# lut5.spindleinhibit in0 (high) / in1 (low) / in2 (high)or any combination thereof = b11101111 = 0xEF
+#  see http://linuxcnc.org/docs/2.8/html/man/man9/lut5.9.html
+# DI-ATC-drawbar-sensor
+# DO-ATC-drawbar-actuator
+# DI-ATC-tool-sensor
+
+setp    lut5.spindleinhibit.function            0xEF
+net     DI-SPINDLE-drawbar-sensor               lut5.spindleinhibit.in-0
+net     DO-SPINDLE-drawbar-actuator             lut5.spindleinhibit.in-1
+net     DI-SPINDLE-tool-sensor                  lut5.spindleinhibit.in-2     
+net     spindle-inhibit                         lut5.spindleinhibit.out           spindle.0.inhibit
+
+
+#******************************
+# SETUP SPINDLE CONTROL for Delta MS300 via EtherCAT
+#******************************
+# hard limit spindle rpm
+setp     limit1.spindle.max             [SPINDLE]LIMITRPM_UPPER
+setp     limit1.spindle.min             [SPINDLE]LIMITRPM_LOWER
+
+setp     lcec.0.spindle.vel-scale       [SPINDLE]VELSCALE
+setp     lcec.0.spindle.vel-ramp-down   [SPINDLE]RAMP_DOWN
+setp     lcec.0.spindle.vel-ramp-up     [SPINDLE]RAMP_UP
+
+net      spindle-enable                        spindle.0.on                        lcec.0.spindle.enable         
+net      spindle-rpm                           spindle.0.speed-out                 limit1.spindle.in 
+net      spindle-rpm-limited                   limit1.spindle.out                  lcec.0.spindle.vel-rpm-cmd
+net      spindle-at-speed                      lcec.0.spindle.stat-at-speed        spindle.0.at-speed
+net      spindle-is-running                    lcec.0.spindle.stat-op-enabled 
+net      vfd-current                           lcec.0.spindle.act-current
+net      vfd-temp                              lcec.0.spindle.drive-temp
+net      vfd-error                             lcec.0.spindle.stat-fault
+net      estop-soft-trigger                    lcec.0.spindle.quick-stop
+net      vfd-error-code                        lcec.0.spindle.error-code
+net      spindle-warn-code                     <= lcec.0.spindle.warn-code
+net      spindle-fb-rpm                        <= lcec.0.spindle.vel-fb-rpm
+net      spindle-fb-rpm-abs                    <= lcec.0.spindle.vel-fb-rpm-abs
+net      spindle-fault-out                     groot-error.spindle-fault-out        spindle.0.amp-fault-in
+
+net     machine-on-fault-clear                  => lcec.0.spindle.fault-reset
+
+
+
+# ---------- SPINDLE NTC ----------
+# NTC: 103F3950, R25: 10K 1% B: 3950K
+# analogin2: 24V fieldvoltage (since hm2_7i76e.0.7i76.0.0.fieldvoltage is too noisy)
+# output of voltage divider (spindle NTC / 10K resistor)
+# offset.ntc is required since we don't need the output voltage but the voltage drop
+# comp.temp compares the computed temperature with a maximum temperature to trigger estop
+
+# TODO: Check wiring, add voltage dvicer and multiply
+
+loadusr  -W thermistor
+
+setp     thermistor.0.t0-c                     [NTC]NTC_TEMP
+setp     thermistor.0.r0                       [NTC]NTC_RES
+setp     thermistor.0.beta                     [NTC]NTC_BETA
+setp     thermistor.0.r-other                  [NTC]VDIV_RES
+setp     comp.temp.in0                         [NTC]NTC_MAX_TEMP
+
+net      RefFieldvoltage                       offset.ntc.fb-in    
+net      AI-ATC-temp-sensor                    offset.ntc.offset                   
+net      ntc-voltage-drop                      offset.ntc.fb-out                   thermistor.0.v-thermistor
+
+
+# Determine Ref Voltage
+net      AI-SYS-fieldvoltage                   scale.refvoltage.in        
+setp     scale.refvoltage.gain                 [NTC]VDIV_REFSCALE 
+net      RefFieldvoltage                       scale.refvoltage.out                 thermistor.0.v-total
+net      SPINDLE-temp                          thermistor.0.temperature-c          
+

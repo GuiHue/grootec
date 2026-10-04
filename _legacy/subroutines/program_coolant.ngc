@@ -1,0 +1,18 @@
+(author: Chris P)
+(version: 0.3)
+(date: 06/27/24)
+
+(programmable coolant subroutine for aiming the coolant nozzle)
+(settings for setup are displayed on probe basic setting page)
+(in the programmable coolant constants container.)
+(calculations assume coolant nozzle is located on the right side of the spindle)
+
+
+o<program_coolant> sub
+(PRINT, o<program_coolant>)
+
+
+  (PRINT, o<program_coolant> endsub)
+o<program_coolant> endsub
+
+M2 (end program)
